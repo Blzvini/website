@@ -8,20 +8,28 @@ export default function Header() {
     <header className="header">
       {/* Sky Background */}
       <div className="sky-background">
-        {/* Pixel Art Sunrise Sun */}
-        <div className="sun-container" aria-hidden="true">
-          {/* Sun rays - behind the sun body */}
-          <div className="sun-ray ray-1" />
-          <div className="sun-ray ray-2" />
-          <div className="sun-ray ray-3" />
-          <div className="sun-ray ray-4" />
-          <div className="sun-ray ray-5" />
-          <div className="sun-ray ray-6" />
-          <div className="sun-ray ray-7" />
-          <div className="sun-ray ray-8" />
-          <div className="sun-ray ray-9" />
-          {/* Sun body - semi-circle */}
-          <div className="sun-body" />
+        {/* Pixel Art Sun with Sunglasses */}
+        <div className="sun-character" aria-hidden="true">
+          {/* Rays */}
+          <div className="sun-ray ray-top" />
+          <div className="sun-ray ray-top-right" />
+          <div className="sun-ray ray-right" />
+          <div className="sun-ray ray-bottom-right" />
+          <div className="sun-ray ray-bottom" />
+          <div className="sun-ray ray-bottom-left" />
+          <div className="sun-ray ray-left" />
+          <div className="sun-ray ray-top-left" />
+          {/* Sun face */}
+          <div className="sun-face">
+            {/* Sunglasses */}
+            <div className="sunglasses">
+              <div className="lens lens-left" />
+              <div className="lens lens-right" />
+              <div className="bridge" />
+            </div>
+            {/* Smile */}
+            <div className="smile" />
+          </div>
         </div>
 
         {/* Clouds */}
@@ -78,96 +86,178 @@ export default function Header() {
           z-index: 0;
         }
 
-        /* Pixel Art Sunrise Sun */
-        .sun-container {
+        /* Pixel Art Sun Character with Sunglasses */
+        .sun-character {
           position: absolute;
-          top: 1.5rem;
+          top: 1rem;
           right: 8%;
           width: 100px;
-          height: 70px;
+          height: 100px;
           image-rendering: pixelated;
+          animation: sun-bob 3s ease-in-out infinite;
         }
 
-        .sun-body {
+        @keyframes sun-bob {
+          0%, 100% { transform: translateY(0) rotate(0deg); }
+          50% { transform: translateY(-5px) rotate(2deg); }
+        }
+
+        .sun-face {
           position: absolute;
-          bottom: 0;
+          top: 50%;
           left: 50%;
-          transform: translateX(-50%);
+          transform: translate(-50%, -50%);
           width: 56px;
-          height: 28px;
-          background: linear-gradient(180deg, #ffd166 0%, #ff9f43 100%);
-          border-radius: 56px 56px 0 0;
+          height: 56px;
+          background: linear-gradient(135deg, #fff176 0%, #ffee58 30%, #fdd835 70%, #f9a825 100%);
+          border-radius: 50%;
+          border: 3px solid #e65100;
           box-shadow: 
-            0 0 20px rgba(255, 209, 102, 0.6),
-            0 0 40px rgba(255, 159, 67, 0.3);
+            0 0 30px rgba(255, 209, 102, 0.7),
+            0 0 60px rgba(255, 159, 67, 0.4),
+            inset -4px -4px 0 rgba(249, 168, 37, 0.5),
+            inset 4px 4px 0 rgba(255, 255, 255, 0.3);
           z-index: 2;
         }
 
-        .sun-body::before {
-          content: '';
-          position: absolute;
-          top: 4px;
-          left: 4px;
-          right: 4px;
-          height: 12px;
-          background: linear-gradient(180deg, #ffe599 0%, #ffd166 100%);
-          border-radius: 48px 48px 0 0;
-        }
-
-        /* Sun rays */
+        /* Sun rays - triangular pixel style */
         .sun-ray {
           position: absolute;
-          bottom: 20px;
+          top: 50%;
           left: 50%;
-          width: 6px;
-          background: linear-gradient(0deg, #ff9f43 0%, #ffd166 50%, transparent 100%);
-          transform-origin: bottom center;
+          width: 0;
+          height: 0;
           z-index: 1;
         }
 
-        .ray-1 {
-          height: 40px;
-          transform: translateX(-50%) rotate(-60deg);
+        .ray-top {
+          border-left: 8px solid transparent;
+          border-right: 8px solid transparent;
+          border-bottom: 24px solid #ff9800;
+          transform: translate(-50%, -70px);
         }
 
-        .ray-2 {
-          height: 48px;
-          transform: translateX(-50%) rotate(-45deg);
+        .ray-top::after {
+          content: '';
+          position: absolute;
+          top: 8px;
+          left: -5px;
+          border-left: 5px solid transparent;
+          border-right: 5px solid transparent;
+          border-bottom: 16px solid #ffb74d;
         }
 
-        .ray-3 {
-          height: 52px;
-          transform: translateX(-50%) rotate(-25deg);
+        .ray-bottom {
+          border-left: 8px solid transparent;
+          border-right: 8px solid transparent;
+          border-top: 24px solid #ff9800;
+          transform: translate(-50%, 46px);
         }
 
-        .ray-4 {
-          height: 56px;
-          transform: translateX(-50%) rotate(-10deg);
+        .ray-left {
+          border-top: 8px solid transparent;
+          border-bottom: 8px solid transparent;
+          border-right: 24px solid #ff9800;
+          transform: translate(-70px, -50%);
         }
 
-        .ray-5 {
-          height: 58px;
-          transform: translateX(-50%) rotate(0deg);
+        .ray-right {
+          border-top: 8px solid transparent;
+          border-bottom: 8px solid transparent;
+          border-left: 24px solid #ff9800;
+          transform: translate(46px, -50%);
         }
 
-        .ray-6 {
-          height: 56px;
-          transform: translateX(-50%) rotate(10deg);
+        .ray-top-right {
+          border-left: 8px solid transparent;
+          border-right: 8px solid transparent;
+          border-bottom: 20px solid #ff9800;
+          transform: translate(20px, -58px) rotate(45deg);
         }
 
-        .ray-7 {
-          height: 52px;
-          transform: translateX(-50%) rotate(25deg);
+        .ray-top-left {
+          border-left: 8px solid transparent;
+          border-right: 8px solid transparent;
+          border-bottom: 20px solid #ff9800;
+          transform: translate(-36px, -58px) rotate(-45deg);
         }
 
-        .ray-8 {
-          height: 48px;
-          transform: translateX(-50%) rotate(45deg);
+        .ray-bottom-right {
+          border-left: 8px solid transparent;
+          border-right: 8px solid transparent;
+          border-top: 20px solid #ff9800;
+          transform: translate(20px, 36px) rotate(-45deg);
         }
 
-        .ray-9 {
-          height: 40px;
-          transform: translateX(-50%) rotate(60deg);
+        .ray-bottom-left {
+          border-left: 8px solid transparent;
+          border-right: 8px solid transparent;
+          border-top: 20px solid #ff9800;
+          transform: translate(-36px, 36px) rotate(45deg);
+        }
+
+        /* Sunglasses */
+        .sunglasses {
+          position: absolute;
+          top: 35%;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 40px;
+          height: 14px;
+        }
+
+        .lens {
+          position: absolute;
+          top: 0;
+          width: 16px;
+          height: 12px;
+          background: linear-gradient(180deg, #424242 0%, #212121 50%, #37474f 100%);
+          border: 2px solid #1a1a1a;
+          border-radius: 2px;
+        }
+
+        .lens-left {
+          left: 0;
+        }
+
+        .lens-right {
+          right: 0;
+        }
+
+        .bridge {
+          position: absolute;
+          top: 4px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 8px;
+          height: 3px;
+          background: #1a1a1a;
+        }
+
+        /* Smile */
+        .smile {
+          position: absolute;
+          bottom: 22%;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 20px;
+          height: 10px;
+          border: 3px solid #e65100;
+          border-top: none;
+          border-radius: 0 0 20px 20px;
+          background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.3) 100%);
+        }
+
+        .smile::before {
+          content: '';
+          position: absolute;
+          top: 2px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 14px;
+          height: 5px;
+          background: #fff;
+          border-radius: 0 0 4px 4px;
         }
 
         /* Pixel Clouds */
@@ -372,27 +462,84 @@ export default function Header() {
 
 
         @media (max-width: 768px) {
-          .sun-container {
+          .sun-character {
             width: 70px;
-            height: 50px;
-            top: 1rem;
+            height: 70px;
+            top: 0.5rem;
             right: 5%;
           }
 
-          .sun-body {
+          .sun-face {
             width: 40px;
-            height: 20px;
+            height: 40px;
+            border-width: 2px;
           }
 
-          .sun-ray {
-            width: 4px;
+          .ray-top { 
+            border-left-width: 6px;
+            border-right-width: 6px;
+            border-bottom-width: 16px;
+            transform: translate(-50%, -48px);
+          }
+          .ray-bottom { 
+            border-left-width: 6px;
+            border-right-width: 6px;
+            border-top-width: 16px;
+            transform: translate(-50%, 32px);
+          }
+          .ray-left { 
+            border-top-width: 6px;
+            border-bottom-width: 6px;
+            border-right-width: 16px;
+            transform: translate(-48px, -50%);
+          }
+          .ray-right { 
+            border-top-width: 6px;
+            border-bottom-width: 6px;
+            border-left-width: 16px;
+            transform: translate(32px, -50%);
+          }
+          .ray-top-right,
+          .ray-top-left,
+          .ray-bottom-right,
+          .ray-bottom-left {
+            border-left-width: 5px;
+            border-right-width: 5px;
+            border-bottom-width: 14px;
+            border-top-width: 14px;
+          }
+          .ray-top-right { transform: translate(14px, -40px) rotate(45deg); }
+          .ray-top-left { transform: translate(-24px, -40px) rotate(-45deg); }
+          .ray-bottom-right { transform: translate(14px, 26px) rotate(-45deg); }
+          .ray-bottom-left { transform: translate(-24px, 26px) rotate(45deg); }
+
+          .sunglasses {
+            width: 28px;
+            height: 10px;
           }
 
-          .ray-1, .ray-9 { height: 28px; }
-          .ray-2, .ray-8 { height: 32px; }
-          .ray-3, .ray-7 { height: 36px; }
-          .ray-4, .ray-6 { height: 38px; }
-          .ray-5 { height: 40px; }
+          .lens {
+            width: 11px;
+            height: 8px;
+            border-width: 1px;
+          }
+
+          .bridge {
+            width: 6px;
+            height: 2px;
+            top: 3px;
+          }
+
+          .smile {
+            width: 14px;
+            height: 7px;
+            border-width: 2px;
+          }
+
+          .smile::before {
+            width: 10px;
+            height: 3px;
+          }
 
           .kite-1 {
             top: 15%;
