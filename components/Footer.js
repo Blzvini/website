@@ -3,14 +3,56 @@ export default function Footer() {
     <footer className="footer">
       {/* Landscape Scene */}
       <div className="footer-landscape" aria-hidden="true">
-        {/* Hills in background */}
+        {/* Mountains in background */}
+        <div className="mountains">
+          <div className="mountain mountain-1" />
+          <div className="mountain mountain-2" />
+          <div className="mountain mountain-3" />
+          <div className="mountain mountain-4" />
+        </div>
+
+        {/* Hills in midground */}
         <div className="hills">
           <div className="hill hill-1" />
           <div className="hill hill-2" />
           <div className="hill hill-3" />
         </div>
 
-        {/* Trees */}
+        {/* Village with houses */}
+        <div className="village">
+          {/* House 1 - Small */}
+          <div className="house house-1">
+            <div className="house-chimney" />
+            <div className="house-roof" />
+            <div className="house-body">
+              <div className="house-door" />
+              <div className="house-window" />
+            </div>
+          </div>
+
+          {/* House 2 - Main/Larger */}
+          <div className="house house-2">
+            <div className="house-chimney" />
+            <div className="house-roof" />
+            <div className="house-body">
+              <div className="house-door" />
+              <div className="house-window window-1" />
+              <div className="house-window window-2" />
+            </div>
+          </div>
+
+          {/* House 3 - Small */}
+          <div className="house house-3">
+            <div className="house-chimney" />
+            <div className="house-roof" />
+            <div className="house-body">
+              <div className="house-door" />
+              <div className="house-window" />
+            </div>
+          </div>
+        </div>
+
+        {/* Trees distributed around */}
         <div className="tree tree-1">
           <div className="tree-foliage" />
           <div className="tree-trunk" />
@@ -31,15 +73,9 @@ export default function Footer() {
           <div className="tree-foliage" />
           <div className="tree-trunk" />
         </div>
-
-        {/* Pixel House */}
-        <div className="pixel-house">
-          <div className="house-roof" />
-          <div className="house-body">
-            <div className="house-door" />
-            <div className="house-window" />
-          </div>
-          <div className="house-chimney" />
+        <div className="tree tree-6">
+          <div className="tree-foliage" />
+          <div className="tree-trunk" />
         </div>
 
         {/* Pixel Cat Mascot */}
@@ -47,25 +83,14 @@ export default function Footer() {
           <div className="mascot-body" />
         </div>
 
-        {/* Grass layer */}
-        <div className="footer-grass" />
-      </div>
-
-      {/* Footer content */}
-      <div className="footer-content">
-        <div className="container">
-          <div className="footer-brand">
-            <span>VINICIUS.PORTFOLIO</span>
-            <p>&copy; {new Date().getFullYear()} Vinicius Marques. Dados, natureza e tecnologia em equilíbrio.</p>
-          </div>
-        </div>
+        {/* Ground layer */}
+        <div className="ground" />
       </div>
 
       <style jsx>{`
         .footer {
           position: relative;
-          min-height: 320px;
-          background: linear-gradient(180deg, #43a047 0%, #388e3c 50%, #2e7d32 100%);
+          min-height: 400px;
           overflow: hidden;
         }
 
@@ -73,15 +98,87 @@ export default function Footer() {
           position: absolute;
           inset: 0;
           pointer-events: none;
+          background: linear-gradient(180deg, 
+            #43a047 0%, 
+            #66bb6a 20%,
+            #81c784 40%,
+            #a5d6a7 60%,
+            #c8e6c9 80%,
+            #81c784 100%
+          );
         }
 
-        /* Hills */
-        .hills {
+        /* Mountains - Background layer */
+        .mountains {
           position: absolute;
-          bottom: 60px;
+          bottom: 100px;
           left: 0;
           right: 0;
-          height: 120px;
+          height: 200px;
+        }
+
+        .mountain {
+          position: absolute;
+          bottom: 0;
+          width: 0;
+          height: 0;
+        }
+
+        .mountain-1 {
+          left: 5%;
+          border-left: 80px solid transparent;
+          border-right: 80px solid transparent;
+          border-bottom: 140px solid #5d8a66;
+        }
+
+        .mountain-1::before {
+          content: '';
+          position: absolute;
+          top: 60px;
+          left: -50px;
+          border-left: 50px solid transparent;
+          border-right: 50px solid transparent;
+          border-bottom: 80px solid #4a7c59;
+        }
+
+        .mountain-2 {
+          left: 25%;
+          border-left: 120px solid transparent;
+          border-right: 120px solid transparent;
+          border-bottom: 180px solid #6b9b74;
+        }
+
+        .mountain-2::before {
+          content: '';
+          position: absolute;
+          top: -20px;
+          left: -30px;
+          border-left: 30px solid transparent;
+          border-right: 30px solid transparent;
+          border-bottom: 40px solid #c8e6c9;
+        }
+
+        .mountain-3 {
+          right: 20%;
+          border-left: 100px solid transparent;
+          border-right: 100px solid transparent;
+          border-bottom: 160px solid #5d8a66;
+        }
+
+        .mountain-4 {
+          right: 0;
+          border-left: 90px solid transparent;
+          border-right: 60px solid transparent;
+          border-bottom: 130px solid #4a7c59;
+        }
+
+        /* Hills - Midground layer */
+        .hills {
+          position: absolute;
+          bottom: 80px;
+          left: 0;
+          right: 0;
+          height: 100px;
         }
 
         .hill {
@@ -92,181 +189,104 @@ export default function Footer() {
 
         .hill-1 {
           left: -5%;
-          width: 40%;
-          height: 100px;
-          background: #2e7d32;
+          width: 35%;
+          height: 70px;
+          background: #4caf50;
         }
 
         .hill-2 {
-          left: 30%;
-          width: 50%;
-          height: 120px;
-          background: #388e3c;
+          left: 35%;
+          width: 40%;
+          height: 90px;
+          background: #43a047;
         }
 
         .hill-3 {
           right: -5%;
-          width: 45%;
-          height: 90px;
-          background: #2e7d32;
+          width: 35%;
+          height: 60px;
+          background: #4caf50;
         }
 
-        /* Trees - pixel style */
-        .tree {
+        /* Village */
+        .village {
           position: absolute;
-          bottom: 60px;
+          bottom: 80px;
+          left: 0;
+          right: 0;
+          display: flex;
+          justify-content: center;
+          align-items: flex-end;
+          gap: 40px;
         }
 
-        .tree-foliage {
-          width: 0;
-          height: 0;
-          border-left: 20px solid transparent;
-          border-right: 20px solid transparent;
-          border-bottom: 40px solid var(--color-accent-dark);
+        /* Houses - Pixel style */
+        .house {
           position: relative;
+          image-rendering: pixelated;
         }
 
-        .tree-foliage::before {
-          content: '';
-          position: absolute;
-          top: 15px;
-          left: -15px;
+        /* Small houses (1 and 3) */
+        .house-1, .house-3 {
+          width: 56px;
+        }
+
+        .house-1 .house-roof,
+        .house-3 .house-roof {
           width: 0;
           height: 0;
-          border-left: 15px solid transparent;
-          border-right: 15px solid transparent;
-          border-bottom: 35px solid var(--color-accent-dark);
+          border-left: 32px solid transparent;
+          border-right: 32px solid transparent;
+          border-bottom: 28px solid #8d6e63;
+          margin-left: -4px;
         }
 
-        .tree-foliage::after {
-          content: '';
-          position: absolute;
-          top: 28px;
-          left: -12px;
-          width: 0;
-          height: 0;
-          border-left: 12px solid transparent;
-          border-right: 12px solid transparent;
-          border-bottom: 30px solid var(--color-accent-dark);
-        }
-
-        .tree-trunk {
-          width: 12px;
-          height: 20px;
-          background: #5d4037;
-          margin: 0 auto;
-          margin-top: -2px;
-        }
-
-        .tree-1 { left: 5%; transform: scale(0.8); }
-        .tree-2 { left: 15%; transform: scale(1.2); }
-        .tree-3 { right: 20%; transform: scale(1); }
-        .tree-4 { right: 10%; transform: scale(0.9); }
-        .tree-5 { right: 2%; transform: scale(0.7); }
-
-        /* Pixel House */
-        .pixel-house {
-          position: absolute;
-          bottom: 60px;
-          left: 25%;
-          transform: translateX(-50%);
-        }
-
-        .house-roof {
-          width: 0;
-          height: 0;
-          border-left: 48px solid transparent;
-          border-right: 48px solid transparent;
-          border-bottom: 36px solid #8d6e63;
-          position: relative;
-        }
-
-        .house-roof::before {
-          content: '';
-          position: absolute;
-          top: 8px;
-          left: -40px;
-          width: 80px;
-          height: 8px;
-          background: #a1887f;
-        }
-
-        .house-body {
-          width: 80px;
-          height: 56px;
-          background: var(--color-bg-primary);
-          margin: 0 auto;
-          margin-left: -40px;
-          position: relative;
+        .house-1 .house-body,
+        .house-3 .house-body {
+          width: 56px;
+          height: 40px;
+          background: #f8f4e8;
           border: 4px solid #5d4037;
           border-top: none;
+          position: relative;
         }
 
-        .house-door {
+        .house-1 .house-door,
+        .house-3 .house-door {
           position: absolute;
           bottom: 0;
           left: 50%;
           transform: translateX(-50%);
-          width: 20px;
-          height: 32px;
+          width: 14px;
+          height: 22px;
           background: #5d4037;
-          border-radius: 4px 4px 0 0;
+          border-radius: 3px 3px 0 0;
         }
 
-        .house-door::before {
-          content: '';
+        .house-1 .house-window,
+        .house-3 .house-window {
           position: absolute;
-          top: 14px;
-          right: 4px;
-          width: 4px;
-          height: 4px;
-          background: var(--color-accent-sand);
-          border-radius: 50%;
-        }
-
-        .house-window {
-          position: absolute;
-          top: 8px;
-          left: 8px;
-          width: 16px;
-          height: 16px;
-          background: var(--color-accent-sky);
+          top: 6px;
+          left: 6px;
+          width: 12px;
+          height: 12px;
+          background: #5bc8f5;
           border: 2px solid #5d4037;
         }
 
-        .house-window::before,
-        .house-window::after {
-          content: '';
+        .house-1 .house-chimney,
+        .house-3 .house-chimney {
           position: absolute;
-          background: #5d4037;
-        }
-
-        .house-window::before {
-          top: 50%;
-          left: 0;
-          right: 0;
-          height: 2px;
-          transform: translateY(-50%);
-        }
-
-        .house-window::after {
-          left: 50%;
-          top: 0;
-          bottom: 0;
-          width: 2px;
-          transform: translateX(-50%);
-        }
-
-        .house-chimney {
-          position: absolute;
-          top: -24px;
-          right: -12px;
-          width: 12px;
-          height: 24px;
+          top: -20px;
+          right: 8px;
+          width: 10px;
+          height: 20px;
           background: #8d6e63;
+          z-index: 1;
         }
 
-        .house-chimney::before {
+        .house-1 .house-chimney::before,
+        .house-3 .house-chimney::before {
           content: '';
           position: absolute;
           top: -4px;
@@ -276,11 +296,170 @@ export default function Footer() {
           background: #a1887f;
         }
 
+        /* Main house (2) - Larger */
+        .house-2 {
+          width: 90px;
+        }
+
+        .house-2 .house-roof {
+          width: 0;
+          height: 0;
+          border-left: 52px solid transparent;
+          border-right: 52px solid transparent;
+          border-bottom: 40px solid #a1887f;
+          margin-left: -7px;
+        }
+
+        .house-2 .house-body {
+          width: 90px;
+          height: 60px;
+          background: #fff8e1;
+          border: 4px solid #5d4037;
+          border-top: none;
+          position: relative;
+        }
+
+        .house-2 .house-door {
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 18px;
+          height: 30px;
+          background: #5d4037;
+          border-radius: 3px 3px 0 0;
+        }
+
+        .house-2 .house-door::before {
+          content: '';
+          position: absolute;
+          top: 12px;
+          right: 4px;
+          width: 4px;
+          height: 4px;
+          background: #ffd166;
+          border-radius: 50%;
+        }
+
+        .house-2 .house-window {
+          position: absolute;
+          top: 10px;
+          width: 16px;
+          height: 16px;
+          background: #5bc8f5;
+          border: 2px solid #5d4037;
+        }
+
+        .house-2 .window-1 {
+          left: 8px;
+        }
+
+        .house-2 .window-2 {
+          right: 8px;
+        }
+
+        .house-2 .house-window::before,
+        .house-2 .house-window::after {
+          content: '';
+          position: absolute;
+          background: #5d4037;
+        }
+
+        .house-2 .house-window::before {
+          top: 50%;
+          left: 0;
+          right: 0;
+          height: 2px;
+          transform: translateY(-50%);
+        }
+
+        .house-2 .house-window::after {
+          left: 50%;
+          top: 0;
+          bottom: 0;
+          width: 2px;
+          transform: translateX(-50%);
+        }
+
+        .house-2 .house-chimney {
+          position: absolute;
+          top: -32px;
+          right: 12px;
+          width: 14px;
+          height: 32px;
+          background: #8d6e63;
+          z-index: 1;
+        }
+
+        .house-2 .house-chimney::before {
+          content: '';
+          position: absolute;
+          top: -4px;
+          left: -2px;
+          right: -2px;
+          height: 4px;
+          background: #a1887f;
+        }
+
+        /* Trees - Pixel style */
+        .tree {
+          position: absolute;
+          bottom: 80px;
+        }
+
+        .tree-foliage {
+          width: 0;
+          height: 0;
+          border-left: 16px solid transparent;
+          border-right: 16px solid transparent;
+          border-bottom: 32px solid #1a472a;
+          position: relative;
+        }
+
+        .tree-foliage::before {
+          content: '';
+          position: absolute;
+          top: 12px;
+          left: -12px;
+          width: 0;
+          height: 0;
+          border-left: 12px solid transparent;
+          border-right: 12px solid transparent;
+          border-bottom: 28px solid #1a472a;
+        }
+
+        .tree-foliage::after {
+          content: '';
+          position: absolute;
+          top: 22px;
+          left: -10px;
+          width: 0;
+          height: 0;
+          border-left: 10px solid transparent;
+          border-right: 10px solid transparent;
+          border-bottom: 24px solid #1a472a;
+        }
+
+        .tree-trunk {
+          width: 10px;
+          height: 16px;
+          background: #5d4037;
+          margin: 0 auto;
+          margin-top: -2px;
+        }
+
+        .tree-1 { left: 3%; transform: scale(0.7); }
+        .tree-2 { left: 10%; transform: scale(1); }
+        .tree-3 { left: 18%; transform: scale(0.85); }
+        .tree-4 { right: 18%; transform: scale(0.9); }
+        .tree-5 { right: 8%; transform: scale(1.1); }
+        .tree-6 { right: 2%; transform: scale(0.75); }
+
         /* Pixel Cat Mascot */
         .pixel-mascot {
           position: absolute;
-          bottom: 64px;
-          right: 35%;
+          bottom: 84px;
+          right: 30%;
           animation: mascot-idle 2s ease-in-out infinite;
         }
 
@@ -299,160 +478,154 @@ export default function Footer() {
           background: transparent;
           box-shadow:
             /* Ears */
-            4px 0 0 var(--color-accent-dark),
-            28px 0 0 var(--color-accent-dark),
-            4px 4px 0 var(--color-accent-dark),
+            4px 0 0 #1a472a,
+            28px 0 0 #1a472a,
+            4px 4px 0 #1a472a,
             8px 4px 0 #f8f4e8,
             24px 4px 0 #f8f4e8,
-            28px 4px 0 var(--color-accent-dark),
+            28px 4px 0 #1a472a,
             /* Head top */
-            4px 8px 0 var(--color-accent-dark),
+            4px 8px 0 #1a472a,
             8px 8px 0 #f8f4e8,
             12px 8px 0 #f8f4e8,
             16px 8px 0 #f8f4e8,
             20px 8px 0 #f8f4e8,
             24px 8px 0 #f8f4e8,
-            28px 8px 0 var(--color-accent-dark),
+            28px 8px 0 #1a472a,
             /* Eyes row */
-            4px 12px 0 var(--color-accent-dark),
+            4px 12px 0 #1a472a,
             8px 12px 0 #f8f4e8,
             12px 12px 0 #17311f,
             16px 12px 0 #f8f4e8,
             20px 12px 0 #17311f,
             24px 12px 0 #f8f4e8,
-            28px 12px 0 var(--color-accent-dark),
+            28px 12px 0 #1a472a,
             /* Nose/mouth */
-            4px 16px 0 var(--color-accent-dark),
+            4px 16px 0 #1a472a,
             8px 16px 0 #f8f4e8,
             12px 16px 0 #f8f4e8,
             16px 16px 0 #ff6b6b,
             20px 16px 0 #f8f4e8,
             24px 16px 0 #f8f4e8,
-            28px 16px 0 var(--color-accent-dark),
+            28px 16px 0 #1a472a,
             /* Body */
-            4px 20px 0 var(--color-accent-dark),
+            4px 20px 0 #1a472a,
             8px 20px 0 #f8f4e8,
             12px 20px 0 #f8f4e8,
             16px 20px 0 #f8f4e8,
             20px 20px 0 #f8f4e8,
             24px 20px 0 #f8f4e8,
-            28px 20px 0 var(--color-accent-dark),
+            28px 20px 0 #1a472a,
             /* Lower body */
-            4px 24px 0 var(--color-accent-dark),
-            8px 24px 0 var(--color-accent-dark),
+            4px 24px 0 #1a472a,
+            8px 24px 0 #1a472a,
             12px 24px 0 #f8f4e8,
             16px 24px 0 #f8f4e8,
             20px 24px 0 #f8f4e8,
-            24px 24px 0 var(--color-accent-dark),
-            28px 24px 0 var(--color-accent-dark),
+            24px 24px 0 #1a472a,
+            28px 24px 0 #1a472a,
             /* Feet */
-            8px 28px 0 var(--color-accent-dark),
-            12px 28px 0 var(--color-accent-dark),
-            20px 28px 0 var(--color-accent-dark),
-            24px 28px 0 var(--color-accent-dark);
+            8px 28px 0 #1a472a,
+            12px 28px 0 #1a472a,
+            20px 28px 0 #1a472a,
+            24px 28px 0 #1a472a;
         }
 
-        /* Grass layer */
-        .footer-grass {
+        @keyframes mascot-idle {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-4px); }
+        }
+
+        /* Ground layer */
+        .ground {
           position: absolute;
           bottom: 0;
           left: 0;
           right: 0;
-          height: 60px;
-          background: 
-            repeating-linear-gradient(
-              90deg,
-              var(--color-accent-dark) 0px,
-              var(--color-accent-dark) 4px,
-              #2e7d32 4px,
-              #2e7d32 8px,
-              var(--color-accent) 8px,
-              var(--color-accent) 12px,
-              #2e7d32 12px,
-              #2e7d32 16px
-            );
+          height: 80px;
+          background: linear-gradient(180deg,
+            #4caf50 0%,
+            #43a047 30%,
+            #388e3c 60%,
+            #2e7d32 100%
+          );
         }
 
-        .footer-grass::before {
+        .ground::before {
           content: '';
           position: absolute;
-          top: -20px;
+          top: 0;
           left: 0;
           right: 0;
-          height: 20px;
+          height: 12px;
           background: 
             repeating-linear-gradient(
               90deg,
               transparent 0px,
               transparent 8px,
-              var(--color-accent-dark) 8px,
-              var(--color-accent-dark) 12px,
+              #2e7d32 8px,
+              #2e7d32 12px,
               transparent 12px,
+              transparent 20px,
+              #388e3c 20px,
+              #388e3c 24px,
               transparent 24px,
-              var(--color-accent) 24px,
-              var(--color-accent) 28px,
-              transparent 28px,
-              transparent 40px
+              transparent 36px
             );
-          mask-image: linear-gradient(to top, black 50%, transparent 100%);
-        }
-
-        /* Footer Content */
-        .footer-content {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          padding: var(--spacing-md) 0;
-          background: linear-gradient(180deg, transparent, rgba(26, 71, 42, 0.9));
-          z-index: 10;
-        }
-
-        .footer-brand {
-          text-align: center;
-        }
-
-        .footer-brand span {
-          display: block;
-          font-family: var(--font-family-display);
-          font-size: 0.72rem;
-          letter-spacing: 0.08em;
-          color: rgba(255, 255, 255, 0.9);
-          margin-bottom: 0.5rem;
-        }
-
-        .footer-brand p {
-          color: rgba(255, 255, 255, 0.7);
-          font-size: 0.9rem;
-          margin: 0;
         }
 
         @media (max-width: 768px) {
           .footer {
-            min-height: 280px;
+            min-height: 320px;
           }
 
-          .pixel-house {
-            left: 20%;
-            transform: scale(0.8) translateX(-50%);
+          .village {
+            gap: 20px;
+          }
+
+          .house-1, .house-3 {
+            transform: scale(0.8);
+          }
+
+          .house-2 {
+            transform: scale(0.85);
+          }
+
+          .tree-2, .tree-5 { display: none; }
+
+          .mountain-1, .mountain-4 {
+            display: none;
           }
 
           .pixel-mascot {
-            right: 25%;
+            right: 20%;
           }
-
-          .tree-2 { display: none; }
-          .tree-4 { display: none; }
         }
 
         @media (max-width: 480px) {
-          .pixel-house {
-            left: 15%;
-            transform: scale(0.7) translateX(-50%);
+          .footer {
+            min-height: 280px;
+          }
+
+          .village {
+            gap: 10px;
+          }
+
+          .house-1, .house-3 {
+            transform: scale(0.65);
+          }
+
+          .house-2 {
+            transform: scale(0.7);
           }
 
           .tree { transform: scale(0.6); }
-          .tree-3 { display: none; }
+          .tree-3, .tree-4 { display: none; }
+
+          .pixel-mascot {
+            transform: scale(0.8);
+            right: 15%;
+          }
         }
       `}</style>
     </footer>
