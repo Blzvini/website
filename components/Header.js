@@ -8,9 +8,20 @@ export default function Header() {
     <header className="header">
       {/* Sky Background */}
       <div className="sky-background">
-        {/* Sun */}
-        <div className="sun" aria-hidden="true">
-          <div className="sun-rays" />
+        {/* Pixel Art Sunrise Sun */}
+        <div className="sun-container" aria-hidden="true">
+          {/* Sun rays - behind the sun body */}
+          <div className="sun-ray ray-1" />
+          <div className="sun-ray ray-2" />
+          <div className="sun-ray ray-3" />
+          <div className="sun-ray ray-4" />
+          <div className="sun-ray ray-5" />
+          <div className="sun-ray ray-6" />
+          <div className="sun-ray ray-7" />
+          <div className="sun-ray ray-8" />
+          <div className="sun-ray ray-9" />
+          {/* Sun body - semi-circle */}
+          <div className="sun-body" />
         </div>
 
         {/* Clouds */}
@@ -50,8 +61,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Grass transition at bottom of header */}
-      <div className="header-grass" aria-hidden="true" />
+
 
       <style jsx>{`
         .sky-background {
@@ -68,58 +78,96 @@ export default function Header() {
           z-index: 0;
         }
 
-        /* Sun */
-        .sun {
+        /* Pixel Art Sunrise Sun */
+        .sun-container {
           position: absolute;
-          top: 2rem;
-          right: 10%;
-          width: 80px;
-          height: 80px;
-          background: var(--color-accent-sand);
-          border-radius: 50%;
-          box-shadow: 
-            0 0 60px rgba(255, 209, 102, 0.6),
-            0 0 100px rgba(255, 209, 102, 0.4);
-          animation: sun-pulse 4s ease-in-out infinite;
+          top: 1.5rem;
+          right: 8%;
+          width: 100px;
+          height: 70px;
           image-rendering: pixelated;
         }
 
-        .sun::before {
-          content: '';
+        .sun-body {
           position: absolute;
-          inset: 8px;
-          background: #ffe599;
-          border-radius: 50%;
-        }
-
-        /* Pixel-style sun rays */
-        .sun-rays {
-          position: absolute;
-          inset: -20px;
-        }
-
-        .sun-rays::before,
-        .sun-rays::after {
-          content: '';
-          position: absolute;
-          background: var(--color-accent-sand);
-          opacity: 0.7;
-        }
-
-        .sun-rays::before {
-          top: 50%;
-          left: -12px;
-          right: -12px;
-          height: 8px;
-          transform: translateY(-50%);
-        }
-
-        .sun-rays::after {
+          bottom: 0;
           left: 50%;
-          top: -12px;
-          bottom: -12px;
-          width: 8px;
           transform: translateX(-50%);
+          width: 56px;
+          height: 28px;
+          background: linear-gradient(180deg, #ffd166 0%, #ff9f43 100%);
+          border-radius: 56px 56px 0 0;
+          box-shadow: 
+            0 0 20px rgba(255, 209, 102, 0.6),
+            0 0 40px rgba(255, 159, 67, 0.3);
+          z-index: 2;
+        }
+
+        .sun-body::before {
+          content: '';
+          position: absolute;
+          top: 4px;
+          left: 4px;
+          right: 4px;
+          height: 12px;
+          background: linear-gradient(180deg, #ffe599 0%, #ffd166 100%);
+          border-radius: 48px 48px 0 0;
+        }
+
+        /* Sun rays */
+        .sun-ray {
+          position: absolute;
+          bottom: 20px;
+          left: 50%;
+          width: 6px;
+          background: linear-gradient(0deg, #ff9f43 0%, #ffd166 50%, transparent 100%);
+          transform-origin: bottom center;
+          z-index: 1;
+        }
+
+        .ray-1 {
+          height: 40px;
+          transform: translateX(-50%) rotate(-60deg);
+        }
+
+        .ray-2 {
+          height: 48px;
+          transform: translateX(-50%) rotate(-45deg);
+        }
+
+        .ray-3 {
+          height: 52px;
+          transform: translateX(-50%) rotate(-25deg);
+        }
+
+        .ray-4 {
+          height: 56px;
+          transform: translateX(-50%) rotate(-10deg);
+        }
+
+        .ray-5 {
+          height: 58px;
+          transform: translateX(-50%) rotate(0deg);
+        }
+
+        .ray-6 {
+          height: 56px;
+          transform: translateX(-50%) rotate(10deg);
+        }
+
+        .ray-7 {
+          height: 52px;
+          transform: translateX(-50%) rotate(25deg);
+        }
+
+        .ray-8 {
+          height: 48px;
+          transform: translateX(-50%) rotate(45deg);
+        }
+
+        .ray-9 {
+          height: 40px;
+          transform: translateX(-50%) rotate(60deg);
         }
 
         /* Pixel Clouds */
@@ -321,70 +369,30 @@ export default function Header() {
           padding-bottom: clamp(6rem, 12vw, 10rem);
         }
 
-        /* Grass transition */
-        .header-grass {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          height: 40px;
-          background: 
-            repeating-linear-gradient(
-              90deg,
-              var(--color-accent-dark) 0px,
-              var(--color-accent-dark) 4px,
-              var(--color-accent) 4px,
-              var(--color-accent) 8px,
-              var(--color-accent-light) 8px,
-              var(--color-accent-light) 12px,
-              var(--color-accent) 12px,
-              var(--color-accent) 16px
-            );
-          z-index: 2;
-        }
 
-        .header-grass::before {
-          content: '';
-          position: absolute;
-          bottom: 100%;
-          left: 0;
-          right: 0;
-          height: 24px;
-          background: 
-            linear-gradient(to top,
-              var(--color-accent) 0%,
-              transparent 100%
-            );
-        }
-
-        .header-grass::after {
-          content: '';
-          position: absolute;
-          bottom: 100%;
-          left: 0;
-          right: 0;
-          height: 32px;
-          background-image: 
-            repeating-linear-gradient(
-              90deg,
-              transparent 0px,
-              transparent 6px,
-              var(--color-accent-dark) 6px,
-              var(--color-accent-dark) 10px,
-              transparent 10px,
-              transparent 20px
-            );
-          background-size: 40px 100%;
-          mask-image: linear-gradient(to top, black 60%, transparent 100%);
-        }
 
         @media (max-width: 768px) {
-          .sun {
-            width: 60px;
-            height: 60px;
+          .sun-container {
+            width: 70px;
+            height: 50px;
             top: 1rem;
             right: 5%;
           }
+
+          .sun-body {
+            width: 40px;
+            height: 20px;
+          }
+
+          .sun-ray {
+            width: 4px;
+          }
+
+          .ray-1, .ray-9 { height: 28px; }
+          .ray-2, .ray-8 { height: 32px; }
+          .ray-3, .ray-7 { height: 36px; }
+          .ray-4, .ray-6 { height: 38px; }
+          .ray-5 { height: 40px; }
 
           .kite-1 {
             top: 15%;
