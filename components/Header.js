@@ -31,12 +31,8 @@ export default function Header() {
 
       <div className="container header-content">
         <div className="header-copy">
-          <div className="header-kicker">VINICIUS.PORTFOLIO</div>
           <h1>Vinicius Marques</h1>
           <div className="header-subtitle">Engenheiro de Dados</div>
-          <p className="header-description">
-            Pipelines confiáveis, modelagem clara e entregas com foco em dados, cloud e automação. Uma presença visual mais viva, inspirada em natureza, pixel art e tecnologia.
-          </p>
           <nav className="header-nav" aria-label="Navegação principal">
             <button type="button" onClick={() => scrollToSection('sobre')} className="btn btn-secondary">
               Sobre
@@ -51,13 +47,6 @@ export default function Header() {
               Contato
             </button>
           </nav>
-        </div>
-
-        <div className="header-visual" aria-hidden="true">
-          <div className="hero-data-orb">
-            dados
-            <span>SQL / Fabric / Azure</span>
-          </div>
         </div>
       </div>
 
