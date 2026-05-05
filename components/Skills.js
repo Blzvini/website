@@ -1,25 +1,25 @@
 export default function Skills() {
-  const skillsData = [
-    { name: 'SQL', level: 90 },
-    { name: 'PySpark', level: 88 },
-    { name: 'ETL', level: 87 },
-    { name: 'Power Query', level: 85 },
-    { name: 'DAX', level: 83 },
-    { name: 'Microsoft Fabric', level: 88 },
-    { name: 'Azure Data Lake', level: 86 },
-    { name: 'Azure SQL Database', level: 85 },
-    { name: 'Azure DevOps', level: 84 },
-    { name: 'Power Platform', level: 82 },
-    { name: 'Python', level: 89 },
-    { name: 'JavaScript', level: 86 },
-    { name: 'C#', level: 84 },
-    { name: 'Angular', level: 82 },
-    { name: 'Next.js', level: 85 },
-    { name: 'Git', level: 91 },
-    { name: 'Gherkin (BDD)', level: 80 },
-    { name: 'Scrum/Ágil', level: 88 },
-    { name: 'Power Automate', level: 81 },
-    { name: 'Power Apps', level: 79 }
+  const skillsByType = [
+    {
+      type: 'Linguagens',
+      items: ['Python', 'SQL', 'JavaScript', 'C#']
+    },
+    {
+      type: 'Dados & Cloud',
+      items: ['PySpark', 'ETL', 'Microsoft Fabric', 'Azure Data Lake', 'Azure SQL Database']
+    },
+    {
+      type: 'BI & Analytics',
+      items: ['Power Query', 'DAX', 'Power Platform', 'Power BI']
+    },
+    {
+      type: 'Desenvolvimento',
+      items: ['Next.js', 'Angular', 'APIs REST']
+    },
+    {
+      type: 'Ferramentas & Metodologias',
+      items: ['Git', 'Azure DevOps', 'Gherkin (BDD)', 'Scrum/Ágil', 'Power Automate', 'Power Apps']
+    }
   ];
 
   return (
@@ -30,13 +30,16 @@ export default function Skills() {
 
         <div className="skills-container">
           <div className="skills-grid">
-            {skillsData.map((skill, index) => (
-              <div key={index} className="skill-card">
-                <div className="skill-card-level">
-                  <span className="skill-level-label">LVL</span>
-                  <span className="skill-level-number">{skill.level}</span>
-                </div>
-                <div className="skill-card-name">{skill.name}</div>
+            {skillsByType.map((category, index) => (
+              <div key={index} className="skill-category">
+                <h3 className="skill-category-title">{category.type}</h3>
+                <ul className="skill-list">
+                  {category.items.map((item, itemIndex) => (
+                    <li key={itemIndex} className="skill-list-item">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>

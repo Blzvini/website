@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Header from '../components/Header';
 import About from '../components/About';
+import Experiences from '../components/Experiences';
 import Skills from '../components/Skills';
 import Projects from '../components/Projects';
 import Contact from '../components/Contact';
@@ -24,6 +25,7 @@ export default function Home() {
       <main>
         <Header />
         <About />
+        <Experiences />
         <Skills />
         <Projects />
         <Contact />

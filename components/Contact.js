@@ -1,33 +1,8 @@
 export default function Contact() {
   const contacts = [
-    {
-      id: 1,
-      label: 'Email',
-      value: 'lopes.viniciusm99@gmail.com',
-      link: 'mailto:lopes.viniciusm99@gmail.com',
-      icon: '✉'
-    },
-    {
-      id: 2,
-      label: 'LinkedIn',
-      value: 'linkedin.com/in/vinicius-marques',
-      link: 'https://linkedin.com/in/vinicius-marques',
-      icon: '💼'
-    },
-    {
-      id: 3,
-      label: 'Telefone',
-      value: '+55 11 95173-1875',
-      link: 'tel:+5511951731875',
-      icon: '📞'
-    },
-    {
-      id: 4,
-      label: 'Localização',
-      value: 'São Paulo – SP',
-      link: '#',
-      icon: '📍'
-    }
+    { id: 1, label: 'Github', link: 'https://github.com/Blzvini' },
+    { id: 2, label: 'LinkedIn', link: 'https://www.linkedin.com/in/vinicius-marques-6b68b6113/' },
+    { id: 3, label: 'Email', link: 'mailto:lopes.viniciusm99@gmail.com' }
   ];
 
   return (
@@ -37,24 +12,16 @@ export default function Contact() {
         <h2 className="section-title">Contato</h2>
 
         <div className="contact-container">
-          <p className="contact-intro">
-            Estou aberto a oportunidades e conversas sobre projetos de dados, arquitetura de soluções e inovação em cloud. Se quiser falar sobre dados, natureza ou sobre a estética do seu próximo projeto, entre em contato.
-          </p>
-          
           <div className="contact-links">
             {contacts.map(contact => (
-              <a 
+              <a
                 key={contact.id}
-                href={contact.link} 
+                href={contact.link}
                 target={contact.link.startsWith('http') ? '_blank' : '_self'}
                 rel={contact.link.startsWith('http') ? 'noopener noreferrer' : ''}
-                className="contact-link"
+                className="btn btn-secondary"
               >
-                <span className="contact-link-icon">
-                  {contact.icon}
-                </span>
-                <span className="contact-link-label">{contact.label}</span>
-                <span className="contact-link-value">{contact.value}</span>
+                {contact.label}
               </a>
             ))}
           </div>

@@ -12,13 +12,6 @@ export default function About() {
                 Sou Engenheiro de Dados apaixonado por transformar informação em estrutura, clareza e resultado. Meu trabalho combina ETL, SQL, PySpark, Microsoft Fabric e Azure para construir soluções confiáveis e escaláveis.
               </p>
 
-              <div className="about-highlight">
-                <h3>Minha Trajetória</h3>
-                <p>
-                  Comecei na Niteo em projetos e Power Platform, onde aprofundei raciocínio analítico, colaboração com times técnicos e disciplina de entrega. Hoje meu foco está em arquitetura de dados, automação e qualidade de pipelines em contextos cloud.
-                </p>
-              </div>
-
               <p>
                 Busco oportunidades como Engenheiro de Dados Jr., com interesse em ambientes modernos de dados, produtos analíticos e soluções com identidade técnica forte.
               </p>
