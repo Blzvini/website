@@ -25,7 +25,6 @@ export default function Skills() {
   return (
     <section className="skills" id="habilidades">
       <div className="container">
-        <span className="section-eyebrow">// stack</span>
         <h2 className="section-title">Habilidades</h2>
 
         <div className="skills-container">

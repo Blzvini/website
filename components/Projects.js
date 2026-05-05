@@ -48,7 +48,6 @@ export default function Projects() {
   return (
     <section className="projects" id="projetos">
       <div className="container">
-        <span className="section-eyebrow">// portfolio</span>
         <h2 className="section-title">Projetos</h2>
 
         <div className="projects-container">

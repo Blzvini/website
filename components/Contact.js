@@ -8,7 +8,6 @@ export default function Contact() {
   return (
     <section className="contact" id="contato">
       <div className="container">
-        <span className="section-eyebrow">// contato</span>
         <h2 className="section-title">Contato</h2>
 
         <div className="contact-container">
