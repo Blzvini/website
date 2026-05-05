@@ -48,12 +48,13 @@ export default function Projects() {
   return (
     <section className="projects" id="projetos">
       <div className="container">
+        <span className="section-eyebrow">// portfolio</span>
         <h2 className="section-title">Projetos</h2>
-        
+
         <div className="projects-container">
           <div className="projects-grid">
             {projects.map(project => (
-              <div key={project.id} className="project-card">
+              <div key={project.id} className={`project-card ${project.highlight ? 'is-featured' : ''}`}>
                 <div className="project-card-content">
                   <h3>{project.title}</h3>
                   <p className="project-card-description">{project.description}</p>

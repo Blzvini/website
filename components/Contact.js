@@ -33,11 +33,12 @@ export default function Contact() {
   return (
     <section className="contact" id="contato">
       <div className="container">
+        <span className="section-eyebrow">// contato</span>
         <h2 className="section-title">Contato</h2>
-        
+
         <div className="contact-container">
           <p className="contact-intro">
-            Estou aberto a oportunidades e conversas sobre projetos de dados, arquitetura de soluções e inovação em cloud. Entre em contato comigo!
+            Estou aberto a oportunidades e conversas sobre projetos de dados, arquitetura de soluções e inovação em cloud. Se quiser falar sobre dados, natureza ou sobre a estética do seu próximo projeto, entre em contato.
           </p>
           
           <div className="contact-links">
@@ -49,7 +50,7 @@ export default function Contact() {
                 rel={contact.link.startsWith('http') ? 'noopener noreferrer' : ''}
                 className="contact-link"
               >
-                <span className="contact-link-icon" style={{ fontSize: '1.5rem' }}>
+                <span className="contact-link-icon">
                   {contact.icon}
                 </span>
                 <span className="contact-link-label">{contact.label}</span>
