@@ -74,25 +74,17 @@
 }
 
 .body {
-  display: grid;
-  gap: 0.2rem;
+  display: flex;
+  align-items: center;
   min-width: 0;
 }
 
 .label {
   font-family: var(--font-family-display);
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   letter-spacing: 0.06em;
   color: var(--color-accent-dark);
   text-transform: uppercase;
-}
-
-.value {
-  color: var(--color-text-primary);
-  font-weight: 700;
-  font-size: 0.95rem;
-  word-break: break-word;
-  overflow-wrap: anywhere;
 }
 
 /* ─── Modo escuro ─── */
@@ -116,4 +108,3 @@
 }
 
 :global(body.theme-dark) .label { color: #d8e7ff; }
-:global(body.theme-dark) .value { color: var(--color-text-primary); }

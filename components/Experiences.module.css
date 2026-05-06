@@ -237,3 +237,47 @@
 :global(body.theme-dark) .timeline::before {
   background: linear-gradient(180deg, rgba(199, 217, 255, 0.28), rgba(199, 217, 255, 0.08));
 }
+
+/* ─── Tooltip nas stack tags ─── */
+.stackTagWrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  width: max-content;
+  max-width: 15rem;
+  padding: 0.35rem 0.55rem;
+  background: var(--color-accent-dark);
+  color: var(--color-accent-sand);
+  font-family: var(--font-family-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+  white-space: normal;
+  border: 1px solid rgba(255, 209, 102, 0.3);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.stackTagWrapper:hover .tooltip,
+.stackTagWrapper:focus-within .tooltip {
+  opacity: 1;
+}
+
+:global(body.theme-dark) .tooltip {
+  background: #1e3a5f;
+  color: #c7d9ff;
+  border-color: rgba(199, 217, 255, 0.3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tooltip { transition: none; }
+}

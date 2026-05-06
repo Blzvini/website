@@ -64,12 +64,9 @@ export default function Projects() {
             return (
               <article
                 key={project.id}
-                className={`${styles.card} ${project.highlight ? styles.featured : ''}`}
+                className={styles.card}
               >
                 <div className={styles.cardContent}>
-                  {project.highlight && (
-                    <span className={styles.featuredBadge}>Destaque</span>
-                  )}
                   <h3 className={styles.title}>{project.title}</h3>
                   <p className={styles.description}>{project.description}</p>
 

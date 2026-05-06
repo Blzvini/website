@@ -57,13 +57,12 @@ export default function Contact() {
                   target={isExternal ? '_blank' : undefined}
                   rel={isExternal ? 'noopener noreferrer' : undefined}
                   className={styles.link}
+                  aria-label={`${contact.label}${isExternal ? ' (abre em nova aba)' : ''}`}
                 >
                   <span className={styles.icon}>{contact.icon}</span>
                   <span className={styles.body}>
                     <span className={styles.label}>{contact.label}</span>
-                    <span className={styles.value}>{contact.value}</span>
                   </span>
-                  {isExternal && <span className="sr-only"> (abre em nova aba)</span>}
                 </a>
               </li>
             );

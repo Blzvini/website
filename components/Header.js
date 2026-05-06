@@ -60,6 +60,17 @@ export default function Header({ theme, toggleTheme }) {
             </span>
           </>
         )}
+
+        {/* Estrelas (só de noite) */}
+        {isDark && (
+          <>
+            <span className={`${styles.headerStar} ${styles.hStar1}`} aria-hidden="true" />
+            <span className={`${styles.headerStar} ${styles.hStar2}`} aria-hidden="true" />
+            <span className={`${styles.headerStar} ${styles.hStar3}`} aria-hidden="true" />
+            <span className={`${styles.headerStar} ${styles.hStar4}`} aria-hidden="true" />
+            <span className={`${styles.headerStar} ${styles.hStar5}`} aria-hidden="true" />
+          </>
+        )}
       </div>
 
       <div className={`container ${styles.content}`}>
@@ -98,27 +109,6 @@ export default function Header({ theme, toggleTheme }) {
           </nav>
         </div>
 
-        {/* ─── Coluna visual (paisagem pixel) ─── */}
-        <div className={styles.visual} aria-hidden="true">
-          <span className={`${styles.heroCloud} ${styles.heroCloudOne}`} />
-          <span className={`${styles.heroCloud} ${styles.heroCloudTwo}`} />
-
-          <span className={styles.heroOrb}>
-            DATA
-            <span>&gt;_</span>
-          </span>
-
-          <span className={styles.heroKite}>
-            <span className={styles.heroKiteBody} />
-            <span className={styles.heroKiteTail} />
-          </span>
-
-          <span className={styles.heroMascot}>
-            <span className={styles.mascotPixel} />
-          </span>
-
-          <span className={styles.heroGround} />
-        </div>
       </div>
 
       <div className={styles.scrollIndicator} aria-hidden="true">

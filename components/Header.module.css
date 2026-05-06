@@ -33,10 +33,7 @@
 
 /* ─── Conteúdo do hero ─── */
 .content {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-  gap: var(--spacing-xl);
-  align-items: center;
+  display: block;
   position: relative;
   z-index: 1;
   padding-top: clamp(4rem, 10vw, 8rem);
@@ -336,224 +333,6 @@
 .kite2 .kiteTail { height: 70px; }
 
 /* =====================================================================
-   Coluna visual (paisagem pixel à direita)
-   ===================================================================== */
-.visual {
-  position: relative;
-  min-height: 28rem;
-  border-radius: 0;
-  background:
-    linear-gradient(180deg,
-      rgba(91, 200, 245, 0.28),
-      rgba(255, 255, 255, 0.1) 48%,
-      rgba(255, 209, 102, 0.18)),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(248, 244, 232, 0.9));
-  border: 2px solid var(--color-accent-dark);
-  box-shadow:
-    3px 3px 0 0 var(--color-accent-dark),
-    var(--shadow-soft);
-  overflow: hidden;
-}
-
-:global(body.theme-dark) .visual {
-  background:
-    linear-gradient(180deg, rgba(95, 168, 255, 0.18), rgba(28, 38, 58, 0.4) 60%),
-    linear-gradient(135deg, rgba(28, 38, 58, 0.85), rgba(19, 26, 42, 0.95));
-  border-color: rgba(199, 217, 255, 0.32);
-  box-shadow:
-    3px 3px 0 0 rgba(199, 217, 255, 0.18),
-    0 8px 24px rgba(0, 0, 0, 0.4);
-}
-
-.heroGround {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 4rem;
-  background:
-    linear-gradient(135deg, rgba(26, 71, 42, 0.75) 25%, transparent 25%) 0 0/24px 24px,
-    linear-gradient(225deg, rgba(45, 155, 78, 0.9) 25%, transparent 25%) 0 0/24px 24px,
-    linear-gradient(45deg, rgba(26, 71, 42, 0.72) 25%, transparent 25%) 12px 0/24px 24px;
-  opacity: 0.95;
-}
-
-:global(body.theme-dark) .heroGround { opacity: 0.55; }
-
-/* Nuvens dentro do quadro */
-.heroCloud {
-  position: absolute;
-  width: 5.5rem;
-  height: 2rem;
-  background: rgba(255, 255, 255, 0.92);
-  border-radius: 999px;
-  filter: drop-shadow(0 6px 10px rgba(26, 71, 42, 0.08));
-  animation: float 22s ease-in-out infinite;
-}
-
-.heroCloud::before,
-.heroCloud::after {
-  content: '';
-  position: absolute;
-  background: inherit;
-  border-radius: 50%;
-}
-
-.heroCloud::before { width: 2.3rem; height: 2.3rem; top: -0.8rem; left: 0.5rem; }
-.heroCloud::after  { width: 2.7rem; height: 2.7rem; top: -1rem; right: 0.8rem; }
-
-.heroCloudOne { top: 2rem; left: 1.2rem; }
-.heroCloudTwo { top: 5rem; right: 2rem; animation-duration: 28s; }
-
-:global(body.theme-dark) .heroCloud { opacity: 0.35; }
-
-/* Pipa */
-.heroKite {
-  position: absolute;
-  right: 2.2rem;
-  top: 3.8rem;
-  width: 3rem;
-  height: 3rem;
-  transform: rotate(8deg);
-  animation: sway 3.6s ease-in-out infinite;
-}
-
-.heroKiteBody {
-  position: absolute;
-  inset: 0.5rem;
-  background: linear-gradient(135deg, var(--color-accent-sand), var(--color-accent));
-  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
-  border: 2px solid rgba(26, 71, 42, 0.16);
-}
-
-.heroKiteTail {
-  position: absolute;
-  left: 1.35rem;
-  top: 3.1rem;
-  width: 0.12rem;
-  height: 8rem;
-  background: repeating-linear-gradient(180deg, rgba(26, 71, 42, 0.75) 0 0.45rem, transparent 0.45rem 0.9rem);
-}
-
-/* Orbe de dados */
-.heroOrb {
-  position: absolute;
-  left: 1.5rem;
-  bottom: 4.7rem;
-  width: 6rem;
-  height: 6rem;
-  border-radius: 0;
-  border: 2px solid var(--color-accent-dark);
-  background: linear-gradient(180deg, rgba(167, 139, 250, 0.32), rgba(91, 200, 245, 0.24));
-  display: grid;
-  place-items: center;
-  color: var(--color-accent-dark);
-  font-family: var(--font-family-display);
-  font-size: 0.62rem;
-  text-align: center;
-  line-height: 1.8;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  box-shadow: 3px 3px 0 0 var(--color-accent-dark);
-}
-
-.heroOrb span {
-  display: block;
-  font-family: var(--font-family-body);
-  font-size: 0.95rem;
-  font-weight: 800;
-  text-transform: none;
-  letter-spacing: 0;
-  margin-top: 0.2rem;
-}
-
-:global(body.theme-dark) .heroOrb {
-  border-color: rgba(199, 217, 255, 0.32);
-  color: #e6edf8;
-  background: linear-gradient(180deg, rgba(167, 139, 250, 0.22), rgba(95, 168, 255, 0.2));
-  box-shadow: 3px 3px 0 0 rgba(199, 217, 255, 0.22);
-}
-
-/* Mascote pixel cat */
-.heroMascot {
-  position: absolute;
-  right: 1rem;
-  bottom: 1rem;
-  width: 4rem;
-  height: 4rem;
-  animation: bob 4s ease-in-out infinite;
-}
-
-.mascotPixel {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 0.1rem;
-  height: 0.1rem;
-  /* Cabeça do gato em pixel art (box-shadow) */
-  box-shadow:
-    /* Orelhas */
-    -0.6rem -0.6rem 0 0.1rem var(--color-accent-dark),
-     0.6rem -0.6rem 0 0.1rem var(--color-accent-dark),
-    /* Linha 2 */
-    -0.8rem -0.4rem 0 0.1rem var(--color-accent-dark),
-    -0.4rem -0.4rem 0 0.1rem var(--color-accent-dark),
-     0.4rem -0.4rem 0 0.1rem var(--color-accent-dark),
-     0.8rem -0.4rem 0 0.1rem var(--color-accent-dark),
-    /* Linha 3 */
-    -1rem   -0.2rem 0 0.1rem var(--color-accent-dark),
-    -0.6rem -0.2rem 0 0.1rem var(--color-accent-dark),
-    -0.2rem -0.2rem 0 0.1rem var(--color-accent-dark),
-     0.2rem -0.2rem 0 0.1rem var(--color-accent-dark),
-     0.6rem -0.2rem 0 0.1rem var(--color-accent-dark),
-     1rem   -0.2rem 0 0.1rem var(--color-accent-dark),
-    /* Linha 4 (face) */
-    -1rem 0 0 0.1rem var(--color-accent-dark),
-    -0.6rem 0 0 0.1rem rgba(248, 244, 232, 0.95),
-    -0.2rem 0 0 0.1rem rgba(248, 244, 232, 0.95),
-     0.2rem 0 0 0.1rem rgba(248, 244, 232, 0.95),
-     0.6rem 0 0 0.1rem rgba(248, 244, 232, 0.95),
-     1rem 0 0 0.1rem var(--color-accent-dark),
-    /* Linha 5 */
-    -1rem 0.2rem 0 0.1rem var(--color-accent-dark),
-    -0.6rem 0.2rem 0 0.1rem rgba(248, 244, 232, 0.95),
-    -0.2rem 0.2rem 0 0.1rem rgba(248, 244, 232, 0.95),
-     0.2rem 0.2rem 0 0.1rem rgba(248, 244, 232, 0.95),
-     0.6rem 0.2rem 0 0.1rem rgba(248, 244, 232, 0.95),
-     1rem 0.2rem 0 0.1rem var(--color-accent-dark),
-    /* Linha 6 (olhos) */
-    -1rem 0.4rem 0 0.1rem var(--color-accent-dark),
-    -0.6rem 0.4rem 0 0.1rem rgba(248, 244, 232, 0.95),
-    -0.4rem 0.4rem 0 0.1rem #17311f,
-    -0.2rem 0.4rem 0 0.1rem rgba(248, 244, 232, 0.95),
-     0.2rem 0.4rem 0 0.1rem rgba(248, 244, 232, 0.95),
-     0.4rem 0.4rem 0 0.1rem #17311f,
-     0.6rem 0.4rem 0 0.1rem rgba(248, 244, 232, 0.95),
-     1rem 0.4rem 0 0.1rem var(--color-accent-dark),
-    /* Linha 7 */
-    -1rem 0.6rem 0 0.1rem var(--color-accent-dark),
-    -0.6rem 0.6rem 0 0.1rem rgba(248, 244, 232, 0.95),
-    -0.2rem 0.6rem 0 0.1rem rgba(248, 244, 232, 0.95),
-     0.2rem 0.6rem 0 0.1rem rgba(248, 244, 232, 0.95),
-     0.6rem 0.6rem 0 0.1rem rgba(248, 244, 232, 0.95),
-     1rem 0.6rem 0 0.1rem var(--color-accent-dark),
-    /* Linha 8 (boca) */
-    -1rem 0.8rem 0 0.1rem var(--color-accent-dark),
-    -0.6rem 0.8rem 0 0.1rem rgba(248, 244, 232, 0.95),
-    -0.2rem 0.8rem 0 0.1rem #17311f,
-     0.2rem 0.8rem 0 0.1rem #17311f,
-     0.6rem 0.8rem 0 0.1rem rgba(248, 244, 232, 0.95),
-     1rem 0.8rem 0 0.1rem var(--color-accent-dark),
-    /* Linha 9 (queixo) */
-    -0.8rem 1rem 0 0.1rem var(--color-accent-dark),
-    -0.4rem 1rem 0 0.1rem var(--color-accent-dark),
-     0.4rem 1rem 0 0.1rem var(--color-accent-dark),
-     0.8rem 1rem 0 0.1rem var(--color-accent-dark);
-  background: transparent;
-}
-
-/* =====================================================================
    Indicador de scroll
    ===================================================================== */
 .scrollIndicator {
@@ -593,16 +372,6 @@
 /* =====================================================================
    Responsivo
    ===================================================================== */
-@media (max-width: 1024px) {
-  .content { grid-template-columns: 1fr; }
-  .visual {
-    min-height: 22rem;
-    max-width: 34rem;
-    width: 100%;
-    justify-self: center;
-  }
-}
-
 @media (max-width: 768px) {
   .sunCharacter { width: 70px; height: 70px; top: 0.5rem; right: 5%; }
   .sunFace { width: 40px; height: 40px; border-width: 2px; }
@@ -630,13 +399,32 @@
   .kite2 { display: none; }
   .kiteBody { width: 36px; height: 36px; }
   .kiteTail { height: 60px; }
-
-  .visual { min-height: 18rem; }
 }
 
 @media (max-width: 480px) {
   .cloud, .kite { display: none; }
-  .visual { min-height: 16rem; }
-  .heroOrb { width: 5rem; height: 5rem; }
-  .heroKite { right: 1.2rem; top: 2.8rem; }
+}
+
+/* =====================================================================
+   Estrelas no header (modo escuro)
+   ===================================================================== */
+.headerStar {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #e6edf8;
+  border-radius: 50%;
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.hStar1 { top: 12%; left: 20%; animation-delay: 0s; }
+.hStar2 { top: 8%;  left: 45%; animation-delay: -1.2s; }
+.hStar3 { top: 18%; left: 65%; animation-delay: -0.6s; }
+.hStar4 { top: 6%;  left: 80%; animation-delay: -2s; }
+.hStar5 { top: 22%; left: 35%; animation-delay: -1.8s; width: 2px; height: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cloud1, .cloud2, .cloud3 { animation: none; }
+  .headerStar { animation: none; opacity: 0.7; }
+  .kite, .heroCloud { animation: none; }
 }

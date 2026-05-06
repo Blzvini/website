@@ -60,29 +60,6 @@
     0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
-.featured {
-  background: linear-gradient(to top, rgba(255, 209, 102, 0.12), rgba(255, 255, 255, 0.98));
-  border-color: var(--color-accent-dark);
-}
-
-@media (min-width: 760px) {
-  .featured { grid-column: span 2; }
-}
-
-.featuredBadge {
-  display: inline-block;
-  align-self: flex-start;
-  margin-bottom: 0.5rem;
-  padding: 0.25rem 0.55rem;
-  background: var(--color-accent-sand);
-  color: var(--color-accent-dark);
-  font-family: var(--font-family-display);
-  font-size: 0.65rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  border: 2px solid var(--color-accent-dark);
-}
-
 .cardContent {
   flex: 1;
   padding: var(--spacing-md);
@@ -157,17 +134,6 @@
     3px 3px 0 0 rgba(199, 217, 255, 0.18),
     0 0 10px rgba(199, 217, 255, 0.06),
     inset -1px -1px 0 0 rgba(0, 0, 0, 0.22);
-}
-
-:global(body.theme-dark) .featured {
-  background: linear-gradient(to top, rgba(255, 209, 102, 0.05), rgba(28, 38, 58, 0.98));
-  border-color: rgba(255, 209, 102, 0.35);
-}
-
-:global(body.theme-dark) .featuredBadge {
-  background: rgba(255, 209, 102, 0.18);
-  color: var(--color-accent-sand);
-  border-color: rgba(255, 209, 102, 0.5);
 }
 
 :global(body.theme-dark) .title { color: #e6edf8; }
