@@ -7,6 +7,7 @@ import Skills from '../components/Skills';
 import Projects from '../components/Projects';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
+import WelcomeModal from '../components/WelcomeModal';
 
 export default function Home({ theme, toggleTheme }) {
   return (
@@ -25,6 +26,7 @@ export default function Home({ theme, toggleTheme }) {
         <meta name="robots" content="index, follow" />
       </Head>
 
+      <WelcomeModal />
       <FloatingNav theme={theme} toggleTheme={toggleTheme} />
 
       <main id="main">
