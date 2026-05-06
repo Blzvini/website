@@ -1,0 +1,185 @@
+/* =====================================================================
+   Projects.module.css — Grid de cards de projeto sobre fundo verde escuro
+   ===================================================================== */
+
+.projects {
+  background: linear-gradient(180deg,
+    var(--color-grass-400) 0%,
+    var(--color-grass-500) 50%,
+    var(--color-grass-600) 100%
+  );
+  transition: background var(--transition-slow);
+}
+
+:global(body.theme-dark) .projects { background: transparent; }
+
+.intro {
+  max-width: 46rem;
+  margin: 0 auto var(--spacing-xl);
+  text-align: center;
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+}
+
+:global(body.theme-dark) .intro {
+  color: var(--color-text-secondary);
+  text-shadow: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-md);
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+/* ─── Card ─── */
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to top, rgba(91, 200, 245, 0.09), rgba(255, 255, 255, 0.97));
+  border: 2px solid var(--color-accent-dark);
+  overflow: visible;
+  box-shadow:
+    3px 3px 0 0 var(--color-accent-dark),
+    inset -2px -2px 0 0 rgba(0, 0, 0, 0.08),
+    inset 2px 2px 0 0 rgba(255, 255, 255, 0.2),
+    0 8px 24px rgba(0, 0, 0, 0.15);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.card:hover {
+  transform: translate(2px, 2px);
+  box-shadow:
+    1px 1px 0 0 var(--color-accent-dark),
+    inset -2px -2px 0 0 rgba(0, 0, 0, 0.08),
+    inset 2px 2px 0 0 rgba(255, 255, 255, 0.2),
+    0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.featured {
+  background: linear-gradient(to top, rgba(255, 209, 102, 0.12), rgba(255, 255, 255, 0.98));
+  border-color: var(--color-accent-dark);
+}
+
+@media (min-width: 760px) {
+  .featured { grid-column: span 2; }
+}
+
+.featuredBadge {
+  display: inline-block;
+  align-self: flex-start;
+  margin-bottom: 0.5rem;
+  padding: 0.25rem 0.55rem;
+  background: var(--color-accent-sand);
+  color: var(--color-accent-dark);
+  font-family: var(--font-family-display);
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 2px solid var(--color-accent-dark);
+}
+
+.cardContent {
+  flex: 1;
+  padding: var(--spacing-md);
+  display: grid;
+  gap: 0.75rem;
+}
+
+.title {
+  font-family: var(--font-family-body);
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin: 0;
+  color: var(--color-text-primary);
+}
+
+.description {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.stack {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.stackTag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.35rem 0.7rem;
+  background: var(--color-bg-primary);
+  color: var(--color-accent-dark);
+  font-family: var(--font-family-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+  border: 2px solid var(--color-accent-dark);
+}
+
+.actions {
+  padding: 0 var(--spacing-md) var(--spacing-md);
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.actions :global(.btn) { width: auto; flex: 1; }
+
+.soonTag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.6rem 0.9rem;
+  background: rgba(26, 71, 42, 0.08);
+  border: 2px dashed rgba(26, 71, 42, 0.4);
+  color: var(--color-text-light);
+  font-family: var(--font-family-display);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ─── Modo escuro ─── */
+:global(body.theme-dark) .card {
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.02), rgba(28, 38, 58, 0.95));
+  border-color: rgba(199, 217, 255, 0.22);
+  box-shadow:
+    3px 3px 0 0 rgba(199, 217, 255, 0.18),
+    0 0 10px rgba(199, 217, 255, 0.06),
+    inset -1px -1px 0 0 rgba(0, 0, 0, 0.22);
+}
+
+:global(body.theme-dark) .featured {
+  background: linear-gradient(to top, rgba(255, 209, 102, 0.05), rgba(28, 38, 58, 0.98));
+  border-color: rgba(255, 209, 102, 0.35);
+}
+
+:global(body.theme-dark) .featuredBadge {
+  background: rgba(255, 209, 102, 0.18);
+  color: var(--color-accent-sand);
+  border-color: rgba(255, 209, 102, 0.5);
+}
+
+:global(body.theme-dark) .title { color: #e6edf8; }
+
+:global(body.theme-dark) .stackTag {
+  background: rgba(19, 30, 49, 0.86);
+  border-color: rgba(199, 217, 255, 0.32);
+  color: #d8e7ff;
+}
+
+:global(body.theme-dark) .soonTag {
+  background: rgba(199, 217, 255, 0.06);
+  border-color: rgba(199, 217, 255, 0.32);
+  color: var(--color-text-light);
+}

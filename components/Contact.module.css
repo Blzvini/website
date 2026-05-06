@@ -1,0 +1,119 @@
+/* =====================================================================
+   Contact.module.css — Cards de contato sobre fundo verde→céu
+   ===================================================================== */
+
+.contact {
+  background: linear-gradient(180deg,
+    var(--color-grass-600) 0%,
+    var(--color-accent-light) 42%,
+    var(--color-grass-100) 78%,
+    var(--color-sky-100) 100%
+  );
+  transition: background var(--transition-slow);
+}
+
+:global(body.theme-dark) .contact { background: transparent; }
+
+.intro {
+  max-width: 46rem;
+  margin: 0 auto var(--spacing-xl);
+  text-align: center;
+  font-size: 1.05rem;
+  color: rgba(15, 38, 24, 0.92);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.4);
+}
+
+:global(body.theme-dark) .intro {
+  color: var(--color-text-secondary);
+  text-shadow: none;
+}
+
+.links {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--spacing-md);
+  max-width: 900px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.2rem;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid var(--color-accent-dark);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  box-shadow:
+    3px 3px 0 0 var(--color-accent-dark),
+    0 8px 20px rgba(0, 0, 0, 0.12);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+              background var(--transition-fast);
+}
+
+.link:hover {
+  transform: translate(2px, 2px);
+  background: #fff;
+  color: var(--color-accent-dark);
+  box-shadow:
+    1px 1px 0 0 var(--color-accent-dark),
+    0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.icon {
+  display: inline-grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  flex-shrink: 0;
+  background: var(--color-accent-dark);
+  color: var(--color-accent-sand);
+}
+
+.body {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.label {
+  font-family: var(--font-family-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: var(--color-accent-dark);
+  text-transform: uppercase;
+}
+
+.value {
+  color: var(--color-text-primary);
+  font-weight: 700;
+  font-size: 0.95rem;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* ─── Modo escuro ─── */
+:global(body.theme-dark) .link {
+  background: rgba(24, 35, 56, 0.92);
+  border-color: rgba(199, 217, 255, 0.32);
+  color: var(--color-text-primary);
+  box-shadow:
+    3px 3px 0 0 rgba(199, 217, 255, 0.18),
+    0 8px 20px rgba(0, 0, 0, 0.45);
+}
+
+:global(body.theme-dark) .link:hover {
+  background: rgba(37, 52, 82, 0.95);
+  color: #e6edf8;
+}
+
+:global(body.theme-dark) .icon {
+  background: #2b456f;
+  color: var(--color-accent-sand);
+}
+
+:global(body.theme-dark) .label { color: #d8e7ff; }
+:global(body.theme-dark) .value { color: var(--color-text-primary); }

@@ -1,0 +1,239 @@
+/* =====================================================================
+   Experiences.module.css — Linha do tempo de experiências profissionais
+   ===================================================================== */
+
+.experiences {
+  background: linear-gradient(180deg,
+    var(--color-grass-200) 0%,
+    var(--color-grass-200) 45%,
+    var(--color-grass-300) 100%
+  );
+  transition: background var(--transition-slow);
+}
+
+:global(body.theme-dark) .experiences { background: transparent; }
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.timeline {
+  position: relative;
+  display: grid;
+  gap: var(--spacing-lg);
+  padding-left: 1.75rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0.55rem;
+  top: 0.35rem;
+  bottom: 0.35rem;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(26, 71, 42, 0.25), rgba(26, 71, 42, 0.08));
+}
+
+/* ─── Card de experiência ─── */
+.card {
+  position: relative;
+  padding: var(--spacing-md);
+  background: var(--color-bg-card);
+  border: 2px solid var(--color-accent-dark);
+  box-shadow:
+    3px 3px 0 0 var(--color-accent-dark),
+    inset -2px -2px 0 0 rgba(0, 0, 0, 0.08),
+    inset 2px 2px 0 0 rgba(255, 255, 255, 0.5);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.card:hover {
+  transform: translate(2px, 2px);
+  box-shadow:
+    1px 1px 0 0 var(--color-accent-dark),
+    inset -2px -2px 0 0 rgba(0, 0, 0, 0.08),
+    inset 2px 2px 0 0 rgba(255, 255, 255, 0.5);
+}
+
+.marker {
+  position: absolute;
+  left: -1.95rem;
+  top: 1.5rem;
+  width: 0.85rem;
+  height: 0.85rem;
+  background: var(--color-accent);
+  border: 2px solid var(--color-accent-dark);
+  box-shadow: 0 0 0 4px rgba(45, 155, 78, 0.12);
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  margin-bottom: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.company {
+  font-family: var(--font-family-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+  margin: 0 0 0.35rem;
+  text-transform: uppercase;
+}
+
+.role {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: 1.12rem;
+  font-weight: 800;
+}
+
+.period {
+  flex: 0 0 auto;
+  align-self: center;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid rgba(26, 71, 42, 0.2);
+  background: rgba(248, 244, 232, 0.9);
+  color: var(--color-accent-dark);
+  font-family: var(--font-family-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.projects { display: grid; gap: 1rem; }
+
+/* ─── Card de projeto interno ─── */
+.projectCard {
+  margin-top: 0.5rem;
+  padding: 1rem 1.1rem;
+  background: rgba(248, 244, 232, 0.7);
+  border: 2px solid rgba(26, 71, 42, 0.18);
+  border-left: 4px solid var(--color-accent);
+}
+
+.projectHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.projectTag {
+  font-family: var(--font-family-display);
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  color: #fff;
+  background: var(--color-accent);
+  padding: 0.3rem 0.55rem;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.projectName {
+  font-family: var(--font-family-body);
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.projectBody { display: grid; gap: 0.65rem; margin-bottom: 1rem; }
+.projectSection { display: grid; gap: 0.25rem; }
+
+.projectLabel {
+  font-family: var(--font-family-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  color: var(--color-accent-dark);
+  text-transform: uppercase;
+}
+
+.projectText {
+  font-size: 0.94rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.projectStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* ─── Stack tag (acessível: 44px+ de touch target) ─── */
+.stackTag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.4rem;
+  padding: 0.5rem 0.9rem;
+  border: 2px solid var(--color-accent-dark);
+  background: var(--color-bg-primary);
+  color: var(--color-accent-dark);
+  font-family: var(--font-family-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+  transition: transform var(--transition-fast), background var(--transition-fast);
+}
+
+.stackTag:hover {
+  transform: translate(2px, 2px);
+  background: #fff;
+}
+
+/* ─── Modo escuro ─── */
+:global(body.theme-dark) .card {
+  background: rgba(24, 35, 56, 0.92);
+  border-color: rgba(199, 217, 255, 0.22);
+  box-shadow:
+    3px 3px 0 0 rgba(199, 217, 255, 0.18),
+    0 0 10px rgba(199, 217, 255, 0.06),
+    inset -1px -1px 0 0 rgba(0, 0, 0, 0.22),
+    inset 1px 1px 0 0 rgba(224, 236, 255, 0.04);
+}
+
+:global(body.theme-dark) .projectCard {
+  background: rgba(19, 30, 49, 0.86);
+  border-color: rgba(199, 217, 255, 0.22);
+  border-left-color: var(--color-accent);
+}
+
+:global(body.theme-dark) .projectTag {
+  background: #35578d;
+  color: #eef4ff;
+}
+
+:global(body.theme-dark) .projectLabel,
+:global(body.theme-dark) .role {
+  color: #d8e7ff;
+}
+
+:global(body.theme-dark) .period {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--color-text-primary);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+:global(body.theme-dark) .stackTag {
+  background: rgba(19, 30, 49, 0.86);
+  border-color: rgba(199, 217, 255, 0.32);
+  color: #d8e7ff;
+}
+
+:global(body.theme-dark) .marker {
+  background: var(--color-accent);
+  border-color: rgba(199, 217, 255, 0.5);
+  box-shadow: 0 0 0 4px rgba(95, 168, 255, 0.18);
+}
+
+:global(body.theme-dark) .timeline::before {
+  background: linear-gradient(180deg, rgba(199, 217, 255, 0.28), rgba(199, 217, 255, 0.08));
+}

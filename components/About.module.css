@@ -1,0 +1,375 @@
+/* =====================================================================
+   About.module.css — Seção Sobre Mim com tabs (Quem sou / Formação)
+   ===================================================================== */
+
+.about {
+  background:
+    linear-gradient(180deg,
+      var(--color-bg-primary) 0%,
+      var(--color-grass-100) 50%,
+      var(--color-grass-200) 100%
+    ),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 20px,
+      rgba(45, 155, 78, 0.02) 20px,
+      rgba(45, 155, 78, 0.02) 40px
+    );
+  transition: background var(--transition-slow);
+}
+
+:global(body.theme-dark) .about { background: transparent; }
+
+.aboutContent {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.aboutCard {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--color-bg-card);
+  border: 2px solid var(--color-accent-dark);
+  box-shadow:
+    3px 3px 0 0 var(--color-accent-dark),
+    inset -2px -2px 0 0 rgba(0, 0, 0, 0.08),
+    inset 2px 2px 0 0 rgba(255, 255, 255, 0.5);
+}
+
+/* ─── Tabs ─── */
+.tabs {
+  display: flex;
+  border-bottom: 2px solid var(--color-accent-dark);
+  background: rgba(248, 244, 232, 0.45);
+}
+
+.tab {
+  flex: 1;
+  padding: 0.95rem 1rem;
+  background: rgba(248, 244, 232, 0.6);
+  border: none;
+  border-right: 2px solid var(--color-accent-dark);
+  font-family: var(--font-family-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-light);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.tab:last-child { border-right: none; }
+
+.tab:hover {
+  background: rgba(45, 155, 78, 0.07);
+  color: var(--color-accent-dark);
+}
+
+.tabActive {
+  background: var(--color-bg-card);
+  color: var(--color-accent-dark);
+  position: relative;
+  margin-bottom: -2px;
+  padding-bottom: calc(0.95rem + 2px);
+}
+
+/* ─── Painel ─── */
+.panel { padding: var(--spacing-lg); }
+
+.panelInner {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: var(--spacing-lg);
+  align-items: start;
+}
+
+/* ─── Avatar pixel ─── */
+.avatarWrap {
+  position: sticky;
+  top: 1rem;
+}
+
+.avatar {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(135deg, rgba(45, 155, 78, 0.12), rgba(91, 200, 245, 0.12));
+  border: 2px solid var(--color-accent-dark);
+  box-shadow: 3px 3px 0 0 var(--color-accent-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  overflow: hidden;
+}
+
+/* Mascote pixel grande dentro do avatar (substituir por <img> real depois) */
+.avatarPixel {
+  position: relative;
+  width: 0.4rem;
+  height: 0.4rem;
+  margin-top: -1.2rem;
+  box-shadow:
+    -1.6rem -1.6rem 0 0.2rem var(--color-accent-dark),
+     1.6rem -1.6rem 0 0.2rem var(--color-accent-dark),
+    -2rem -1.2rem 0 0.2rem var(--color-accent-dark),
+    -1.2rem -1.2rem 0 0.2rem var(--color-accent-dark),
+     1.2rem -1.2rem 0 0.2rem var(--color-accent-dark),
+     2rem -1.2rem 0 0.2rem var(--color-accent-dark),
+    -2.4rem -0.8rem 0 0.2rem var(--color-accent-dark),
+    -1.6rem -0.8rem 0 0.2rem var(--color-accent-dark),
+    -0.8rem -0.8rem 0 0.2rem var(--color-accent-dark),
+     0.8rem -0.8rem 0 0.2rem var(--color-accent-dark),
+     1.6rem -0.8rem 0 0.2rem var(--color-accent-dark),
+     2.4rem -0.8rem 0 0.2rem var(--color-accent-dark),
+    -2.4rem -0.4rem 0 0.2rem var(--color-accent-dark),
+    -1.6rem -0.4rem 0 0.2rem var(--color-accent-light),
+    -0.8rem -0.4rem 0 0.2rem var(--color-accent-light),
+     0 -0.4rem 0 0.2rem var(--color-accent-light),
+     0.8rem -0.4rem 0 0.2rem var(--color-accent-light),
+     1.6rem -0.4rem 0 0.2rem var(--color-accent-light),
+     2.4rem -0.4rem 0 0.2rem var(--color-accent-dark),
+    -2.4rem 0 0 0.2rem var(--color-accent-dark),
+    -1.6rem 0 0 0.2rem var(--color-accent-light),
+    -0.8rem 0 0 0.2rem #17311f,
+     0 0 0 0.2rem var(--color-accent-light),
+     0.8rem 0 0 0.2rem #17311f,
+     1.6rem 0 0 0.2rem var(--color-accent-light),
+     2.4rem 0 0 0.2rem var(--color-accent-dark),
+    -2.4rem 0.4rem 0 0.2rem var(--color-accent-dark),
+    -1.6rem 0.4rem 0 0.2rem var(--color-accent-light),
+    -0.8rem 0.4rem 0 0.2rem var(--color-accent-light),
+     0 0.4rem 0 0.2rem var(--color-accent-light),
+     0.8rem 0.4rem 0 0.2rem var(--color-accent-light),
+     1.6rem 0.4rem 0 0.2rem var(--color-accent-light),
+     2.4rem 0.4rem 0 0.2rem var(--color-accent-dark),
+    -1.6rem 0.8rem 0 0.2rem var(--color-accent-dark),
+    -0.8rem 0.8rem 0 0.2rem #17311f,
+     0.8rem 0.8rem 0 0.2rem #17311f,
+     1.6rem 0.8rem 0 0.2rem var(--color-accent-dark),
+    -1.6rem 1.2rem 0 0.2rem var(--color-accent-dark),
+    -0.8rem 1.2rem 0 0.2rem var(--color-accent-dark),
+     0.8rem 1.2rem 0 0.2rem var(--color-accent-dark),
+     1.6rem 1.2rem 0 0.2rem var(--color-accent-dark);
+  background: transparent;
+}
+
+.avatarLabel {
+  position: absolute;
+  bottom: 0.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-family-display);
+  font-size: 0.85rem;
+  color: var(--color-accent-dark);
+  background: rgba(248, 244, 232, 0.92);
+  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--color-accent-dark);
+}
+
+/* ─── Perguntas e respostas ─── */
+.text {
+  display: grid;
+  gap: 1.3rem;
+}
+
+.qa { display: grid; gap: 0.35rem; }
+
+.qaLabel {
+  font-family: var(--font-family-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--color-accent-dark);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.qa p {
+  font-size: 0.97rem;
+  line-height: 1.85;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* ─── Formação ─── */
+.formationBlock { margin-bottom: 1.75rem; }
+.formationBlock:last-child { margin-bottom: 0; }
+
+.blockLabel {
+  display: inline-block;
+  font-family: var(--font-family-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-accent-dark);
+  margin: 0 0 0.85rem;
+}
+
+.degreeCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 1.1rem;
+  background: rgba(248, 244, 232, 0.7);
+  border: 2px solid rgba(26, 71, 42, 0.18);
+  border-left: 4px solid var(--color-accent);
+}
+
+.degreeIcon { font-size: 1.4rem; flex-shrink: 0; margin-top: 0.1rem; }
+
+.degreeCourse {
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--color-text-primary);
+  margin: 0 0 0.2rem;
+}
+
+.degreeInstitution {
+  color: var(--color-text-secondary);
+  font-size: 0.92rem;
+  margin: 0 0 0.45rem;
+}
+
+.degreePeriod {
+  font-family: var(--font-family-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  color: var(--color-accent);
+  text-transform: uppercase;
+}
+
+/* Certificados */
+.certs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+
+.certCard {
+  padding: 0.85rem 1rem;
+  background: rgba(248, 244, 232, 0.7);
+  border: 2px solid rgba(26, 71, 42, 0.15);
+  border-top: 4px solid var(--color-accent-dark);
+  display: grid;
+  gap: 0.3rem;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.certCard:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 0 var(--color-accent-dark);
+}
+
+.certTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.certCode {
+  font-family: var(--font-family-display);
+  font-size: 0.7rem;
+  color: var(--color-accent);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.certYear {
+  font-family: var(--font-family-display);
+  font-size: 0.7rem;
+  color: var(--color-text-light);
+}
+
+.certName {
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--color-text-primary);
+  line-height: 1.35;
+  margin: 0;
+}
+
+.certIssuer {
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+  margin: 0;
+}
+
+.continuous {
+  font-size: 0.97rem;
+  line-height: 1.85;
+  color: var(--color-text-secondary);
+  margin: 0;
+  padding: 1rem 1.1rem;
+  background: rgba(248, 244, 232, 0.5);
+  border: 2px solid rgba(26, 71, 42, 0.1);
+  border-left: 4px solid var(--color-accent-sky);
+}
+
+/* ─── Modo escuro ─── */
+:global(body.theme-dark) .aboutCard {
+  background: rgba(24, 35, 56, 0.92);
+  border-color: rgba(164, 196, 169, 0.22);
+  box-shadow:
+    3px 3px 0 0 rgba(164, 196, 169, 0.22),
+    inset -2px -2px 0 0 rgba(0, 0, 0, 0.22),
+    inset 2px 2px 0 0 rgba(224, 236, 255, 0.08);
+}
+
+:global(body.theme-dark) .tabs {
+  border-bottom-color: rgba(164, 196, 169, 0.22);
+  background: rgba(18, 28, 46, 0.8);
+}
+
+:global(body.theme-dark) .tab {
+  background: rgba(18, 28, 46, 0.72);
+  border-right-color: rgba(164, 196, 169, 0.22);
+  color: #9eb5da;
+}
+
+:global(body.theme-dark) .tabActive {
+  background: rgba(24, 35, 56, 0.92);
+  color: #d8e7ff;
+}
+
+:global(body.theme-dark) .qaLabel,
+:global(body.theme-dark) .blockLabel {
+  color: #d8e7ff;
+}
+
+:global(body.theme-dark) .avatar,
+:global(body.theme-dark) .degreeCard,
+:global(body.theme-dark) .certCard,
+:global(body.theme-dark) .continuous {
+  background: rgba(19, 30, 49, 0.86);
+  border-color: rgba(164, 196, 169, 0.2);
+  box-shadow: 3px 3px 0 0 rgba(164, 196, 169, 0.2);
+}
+
+:global(body.theme-dark) .avatarLabel {
+  background: rgba(19, 30, 49, 0.95);
+  color: #e6edf8;
+  border-color: rgba(164, 196, 169, 0.4);
+}
+
+:global(body.theme-dark) .certCard {
+  border-top-color: rgba(164, 196, 169, 0.4);
+}
+
+:global(body.theme-dark) .certIssuer,
+:global(body.theme-dark) .certYear {
+  color: #8ea0be;
+}
+
+:global(body.theme-dark) .qa p {
+  color: var(--color-text-secondary);
+}
+
+/* ─── Responsivo ─── */
+@media (max-width: 640px) {
+  .panelInner { grid-template-columns: 1fr; }
+  .avatarWrap { position: static; }
+  .avatar { width: 140px; margin: 0 auto; }
+  .certs { grid-template-columns: 1fr; }
+}

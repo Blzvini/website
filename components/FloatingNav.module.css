@@ -1,0 +1,172 @@
+.nav {
+  position: fixed;
+  top: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(-150%);
+  z-index: 1000;
+  width: min(960px, calc(100vw - 1.5rem));
+  background: rgba(248, 244, 232, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 2px solid var(--color-accent-dark);
+  box-shadow:
+    3px 3px 0 0 var(--color-accent-dark),
+    0 8px 24px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  transition: transform 320ms ease, opacity 280ms ease,
+              background 320ms ease, border-color 320ms ease, box-shadow 320ms ease;
+}
+
+.visible {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.45rem 0.75rem;
+}
+
+/* ─── Marca / voltar ao topo ─── */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.7rem;
+  font-family: var(--font-family-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--color-accent-dark);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.brandPixel {
+  width: 14px;
+  height: 14px;
+  background: var(--color-accent);
+  box-shadow:
+    -4px 0 0 var(--color-accent-dark),
+     4px 0 0 var(--color-accent-light),
+     0 -4px 0 var(--color-accent-sand),
+     0  4px 0 var(--color-ground-soil);
+  display: inline-block;
+}
+
+/* ─── Links de navegação ─── */
+.list {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  flex: 1;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.7rem;
+  font-family: var(--font-family-body);
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: color var(--transition-fast), background var(--transition-fast),
+              border-color var(--transition-fast);
+}
+
+.link:hover {
+  color: var(--color-accent-dark);
+  background: rgba(45, 155, 78, 0.08);
+}
+
+.link.active {
+  color: var(--color-accent-dark);
+  background: rgba(45, 155, 78, 0.14);
+  border-color: rgba(26, 71, 42, 0.18);
+}
+
+/* ─── Toggle de tema ─── */
+.themeToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0.4rem;
+  background: var(--color-accent-dark);
+  color: #fff;
+  border: 2px solid var(--color-accent-dark);
+  cursor: pointer;
+  flex-shrink: 0;
+  box-shadow:
+    3px 3px 0 0 var(--color-accent-dark),
+    inset -2px -2px 0 0 rgba(0, 0, 0, 0.15),
+    inset 2px 2px 0 0 rgba(255, 255, 255, 0.2);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+              background var(--transition-fast);
+}
+
+.themeToggle:hover {
+  transform: translate(2px, 2px);
+  box-shadow:
+    1px 1px 0 0 var(--color-accent-dark),
+    inset -2px -2px 0 0 rgba(0, 0, 0, 0.15),
+    inset 2px 2px 0 0 rgba(255, 255, 255, 0.2);
+}
+
+.themeIcon {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+/* ─── Modo escuro ─── */
+:global(body.theme-dark) .nav {
+  background: rgba(19, 26, 42, 0.92);
+  border-color: rgba(199, 217, 255, 0.32);
+  box-shadow:
+    3px 3px 0 0 rgba(199, 217, 255, 0.18),
+    0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+:global(body.theme-dark) .brand {
+  color: #e6edf8;
+}
+
+:global(body.theme-dark) .link {
+  color: #b5c2d8;
+}
+
+:global(body.theme-dark) .link:hover,
+:global(body.theme-dark) .link.active {
+  color: #e6edf8;
+  background: rgba(95, 168, 255, 0.16);
+  border-color: rgba(199, 217, 255, 0.22);
+}
+
+:global(body.theme-dark) .themeToggle {
+  background: #2b456f;
+  border-color: rgba(199, 217, 255, 0.32);
+  color: #ffd166;
+  box-shadow:
+    3px 3px 0 0 rgba(199, 217, 255, 0.18),
+    inset -1px -1px 0 0 rgba(0, 0, 0, 0.2),
+    inset 1px 1px 0 0 rgba(224, 236, 255, 0.08);
+}
+
+/* ─── Responsivo ─── */
+@media (max-width: 720px) {
+  .list { display: none; }
+  .nav { width: auto; left: auto; right: 0.75rem; transform: translateY(-150%); }
+  .visible { transform: translateY(0); }
+}

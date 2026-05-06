@@ -1,167 +1,48 @@
+import styles from './Footer.module.css';
+
 export default function Footer() {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="footer footer-village">
-      <div className="footer-scene" aria-hidden="true">
-        <div className="village-midground">
-          <div className="mountain-far mountain-far-left" />
-          <div className="mountain-far mountain-far-right" />
-          <div className="mountain-mid mountain-mid-left" />
-          <div className="mountain-mid mountain-mid-right" />
+    <footer className={styles.footer}>
+      {/* ─── Paisagem decorativa ─── */}
+      <div className={styles.scene} aria-hidden="true">
+        <div className={styles.midground}>
+          <div className={`${styles.mountainFar} ${styles.mountainFarLeft}`} />
+          <div className={`${styles.mountainFar} ${styles.mountainFarRight}`} />
+          <div className={`${styles.mountainMid} ${styles.mountainMidLeft}`} />
+          <div className={`${styles.mountainMid} ${styles.mountainMidRight}`} />
         </div>
       </div>
 
-      <style jsx>{`
-        .footer {
-          position: relative;
-          min-height: clamp(20rem, 42vw, 26.25rem);
-          padding: 0;
-          overflow: hidden;
-          background: transparent;
-        }
+      {/* ─── Conteúdo ─── */}
+      <div className={`container ${styles.content}`}>
+        <div className={styles.brand}>
+          <span className={styles.brandPixel} aria-hidden="true" />
+          <div>
+            <p className={styles.brandName}>Vinicius Marques</p>
+            <p className={styles.brandRole}>Engenheiro de Dados</p>
+          </div>
+        </div>
 
-        .footer-scene {
-          position: absolute;
-          inset: 0;
-          overflow: hidden;
-          image-rendering: pixelated;
-          background:
-            linear-gradient(
-              180deg,
-              #d7f2ff 0%,
-              #eef6ea 30%,
-              #cfead0 58%,
-              var(--color-ground-soil) 100%
-            );
-          transition: background 420ms ease;
-        }
+        <nav className={styles.links} aria-label="Links do rodapé">
+          <a href="#sobre">Sobre</a>
+          <a href="#projetos">Projetos</a>
+          <a href="#contato">Contato</a>
+          <a
+            href="https://github.com/Blzvini"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+            <span className="sr-only"> (abre em nova aba)</span>
+          </a>
+        </nav>
 
-        :global(body.theme-dark) .footer-scene {
-          background: transparent;
-        }
-
-        .footer-scene::before {
-          content: '';
-          position: absolute;
-          left: 0;
-          right: 0;
-          top: 0;
-          height: 42%;
-          background: linear-gradient(180deg, rgba(215, 242, 255, 0.95) 0%, rgba(239, 246, 234, 0.72) 65%, rgba(207, 234, 208, 0) 100%);
-          pointer-events: none;
-          transition: background 420ms ease;
-        }
-
-        :global(body.theme-dark) .footer-scene::before {
-          background: transparent;
-        }
-
-        .footer-village::before,
-        .footer-village::after {
-          content: none;
-        }
-
-        .village-midground {
-          position: absolute;
-          inset: 0;
-          z-index: 3;
-        }
-
-        /* ===== MONTANHAS ===== */
-
-        .mountain-far {
-          position: absolute;
-          top: 45%;
-          bottom: 0;
-          background: var(--color-mountain-far);
-          clip-path: polygon(0 100%, 5% 55%, 12% 40%, 20% 10%, 28% 45%, 35% 5%, 42% 35%, 50% 0%, 58% 30%, 65% 3%, 72% 40%, 80% 8%, 88% 45%, 95% 15%, 100% 50%, 100% 100%);
-          opacity: 0.65;
-          z-index: 2;
-          transition: background 420ms ease, opacity 420ms ease;
-        }
-
-        :global(body.theme-dark) .mountain-far {
-          background: #24314f;
-          opacity: 0.85;
-        }
-
-        .mountain-far-left {
-          left: -5%;
-          width: 55%;
-        }
-
-        .mountain-far-right {
-          right: -5%;
-          width: 55%;
-          transform: scaleX(-1);
-        }
-
-        .mountain-mid {
-          position: absolute;
-          top: 55%;
-          bottom: 0;
-          background: var(--color-mountain-mid);
-          clip-path: polygon(0 100%, 8% 60%, 15% 75%, 22% 35%, 30% 65%, 38% 25%, 46% 55%, 54% 20%, 62% 50%, 70% 28%, 78% 60%, 86% 32%, 94% 58%, 100% 40%, 100% 100%);
-          opacity: 0.8;
-          z-index: 3;
-          transition: background 420ms ease, opacity 420ms ease;
-        }
-
-        :global(body.theme-dark) .mountain-mid {
-          background: #1a2238;
-          opacity: 0.95;
-        }
-
-        .mountain-mid-left {
-          left: -6%;
-          width: 56%;
-        }
-
-        .mountain-mid-right {
-          right: -6%;
-          width: 56%;
-          transform: scaleX(-1);
-        }
-
-        .mountain-far::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background: var(--color-flower-white);
-          clip-path: polygon(18% 22%, 26% 52%, 33% 12%, 40% 42%, 48% 8%, 56% 38%, 63% 12%, 70% 50%, 78% 20%, 86% 55%, 94% 25%, 100% 35%, 100% 0%, 85% 0%, 78% 18%, 70% 5%, 62% 20%, 55% 3%, 48% 15%, 40% 5%, 33% 18%, 25% 3%, 18% 22%);
-          opacity: 0.55;
-          transition: opacity 420ms ease;
-        }
-
-        :global(body.theme-dark) .mountain-far::before {
-          opacity: 0.2;
-        }
-
-        .mountain-mid::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background: var(--color-flower-white);
-          clip-path: polygon(20% 28%, 28% 58%, 36% 16%, 44% 46%, 52% 12%, 60% 42%, 68% 14%, 76% 52%, 84% 22%, 92% 60%, 100% 32%, 100% 0%, 88% 0%, 80% 20%, 72% 8%, 64% 22%, 56% 6%, 48% 16%, 40% 6%, 32% 22%, 24% 6%, 20% 28%);
-          opacity: 0.5;
-          transition: opacity 420ms ease;
-        }
-
-        :global(body.theme-dark) .mountain-mid::before {
-          opacity: 0.18;
-        }
-
-        @media (max-width: 768px) {
-          .footer {
-            min-height: 20rem;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .footer {
-            min-height: 17.5rem;
-          }
-        }
-      `}</style>
+        <p className={styles.meta}>
+          © {year} Vinicius Marques · Construído com Next.js, CSS Modules e muito ☕
+        </p>
+      </div>
     </footer>
   );
 }

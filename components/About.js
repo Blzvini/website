@@ -1,505 +1,176 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import styles from './About.module.css';
 
 const TABS = [
-  { id: 'sobre', label: 'Quem sou' },
+  { id: 'sobre',    label: 'Quem sou' },
   { id: 'formacao', label: 'Formação' },
 ];
 
 const certifications = [
-  {
-    id: 1,
-    name: 'Microsoft Azure Fundamentals',
-    issuer: 'Microsoft',
-    code: 'AZ-900',
-    year: '2024',
-  },
-  {
-    id: 2,
-    name: 'Data Engineering with Microsoft Fabric',
-    issuer: 'Microsoft Learn',
-    code: 'Learning Path',
-    year: '2024',
-  },
-  {
-    id: 3,
-    name: 'Python para Engenharia de Dados',
-    issuer: 'Alura',
-    code: 'Bootcamp',
-    year: '2023',
-  },
-  {
-    id: 4,
-    name: 'SQL para Análise de Dados',
-    issuer: 'Data Science Academy',
-    code: 'Curso',
-    year: '2023',
-  },
+  { id: 1, name: 'Microsoft Azure Fundamentals', issuer: 'Microsoft', code: 'AZ-900', year: '2024' },
+  { id: 2, name: 'Data Engineering with Microsoft Fabric', issuer: 'Microsoft Learn', code: 'Learning Path', year: '2024' },
+  { id: 3, name: 'Python para Engenharia de Dados', issuer: 'Alura', code: 'Bootcamp', year: '2023' },
+  { id: 4, name: 'SQL para Análise de Dados', issuer: 'Data Science Academy', code: 'Curso', year: '2023' },
 ];
 
 export default function About() {
-  const [activeTab, setActiveTab] = useState('sobre');
+  const [activeTab, setActiveTab] = useState(TABS[0].id);
+  const tabRefs = useRef({});
+
+  // Navegação por setas (padrão WAI-ARIA Tabs)
+  const onTabKeyDown = (e) => {
+    const idx = TABS.findIndex((t) => t.id === activeTab);
+    let nextIdx = null;
+    if (e.key === 'ArrowRight') nextIdx = (idx + 1) % TABS.length;
+    if (e.key === 'ArrowLeft')  nextIdx = (idx - 1 + TABS.length) % TABS.length;
+    if (e.key === 'Home')       nextIdx = 0;
+    if (e.key === 'End')        nextIdx = TABS.length - 1;
+    if (nextIdx !== null) {
+      e.preventDefault();
+      const next = TABS[nextIdx];
+      setActiveTab(next.id);
+      tabRefs.current[next.id]?.focus();
+    }
+  };
 
   return (
-    <section className="about" id="sobre">
+    <section className={styles.about} id="sobre">
       <div className="container">
         <h2 className="section-title">Sobre Mim</h2>
 
-        <div className="about-content">
-          <div className="about-card">
-
-            {/* ── Abas ── */}
-            <div className="about-tabs" role="tablist">
-              {TABS.map(tab => (
-                <button
-                  key={tab.id}
-                  role="tab"
-                  aria-selected={activeTab === tab.id}
-                  className={`about-tab${activeTab === tab.id ? ' is-active' : ''}`}
-                  onClick={() => setActiveTab(tab.id)}
-                  type="button"
-                >
-                  {tab.label}
-                </button>
-              ))}
+        <div className={styles.aboutContent}>
+          <div className={styles.aboutCard}>
+            <div role="tablist" aria-label="Sobre Vinicius" className={styles.tabs}>
+              {TABS.map((tab) => {
+                const selected = activeTab === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    id={`tab-${tab.id}`}
+                    role="tab"
+                    type="button"
+                    aria-selected={selected}
+                    aria-controls={`panel-${tab.id}`}
+                    tabIndex={selected ? 0 : -1}
+                    ref={(el) => (tabRefs.current[tab.id] = el)}
+                    onClick={() => setActiveTab(tab.id)}
+                    onKeyDown={onTabKeyDown}
+                    className={`${styles.tab} ${selected ? styles.tabActive : ''}`}
+                  >
+                    {tab.label}
+                  </button>
+                );
+              })}
             </div>
 
-            {/* ── Painel: Quem sou ── */}
-            {activeTab === 'sobre' && (
-              <div className="about-panel" role="tabpanel">
-                <div className="about-panel-inner">
+            {/* ─── Painel: Quem sou ─── */}
+            <div
+              id="panel-sobre"
+              role="tabpanel"
+              aria-labelledby="tab-sobre"
+              hidden={activeTab !== 'sobre'}
+              className={styles.panel}
+            >
+              <div className={styles.panelInner}>
+                {/* Avatar pixel art (substituível por uma <img> real) */}
+                <div className={styles.avatarWrap}>
+                  <div className={styles.avatar}>
+                    <span className={styles.avatarPixel} aria-hidden="true" />
+                    <span className={styles.avatarLabel}>VM</span>
+                  </div>
+                </div>
 
-                  {/* Foto placeholder — troque o bloco .about-photo-initials por um <img> quando tiver a foto */}
-                  <div className="about-photo-wrap">
-                    <div className="about-photo-placeholder" aria-label="Foto de Vinicius Marques">
-                      <div className="about-photo-initials">VM</div>
-                      <span className="about-photo-hint">troque pelo src da sua foto</span>
-                    </div>
+                <div className={styles.text}>
+                  <div className={styles.qa}>
+                    <h3 className={styles.qaLabel}>Quem é você?</h3>
+                    <p>
+                      Sou Vinicius Marques, Engenheiro de Dados formado em Análise e Desenvolvimento
+                      de Sistemas. Comecei minha trajetória em desenvolvimento de software, passei por
+                      QA e hoje meu foco é inteiramente em dados — pipelines, modelagem, cloud e tudo
+                      que envolve transformar informação bruta em algo que gera valor real.
+                    </p>
                   </div>
 
-                  {/* Perguntas + respostas */}
-                  <div className="about-text">
-                    <div className="about-q">
-                      <span className="about-q-label">Quem é você?</span>
-                      <p>
-                        Sou Vinicius Marques, Engenheiro de Dados formado em Análise e Desenvolvimento
-                        de Sistemas. Comecei minha trajetória em desenvolvimento de software, passei por
-                        QA e hoje meu foco é inteiramente em dados — pipelines, modelagem, cloud e tudo
-                        que envolve transformar informação bruta em algo que gera valor real.
-                      </p>
-                    </div>
-
-                    <div className="about-q">
-                      <span className="about-q-label">O que você faz hoje?</span>
-                      <p>
-                        Trabalho com PySpark, SQL, Microsoft Fabric e Azure para construir soluções
-                        robustas e escaláveis. Tenho experiência em ETL, automação com Power Platform e
-                        qualidade de software — o que me dá uma visão ampla do ciclo de vida dos dados,
-                        do dado bruto até o dashboard na mão do gestor.
-                      </p>
-                    </div>
-
-                    <div className="about-q">
-                      <span className="about-q-label">O que você busca profissionalmente?</span>
-                      <p>
-                        Uma oportunidade como Engenheiro de Dados Jr. em times que valorizem qualidade
-                        técnica, autonomia e aprendizado contínuo. Ambientes com stacks modernas de dados
-                        e cultura de engenharia forte são onde me sinto mais em casa.
-                      </p>
-                    </div>
-
-                    <div className="about-q">
-                      <span className="about-q-label">Como você é fora do trabalho?</span>
-                      <p>
-                        Nas horas livres exploro trilhas, ouço música (de jazz a metal, sem preconceito),
-                        jogo games indie com estética retrô, leio sobre tecnologia e assisto séries até
-                        tarde. Acredito que interesses variados constroem soluções mais criativas.
-                      </p>
-                    </div>
+                  <div className={styles.qa}>
+                    <h3 className={styles.qaLabel}>O que você faz hoje?</h3>
+                    <p>
+                      Trabalho com PySpark, SQL, Microsoft Fabric e Azure para construir soluções
+                      robustas e escaláveis. Tenho experiência em ETL, automação com Power Platform e
+                      qualidade de software — o que me dá uma visão ampla do ciclo de vida dos dados,
+                      do dado bruto até o dashboard na mão do gestor.
+                    </p>
                   </div>
 
+                  <div className={styles.qa}>
+                    <h3 className={styles.qaLabel}>O que você busca profissionalmente?</h3>
+                    <p>
+                      Uma oportunidade como Engenheiro de Dados Jr. em times que valorizem qualidade
+                      técnica, autonomia e aprendizado contínuo. Ambientes com stacks modernas de dados
+                      e cultura de engenharia forte são onde me sinto mais em casa.
+                    </p>
+                  </div>
+
+                  <div className={styles.qa}>
+                    <h3 className={styles.qaLabel}>Como você é fora do trabalho?</h3>
+                    <p>
+                      Nas horas livres exploro trilhas, ouço música (de jazz a metal, sem preconceito),
+                      jogo games indie com estética retrô, leio sobre tecnologia e assisto séries até
+                      tarde. Acredito que interesses variados constroem soluções mais criativas.
+                    </p>
+                  </div>
                 </div>
               </div>
-            )}
+            </div>
 
-            {/* ── Painel: Formação ── */}
-            {activeTab === 'formacao' && (
-              <div className="about-panel" role="tabpanel">
-
-                <div className="formation-block">
-                  <span className="formation-block-label">Graduação</span>
-                  <div className="formation-degree-card">
-                    <div className="formation-degree-icon" aria-hidden="true">🎓</div>
-                    <div>
-                      <p className="formation-degree-course">Análise e Desenvolvimento de Sistemas</p>
-                      <p className="formation-degree-institution">Universidade Anhembi Morumbi</p>
-                      <span className="formation-degree-period">2020 – 2022 · Concluído</span>
-                    </div>
+            {/* ─── Painel: Formação ─── */}
+            <div
+              id="panel-formacao"
+              role="tabpanel"
+              aria-labelledby="tab-formacao"
+              hidden={activeTab !== 'formacao'}
+              className={styles.panel}
+            >
+              <div className={styles.formationBlock}>
+                <h3 className={styles.blockLabel}>Graduação</h3>
+                <div className={styles.degreeCard}>
+                  <span className={styles.degreeIcon} aria-hidden="true">🎓</span>
+                  <div>
+                    <p className={styles.degreeCourse}>Análise e Desenvolvimento de Sistemas</p>
+                    <p className={styles.degreeInstitution}>Universidade Anhembi Morumbi</p>
+                    <span className={styles.degreePeriod}>2020 – 2022 · Concluído</span>
                   </div>
                 </div>
+              </div>
 
-                <div className="formation-block">
-                  <span className="formation-block-label">Certificados &amp; Cursos</span>
-                  <div className="formation-certs">
-                    {certifications.map(cert => (
-                      <div key={cert.id} className="formation-cert-card">
-                        <div className="formation-cert-top">
-                          <span className="formation-cert-code">{cert.code}</span>
-                          <span className="formation-cert-year">{cert.year}</span>
-                        </div>
-                        <p className="formation-cert-name">{cert.name}</p>
-                        <p className="formation-cert-issuer">{cert.issuer}</p>
+              <div className={styles.formationBlock}>
+                <h3 className={styles.blockLabel}>Certificados &amp; Cursos</h3>
+                <div className={styles.certs}>
+                  {certifications.map((cert) => (
+                    <div key={cert.id} className={styles.certCard}>
+                      <div className={styles.certTop}>
+                        <span className={styles.certCode}>{cert.code}</span>
+                        <span className={styles.certYear}>{cert.year}</span>
                       </div>
-                    ))}
-                  </div>
+                      <p className={styles.certName}>{cert.name}</p>
+                      <p className={styles.certIssuer}>{cert.issuer}</p>
+                    </div>
+                  ))}
                 </div>
-
-                <div className="formation-block">
-                  <span className="formation-block-label">Aprendizado contínuo</span>
-                  <p className="formation-continuous">
-                    Acompanho de perto as comunidades de dados — Microsoft Fabric, dbt, Modern Data Stack.
-                    Estudo regularmente através de documentações oficiais, projetos práticos e conteúdos
-                    técnicos de engenharia de dados. Acredito que aprender em público e construir portfólio
-                    real é mais valioso do que acumular certificados.
-                  </p>
-                </div>
-
               </div>
-            )}
+
+              <div className={styles.formationBlock}>
+                <h3 className={styles.blockLabel}>Aprendizado contínuo</h3>
+                <p className={styles.continuous}>
+                  Acompanho de perto as comunidades de dados — Microsoft Fabric, dbt, Modern Data Stack.
+                  Estudo regularmente através de documentações oficiais, projetos práticos e conteúdos
+                  técnicos de engenharia de dados. Acredito que aprender em público e construir portfólio
+                  real é mais valioso do que acumular certificados.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-
-        /* ── Card principal — espelho de .experience-card / .skill-category ── */
-        .about-card {
-          max-width: 900px;
-          margin: 0 auto;
-          background: var(--color-bg-card);
-          border: 2px solid var(--color-accent-dark);
-          border-radius: 0;
-          box-shadow:
-            3px 3px 0 0 var(--color-accent-dark),
-            inset -2px -2px 0 0 rgba(0,0,0,0.08),
-            inset 2px 2px 0 0 rgba(255,255,255,0.5);
-        }
-
-        /* ── Abas ── */
-        .about-tabs {
-          display: flex;
-          border-bottom: 2px solid var(--color-accent-dark);
-          background: rgba(248,244,232,0.45);
-        }
-
-        .about-tab {
-          flex: 1;
-          padding: 0.9rem 1rem;
-          background: rgba(248,244,232,0.6);
-          border: none;
-          border-right: 2px solid var(--color-accent-dark);
-          font-family: var(--font-family-display);
-          font-size: 0.6rem;
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-          color: var(--color-text-light);
-          cursor: pointer;
-          transition: background var(--transition-fast), color var(--transition-fast);
-        }
-
-        .about-tab:last-child {
-          border-right: none;
-        }
-
-        .about-tab:hover {
-          background: rgba(45,155,78,0.07);
-          color: var(--color-accent-dark);
-        }
-
-        /* Aba ativa "levanta" cobrindo a borda inferior do card */
-        .about-tab.is-active {
-          background: var(--color-bg-card);
-          color: var(--color-accent-dark);
-          position: relative;
-          margin-bottom: -2px;
-          padding-bottom: calc(0.9rem + 2px);
-        }
-
-        /* ── Painel genérico ── */
-        .about-panel {
-          padding: var(--spacing-lg);
-        }
-
-        /* ── Aba Quem sou ── */
-        .about-panel-inner {
-          display: grid;
-          grid-template-columns: 160px 1fr;
-          gap: var(--spacing-lg);
-          align-items: start;
-        }
-
-        .about-photo-wrap {
-          position: sticky;
-          top: 1rem;
-        }
-
-        .about-photo-placeholder {
-          width: 100%;
-          aspect-ratio: 1 / 1;
-          background: linear-gradient(135deg,
-            rgba(45,155,78,0.1),
-            rgba(91,200,245,0.1)
-          );
-          border: 2px solid var(--color-accent-dark);
-          border-radius: 0;
-          box-shadow: 3px 3px 0 0 var(--color-accent-dark);
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 0.6rem;
-          overflow: hidden;
-        }
-
-        /* Quando tiver a foto, adicione <img> aqui e remova os dois elementos abaixo */
-        .about-photo-initials {
-          font-family: var(--font-family-display);
-          font-size: 1.8rem;
-          color: var(--color-accent-dark);
-          line-height: 1;
-        }
-
-        .about-photo-hint {
-          font-family: var(--font-family-display);
-          font-size: 0.42rem;
-          color: var(--color-text-light);
-          text-align: center;
-          padding: 0 0.6rem;
-          line-height: 1.7;
-          letter-spacing: 0.04em;
-        }
-
-        /* Perguntas */
-        .about-text {
-          display: grid;
-          gap: 1.3rem;
-        }
-
-        .about-q {
-          display: grid;
-          gap: 0.25rem;
-        }
-
-        .about-q-label {
-          font-family: var(--font-family-display);
-          font-size: 0.54rem;
-          letter-spacing: 0.07em;
-          color: var(--color-accent-dark);
-          text-transform: uppercase;
-        }
-
-        .about-q p {
-          font-size: 0.97rem;
-          line-height: 1.85;
-          color: var(--color-text-secondary);
-          margin: 0;
-        }
-
-        /* ── Aba Formação ── */
-        .formation-block {
-          margin-bottom: 1.75rem;
-        }
-
-        .formation-block:last-child {
-          margin-bottom: 0;
-        }
-
-        .formation-block-label {
-          display: inline-block;
-          font-family: var(--font-family-display);
-          font-size: 0.54rem;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-          color: var(--color-accent-dark);
-          margin-bottom: 0.85rem;
-        }
-
-        /* Graduação */
-        .formation-degree-card {
-          display: flex;
-          align-items: flex-start;
-          gap: 1rem;
-          padding: 1rem 1.1rem;
-          background: rgba(248,244,232,0.7);
-          border: 2px solid rgba(26,71,42,0.18);
-          border-left: 4px solid var(--color-accent);
-          border-radius: 0;
-        }
-
-        .formation-degree-icon {
-          font-size: 1.4rem;
-          flex-shrink: 0;
-          margin-top: 0.1rem;
-        }
-
-        .formation-degree-course {
-          font-weight: 800;
-          font-size: 1.05rem;
-          color: var(--color-text-primary);
-          margin: 0 0 0.2rem;
-        }
-
-        .formation-degree-institution {
-          color: var(--color-text-secondary);
-          font-size: 0.92rem;
-          margin: 0 0 0.45rem;
-        }
-
-        .formation-degree-period {
-          font-family: var(--font-family-display);
-          font-size: 0.5rem;
-          letter-spacing: 0.06em;
-          color: var(--color-accent);
-          text-transform: uppercase;
-        }
-
-        /* Certificados */
-        .formation-certs {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-          gap: 0.75rem;
-        }
-
-        .formation-cert-card {
-          padding: 0.85rem 1rem;
-          background: rgba(248,244,232,0.7);
-          border: 2px solid rgba(26,71,42,0.15);
-          border-top: 3px solid var(--color-accent-dark);
-          border-radius: 0;
-          display: grid;
-          gap: 0.3rem;
-          transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-        }
-
-        .formation-cert-card:hover {
-          transform: translate(2px, 2px);
-          box-shadow: 2px 2px 0 0 var(--color-accent-dark);
-        }
-
-        .formation-cert-top {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-
-        .formation-cert-code {
-          font-family: var(--font-family-display);
-          font-size: 0.5rem;
-          color: var(--color-accent);
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-        }
-
-        .formation-cert-year {
-          font-family: var(--font-family-display);
-          font-size: 0.5rem;
-          color: var(--color-text-light);
-          letter-spacing: 0.04em;
-        }
-
-        .formation-cert-name {
-          font-weight: 800;
-          font-size: 0.9rem;
-          color: var(--color-text-primary);
-          line-height: 1.35;
-          margin: 0;
-        }
-
-        .formation-cert-issuer {
-          font-size: 0.82rem;
-          color: var(--color-text-light);
-          margin: 0;
-        }
-
-        /* Aprendizado contínuo */
-        .formation-continuous {
-          font-size: 0.97rem;
-          line-height: 1.85;
-          color: var(--color-text-secondary);
-          margin: 0;
-          padding: 1rem 1.1rem;
-          background: rgba(248,244,232,0.5);
-          border: 2px solid rgba(26,71,42,0.1);
-          border-left: 4px solid var(--color-accent-sky);
-          border-radius: 0;
-        }
-
-        :global(body.theme-dark) .about-card,
-        :global(body.theme-dark) .about-tab.is-active {
-          background: rgba(24, 35, 56, 0.92);
-          border-color: #bcd4ff;
-          box-shadow:
-            3px 3px 0 0 #bcd4ff,
-            inset -2px -2px 0 0 rgba(0, 0, 0, 0.22),
-            inset 2px 2px 0 0 rgba(224, 236, 255, 0.08);
-        }
-
-        :global(body.theme-dark) .about-tabs {
-          border-bottom-color: #bcd4ff;
-          background: rgba(18, 28, 46, 0.8);
-        }
-
-        :global(body.theme-dark) .about-tab {
-          background: rgba(18, 28, 46, 0.72);
-          border-right-color: #bcd4ff;
-          color: #9eb5da;
-        }
-
-        :global(body.theme-dark) .about-tab:hover,
-        :global(body.theme-dark) .about-tab.is-active,
-        :global(body.theme-dark) .about-q-label,
-        :global(body.theme-dark) .formation-block-label {
-          color: #d8e7ff;
-        }
-
-        :global(body.theme-dark) .about-photo-placeholder,
-        :global(body.theme-dark) .formation-degree-card,
-        :global(body.theme-dark) .formation-cert-card,
-        :global(body.theme-dark) .formation-continuous {
-          background: rgba(19, 30, 49, 0.86);
-          border-color: #9db8e8;
-          box-shadow: 3px 3px 0 0 #9db8e8;
-        }
-
-        :global(body.theme-dark) .formation-cert-card {
-          border-top-color: #9db8e8;
-        }
-
-        :global(body.theme-dark) .about-photo-hint,
-        :global(body.theme-dark) .formation-cert-issuer,
-        :global(body.theme-dark) .formation-cert-year {
-          color: #8ea0be;
-        }
-
-        /* ── Responsivo ── */
-        @media (max-width: 640px) {
-          .about-panel-inner {
-            grid-template-columns: 1fr;
-          }
-
-          .about-photo-wrap {
-            position: static;
-          }
-
-          .about-photo-placeholder {
-            width: 120px;
-            margin: 0 auto;
-          }
-
-          .formation-certs {
-            grid-template-columns: 1fr;
-          }
-        }
-      `}</style>
     </section>
   );
 }

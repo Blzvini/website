@@ -1,0 +1,169 @@
+/* =====================================================================
+   Skills.module.css — Categorias de habilidades com grupo Principal/Complementar
+   ===================================================================== */
+
+.skills {
+  background:
+    linear-gradient(180deg,
+      var(--color-grass-300) 0%,
+      var(--color-grass-300) 50%,
+      var(--color-grass-400) 100%
+    ),
+    radial-gradient(
+      circle at 10% 50%,
+      rgba(255, 255, 255, 0.15) 0%,
+      transparent 25%
+    );
+  transition: background var(--transition-slow);
+}
+
+:global(body.theme-dark) .skills { background: transparent; }
+
+.intro {
+  max-width: 46rem;
+  margin: 0 auto var(--spacing-xl);
+  text-align: center;
+  font-size: 1.02rem;
+  color: var(--color-text-secondary);
+}
+
+:global(body.theme-dark) .intro { color: var(--color-text-secondary); }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+/* ─── Card de categoria ─── */
+.category {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: var(--spacing-md);
+  background: var(--color-bg-primary);
+  border: 2px solid var(--color-accent-dark);
+  box-shadow:
+    3px 3px 0 0 var(--color-accent-dark),
+    inset -2px -2px 0 0 rgba(0, 0, 0, 0.08),
+    inset 2px 2px 0 0 rgba(255, 255, 255, 0.5);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  min-height: 220px;
+}
+
+.category:hover {
+  transform: translate(2px, 2px);
+  box-shadow:
+    1px 1px 0 0 var(--color-accent-dark),
+    inset -2px -2px 0 0 rgba(0, 0, 0, 0.08),
+    inset 2px 2px 0 0 rgba(255, 255, 255, 0.5);
+}
+
+.categoryHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  border-bottom: 2px solid rgba(26, 71, 42, 0.16);
+  padding-bottom: 0.6rem;
+}
+
+.categoryIcon {
+  display: inline-grid;
+  place-items: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  background: var(--color-accent-dark);
+  color: var(--color-accent-sand);
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.categoryTitle {
+  font-family: var(--font-family-display);
+  font-size: 0.82rem;
+  color: var(--color-accent-dark);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.skillGroup { display: grid; gap: 0.4rem; }
+
+.groupLabel {
+  font-family: var(--font-family-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-light);
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+/* ─── Itens em destaque (Principal) ─── */
+.itemPrimary {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.35rem 0.7rem;
+  background: var(--color-accent-dark);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.86rem;
+  border: 2px solid var(--color-accent-dark);
+}
+
+/* ─── Itens complementares ─── */
+.itemSecondary {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.35rem 0.7rem;
+  background: transparent;
+  color: var(--color-text-primary);
+  font-weight: 600;
+  font-size: 0.86rem;
+  border: 2px solid rgba(26, 71, 42, 0.28);
+}
+
+/* ─── Modo escuro ─── */
+:global(body.theme-dark) .category {
+  background: rgba(24, 35, 56, 0.92);
+  border-color: rgba(199, 217, 255, 0.22);
+  box-shadow:
+    3px 3px 0 0 rgba(199, 217, 255, 0.18),
+    inset -1px -1px 0 0 rgba(0, 0, 0, 0.22);
+}
+
+:global(body.theme-dark) .categoryHeader {
+  border-bottom-color: rgba(199, 217, 255, 0.18);
+}
+
+:global(body.theme-dark) .categoryIcon {
+  background: #2b456f;
+  color: var(--color-accent-sand);
+}
+
+:global(body.theme-dark) .categoryTitle {
+  color: #d8e7ff;
+}
+
+:global(body.theme-dark) .itemPrimary {
+  background: #2b456f;
+  border-color: rgba(199, 217, 255, 0.4);
+  color: #eef4ff;
+}
+
+:global(body.theme-dark) .itemSecondary {
+  border-color: rgba(199, 217, 255, 0.32);
+  color: #d8e7ff;
+}
