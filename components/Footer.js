@@ -32,6 +32,11 @@ export default function Footer() {
               #cfead0 58%,
               var(--color-ground-soil) 100%
             );
+          transition: background 420ms ease;
+        }
+
+        :global(body.theme-dark) .footer-scene {
+          background: transparent;
         }
 
         .footer-scene::before {
@@ -43,6 +48,11 @@ export default function Footer() {
           height: 42%;
           background: linear-gradient(180deg, rgba(215, 242, 255, 0.95) 0%, rgba(239, 246, 234, 0.72) 65%, rgba(207, 234, 208, 0) 100%);
           pointer-events: none;
+          transition: background 420ms ease;
+        }
+
+        :global(body.theme-dark) .footer-scene::before {
+          background: transparent;
         }
 
         .footer-village::before,
@@ -66,6 +76,12 @@ export default function Footer() {
           clip-path: polygon(0 100%, 5% 55%, 12% 40%, 20% 10%, 28% 45%, 35% 5%, 42% 35%, 50% 0%, 58% 30%, 65% 3%, 72% 40%, 80% 8%, 88% 45%, 95% 15%, 100% 50%, 100% 100%);
           opacity: 0.65;
           z-index: 2;
+          transition: background 420ms ease, opacity 420ms ease;
+        }
+
+        :global(body.theme-dark) .mountain-far {
+          background: #24314f;
+          opacity: 0.85;
         }
 
         .mountain-far-left {
@@ -87,6 +103,12 @@ export default function Footer() {
           clip-path: polygon(0 100%, 8% 60%, 15% 75%, 22% 35%, 30% 65%, 38% 25%, 46% 55%, 54% 20%, 62% 50%, 70% 28%, 78% 60%, 86% 32%, 94% 58%, 100% 40%, 100% 100%);
           opacity: 0.8;
           z-index: 3;
+          transition: background 420ms ease, opacity 420ms ease;
+        }
+
+        :global(body.theme-dark) .mountain-mid {
+          background: #1a2238;
+          opacity: 0.95;
         }
 
         .mountain-mid-left {
@@ -107,6 +129,11 @@ export default function Footer() {
           background: var(--color-flower-white);
           clip-path: polygon(18% 22%, 26% 52%, 33% 12%, 40% 42%, 48% 8%, 56% 38%, 63% 12%, 70% 50%, 78% 20%, 86% 55%, 94% 25%, 100% 35%, 100% 0%, 85% 0%, 78% 18%, 70% 5%, 62% 20%, 55% 3%, 48% 15%, 40% 5%, 33% 18%, 25% 3%, 18% 22%);
           opacity: 0.55;
+          transition: opacity 420ms ease;
+        }
+
+        :global(body.theme-dark) .mountain-far::before {
+          opacity: 0.2;
         }
 
         .mountain-mid::before {
@@ -116,6 +143,11 @@ export default function Footer() {
           background: var(--color-flower-white);
           clip-path: polygon(20% 28%, 28% 58%, 36% 16%, 44% 46%, 52% 12%, 60% 42%, 68% 14%, 76% 52%, 84% 22%, 92% 60%, 100% 32%, 100% 0%, 88% 0%, 80% 20%, 72% 8%, 64% 22%, 56% 6%, 48% 16%, 40% 6%, 32% 22%, 24% 6%, 20% 28%);
           opacity: 0.5;
+          transition: opacity 420ms ease;
+        }
+
+        :global(body.theme-dark) .mountain-mid::before {
+          opacity: 0.18;
         }
 
         @media (max-width: 768px) {

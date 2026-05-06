@@ -176,9 +176,10 @@ export default function About() {
           max-width: 900px;
           margin: 0 auto;
           background: var(--color-bg-card);
-          border: 3px solid var(--color-accent-dark);
+          border: 2px solid var(--color-accent-dark);
+          border-radius: 0;
           box-shadow:
-            6px 6px 0 0 var(--color-accent-dark),
+            3px 3px 0 0 var(--color-accent-dark),
             inset -2px -2px 0 0 rgba(0,0,0,0.08),
             inset 2px 2px 0 0 rgba(255,255,255,0.5);
         }
@@ -186,7 +187,8 @@ export default function About() {
         /* ── Abas ── */
         .about-tabs {
           display: flex;
-          border-bottom: 3px solid var(--color-accent-dark);
+          border-bottom: 2px solid var(--color-accent-dark);
+          background: rgba(248,244,232,0.45);
         }
 
         .about-tab {
@@ -194,7 +196,7 @@ export default function About() {
           padding: 0.9rem 1rem;
           background: rgba(248,244,232,0.6);
           border: none;
-          border-right: 3px solid var(--color-accent-dark);
+          border-right: 2px solid var(--color-accent-dark);
           font-family: var(--font-family-display);
           font-size: 0.6rem;
           letter-spacing: 0.06em;
@@ -218,8 +220,8 @@ export default function About() {
           background: var(--color-bg-card);
           color: var(--color-accent-dark);
           position: relative;
-          margin-bottom: -3px;
-          padding-bottom: calc(0.9rem + 3px);
+          margin-bottom: -2px;
+          padding-bottom: calc(0.9rem + 2px);
         }
 
         /* ── Painel genérico ── */
@@ -247,8 +249,9 @@ export default function About() {
             rgba(45,155,78,0.1),
             rgba(91,200,245,0.1)
           );
-          border: 3px solid var(--color-accent-dark);
-          box-shadow: 4px 4px 0 0 var(--color-accent-dark);
+          border: 2px solid var(--color-accent-dark);
+          border-radius: 0;
+          box-shadow: 3px 3px 0 0 var(--color-accent-dark);
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -329,6 +332,7 @@ export default function About() {
           background: rgba(248,244,232,0.7);
           border: 2px solid rgba(26,71,42,0.18);
           border-left: 4px solid var(--color-accent);
+          border-radius: 0;
         }
 
         .formation-degree-icon {
@@ -370,6 +374,7 @@ export default function About() {
           background: rgba(248,244,232,0.7);
           border: 2px solid rgba(26,71,42,0.15);
           border-top: 3px solid var(--color-accent-dark);
+          border-radius: 0;
           display: grid;
           gap: 0.3rem;
           transition: transform var(--transition-fast), box-shadow var(--transition-fast);
@@ -425,6 +430,54 @@ export default function About() {
           background: rgba(248,244,232,0.5);
           border: 2px solid rgba(26,71,42,0.1);
           border-left: 4px solid var(--color-accent-sky);
+          border-radius: 0;
+        }
+
+        :global(body.theme-dark) .about-card,
+        :global(body.theme-dark) .about-tab.is-active {
+          background: rgba(24, 35, 56, 0.92);
+          border-color: #bcd4ff;
+          box-shadow:
+            3px 3px 0 0 #bcd4ff,
+            inset -2px -2px 0 0 rgba(0, 0, 0, 0.22),
+            inset 2px 2px 0 0 rgba(224, 236, 255, 0.08);
+        }
+
+        :global(body.theme-dark) .about-tabs {
+          border-bottom-color: #bcd4ff;
+          background: rgba(18, 28, 46, 0.8);
+        }
+
+        :global(body.theme-dark) .about-tab {
+          background: rgba(18, 28, 46, 0.72);
+          border-right-color: #bcd4ff;
+          color: #9eb5da;
+        }
+
+        :global(body.theme-dark) .about-tab:hover,
+        :global(body.theme-dark) .about-tab.is-active,
+        :global(body.theme-dark) .about-q-label,
+        :global(body.theme-dark) .formation-block-label {
+          color: #d8e7ff;
+        }
+
+        :global(body.theme-dark) .about-photo-placeholder,
+        :global(body.theme-dark) .formation-degree-card,
+        :global(body.theme-dark) .formation-cert-card,
+        :global(body.theme-dark) .formation-continuous {
+          background: rgba(19, 30, 49, 0.86);
+          border-color: #9db8e8;
+          box-shadow: 3px 3px 0 0 #9db8e8;
+        }
+
+        :global(body.theme-dark) .formation-cert-card {
+          border-top-color: #9db8e8;
+        }
+
+        :global(body.theme-dark) .about-photo-hint,
+        :global(body.theme-dark) .formation-cert-issuer,
+        :global(body.theme-dark) .formation-cert-year {
+          color: #8ea0be;
         }
 
         /* ── Responsivo ── */

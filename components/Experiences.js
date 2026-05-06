@@ -105,6 +105,7 @@ export default function Experiences() {
           background: rgba(248, 244, 232, 0.7);
           border: 2px solid rgba(26, 71, 42, 0.18);
           border-left: 4px solid var(--color-accent);
+          border-radius: 0;
         }
 
         .exp-project-header {
@@ -121,6 +122,7 @@ export default function Experiences() {
           color: #fff;
           background: var(--color-accent);
           padding: 0.25rem 0.5rem;
+          border-radius: 0;
           text-transform: uppercase;
           flex-shrink: 0;
         }
@@ -164,6 +166,21 @@ export default function Experiences() {
           display: flex;
           flex-wrap: wrap;
           gap: 0.5rem;
+        }
+
+        :global(body.theme-dark) .exp-project-card {
+          background: rgba(19, 30, 49, 0.86);
+          border-color: rgba(188, 212, 255, 0.45);
+          border-left-color: #79a6ff;
+        }
+
+        :global(body.theme-dark) .exp-project-tag {
+          background: #35578d;
+          color: #eef4ff;
+        }
+
+        :global(body.theme-dark) .exp-project-label {
+          color: #cfe1ff;
         }
       `}</style>
     </section>
