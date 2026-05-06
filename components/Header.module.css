@@ -58,6 +58,23 @@
   color: var(--color-accent);
 }
 
+@keyframes kickerPixelOut {
+  0%   { opacity: 1; transform: scale(1);    filter: brightness(1); }
+  40%  { opacity: 1; transform: scale(1.1);  filter: brightness(2) blur(1px); }
+  100% { opacity: 0; transform: scale(0.7);  filter: brightness(3) blur(2px); }
+}
+
+@keyframes kickerPixelIn {
+  0%   { opacity: 0; transform: scale(0.7);  filter: brightness(3) blur(2px); }
+  60%  { opacity: 1; transform: scale(1.05); filter: brightness(1.5) blur(0.5px); }
+  100% { opacity: 1; transform: scale(1);    filter: brightness(1); }
+}
+
+.kickerChar { display: inline-block; }
+
+.kickerChar--out { animation: kickerPixelOut 0.6s ease-in forwards; }
+.kickerChar--in  { animation: kickerPixelIn  0.6s ease-out forwards; }
+
 .subtitle {
   display: inline-flex;
   align-items: center;
@@ -101,6 +118,7 @@
   image-rendering: pixelated;
   animation: sun-bob 3s ease-in-out infinite;
   transition: transform 200ms ease;
+  touch-action: manipulation;
 }
 
 .sunCharacter:focus-visible {
@@ -233,6 +251,100 @@
 .isNight .smile { opacity: 0; }
 
 /* =====================================================================
+   Lua: touca de dormir + olhos + boca + ZZZ
+   ===================================================================== */
+.sleepingCap {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-bottom: 28px solid #6a8fc8;
+  opacity: 0;
+  transition: opacity 280ms ease;
+}
+.sleepingCap::before {
+  content: '';
+  position: absolute;
+  bottom: -28px;
+  left: -18px;
+  width: 36px;
+  height: 12px;
+  background: #6a8fc8;
+  border-radius: 2px;
+}
+.sleepingCapPom {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #e6edf8;
+}
+.isNight .sleepingCap { opacity: 1; }
+
+.sleepEye {
+  position: absolute;
+  width: 10px;
+  height: 3px;
+  background: #6e7a8a;
+  border-radius: 1px;
+  opacity: 0;
+  transition: opacity 280ms ease;
+}
+.sleepEyeLeft  { top: 38%; left: 20%; }
+.sleepEyeRight { top: 38%; right: 20%; }
+.isNight .sleepEye { opacity: 1; }
+
+.sleepMouth {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 5px;
+  border: 2px solid #8f9aa8;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  opacity: 0;
+  transition: opacity 280ms ease;
+}
+.isNight .sleepMouth { opacity: 1; }
+
+@keyframes zFloat {
+  0%   { opacity: 0; transform: translate(0, 0) scale(0.7); }
+  20%  { opacity: 1; }
+  80%  { opacity: 0.8; }
+  100% { opacity: 0; transform: translate(10px, -22px) scale(1); }
+}
+
+.zzzWrap {
+  position: absolute;
+  top: 4px;
+  right: -4px;
+  opacity: 0;
+  transition: opacity 280ms ease;
+  pointer-events: none;
+}
+.isNight .zzzWrap { opacity: 1; }
+
+.zLetter {
+  position: absolute;
+  font-family: var(--font-family-display);
+  color: #c7d9ff;
+  animation: zFloat 3s ease-in-out infinite;
+  line-height: 1;
+}
+.z1 { top: 0;    right: 0;   font-size: 0.45rem; animation-delay: 0s; }
+.z2 { top: -8px; right: 7px; font-size: 0.55rem; animation-delay: 1s; }
+.z3 { top: -18px; right: 12px; font-size: 0.65rem; animation-delay: 2s; }
+
+/* =====================================================================
    Nuvens animadas no céu
    ===================================================================== */
 
@@ -294,13 +406,41 @@
 /* =====================================================================
    Pipas no céu
    ===================================================================== */
-.kite {
-  position: absolute;
-  animation: kite-float 6s ease-in-out infinite;
+
+@keyframes kiteWind1 {
+  0%   { transform: rotate(-4deg) translate(0px,   0px); }
+  12%  { transform: rotate( 7deg) translate(5px,  -9px); }
+  28%  { transform: rotate(-2deg) translate(-3px, -5px); }
+  45%  { transform: rotate( 9deg) translate(7px, -13px); }
+  60%  { transform: rotate(-5deg) translate(-4px, -7px); }
+  78%  { transform: rotate( 5deg) translate(3px, -11px); }
+  100% { transform: rotate(-4deg) translate(0px,   0px); }
 }
 
-.kite1 { top: 20%; left: 15%; }
-.kite2 { top: 30%; right: 25%; animation-delay: -2s; }
+@keyframes kiteWind2 {
+  0%   { transform: rotate( 3deg) translate(0px,   0px); }
+  18%  { transform: rotate(-6deg) translate(-6px,  -8px); }
+  35%  { transform: rotate( 5deg) translate(4px, -12px); }
+  52%  { transform: rotate(-3deg) translate(-2px,  -6px); }
+  70%  { transform: rotate( 8deg) translate(6px, -10px); }
+  85%  { transform: rotate(-4deg) translate(-3px,  -4px); }
+  100% { transform: rotate( 3deg) translate(0px,   0px); }
+}
+
+@keyframes tailSway {
+  0%   { transform: rotate(-10deg) skewX( 3deg); }
+  25%  { transform: rotate(  8deg) skewX(-4deg); }
+  50%  { transform: rotate( -6deg) skewX( 2deg); }
+  75%  { transform: rotate( 11deg) skewX(-3deg); }
+  100% { transform: rotate(-10deg) skewX( 3deg); }
+}
+
+.kite {
+  position: absolute;
+}
+
+.kite1 { top: 20%; left: 15%; animation: kiteWind1 7s ease-in-out infinite; }
+.kite2 { top: 30%; right: 25%; animation: kiteWind2 9s ease-in-out infinite; animation-delay: -3s; }
 
 .kiteBody {
   display: block;
@@ -334,8 +474,17 @@
   );
 }
 
-.kite1 .kiteTail { height: 100px; }
-.kite2 .kiteTail { height: 70px; }
+.kite1 .kiteTail {
+  height: 100px;
+  transform-origin: top center;
+  animation: tailSway 7s ease-in-out infinite;
+}
+.kite2 .kiteTail {
+  height: 70px;
+  transform-origin: top center;
+  animation: tailSway 9s ease-in-out infinite;
+  animation-delay: -3s;
+}
 
 /* =====================================================================
    Indicador de scroll
@@ -428,10 +577,52 @@
 .hStar4 { top: 6%;  left: 80%; animation-delay: -2s; }
 .hStar5 { top: 22%; left: 35%; animation-delay: -1.8s; width: 2px; height: 2px; }
 
+/* =====================================================================
+   Pipa que segue o mouse
+   ===================================================================== */
+.kiteCursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform;
+  transform: translate(-200px, -200px);
+}
+
+.kiteCursor .kiteBody {
+  display: block;
+  width: 22px;
+  height: 22px;
+  background: var(--color-accent-kite);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  box-shadow: inset -3px -3px 0 rgba(0, 0, 0, 0.15);
+}
+
+.kiteCursor .kiteTail {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 2px;
+  height: 45px;
+  transform-origin: top center;
+  transition: transform 80ms ease-out;
+  background: repeating-linear-gradient(
+    180deg,
+    var(--color-accent-dark) 0px,
+    var(--color-accent-dark) 5px,
+    transparent 5px,
+    transparent 10px
+  );
+}
+
 @media (prefers-reduced-motion: reduce) {
   .cloud1 { animation: none; transform: translateX(15vw); }
   .cloud2 { animation: none; transform: translateX(45vw); }
   .cloud3 { animation: none; transform: translateX(72vw); }
   .headerStar { animation: none; opacity: 0.7; }
-  .kite { animation: none; }
+  .kite1, .kite2 { animation: none; }
+  .kite1 .kiteTail, .kite2 .kiteTail { animation: none; }
+  .zLetter { animation: none; opacity: 0.6; }
+  .kickerChar--out, .kickerChar--in { animation: none; opacity: 1; }
 }
