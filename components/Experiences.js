@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styles from './Experiences.module.css';
 
 const TECH_DESCRIPTIONS = {
@@ -26,7 +27,7 @@ const experiences = [
     projects: [
       {
         id: 'p1',
-        name: 'Close Up',
+        name: ' - Close Up',
         context: 'O projeto consistia no desenvolvimento de um sistema web para gerenciamento de Ordens de Serviço (OS) da Close-Up. A plataforma possuía diferentes fluxos e permissões para cada perfil de usuário, incluindo telas de cadastro, aprovação, encaminhamento de solicitações, monitoramento, geração e extração de relatórios, além de registro de logs. Era um sistema complexo, com diversas regras de negócio relacionadas à criação e aprovação das ordens de serviço, como permissões específicas por cargo, validações de preenchimento, prazos de aprovação e regras específicas para cada tipo de OS.',
         contribution: `Atuei na área de testes e validação do sistema, sendo responsável pela criação e execução de roteiros de testes com base nos requisitos funcionais e não funcionais do projeto. Após a validação interna, os testes eram encaminhados ao cliente para homologação, acompanhando de perto todo o processo para esclarecer dúvidas, validar documentações e registrar novos requisitos identificados durante os testes.
 
@@ -41,7 +42,7 @@ Eu criava todos os cards de bugs, tentava ao máximo cooperar com o desenvolvedo
       },
       {
         id: 'p2',
-        name: 'Automação de Onboarding de Colaboradores',
+        name: 'Gestão de Equipamentos e Controle de Estoque',
         context: 'Solução de RH para automatizar o processo de integração de novos funcionários: criação de acessos, envio de documentos e notificações automáticas.',
         contribution: 'Executei testes manuais em múltiplos ambientes (dev, homologação e produção), documentei cenários críticos e apoiei o refinamento dos fluxos de automação junto ao time de desenvolvimento.',
         stack: ['Power Automate', 'Power Apps', 'Microsoft Teams', 'SharePoint', 'Azure DevOps'],
@@ -73,6 +74,16 @@ Eu criava todos os cards de bugs, tentava ao máximo cooperar com o desenvolvedo
 ];
 
 export default function Experiences() {
+  const [expanded, setExpanded] = useState(new Set());
+
+  function toggle(id) {
+    setExpanded(prev => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
+  }
+
   return (
     <section className={styles.experiences} id="experiencias">
       <div className="container">
@@ -93,48 +104,66 @@ export default function Experiences() {
                 </div>
 
                 <div className={styles.projects}>
-                  {exp.projects.map((project) => (
-                    <div key={project.id} className={styles.projectCard}>
-                      <div className={styles.projectHeader}>
-                        <span className={styles.projectTag}>projeto</span>
-                        <h4 className={styles.projectName}>{project.name}</h4>
-                      </div>
+                  {exp.projects.map((project) => {
+                    const isOpen = expanded.has(project.id);
+                    return (
+                      <div key={project.id} className={styles.projectCard}>
+                        <button
+                          className={styles.projectToggle}
+                          aria-expanded={isOpen}
+                          aria-controls={`details-${project.id}`}
+                          onClick={() => toggle(project.id)}
+                        >
+                          <span className={styles.projectTag}>projeto</span>
+                          <h4 className={styles.projectName}>{project.name}</h4>
+                          <span className={styles.chevron} aria-hidden="true">▶</span>
+                        </button>
 
-                      <div className={styles.projectBody}>
-                        <div className={styles.projectSection}>
-                          <span className={styles.projectLabel}>Contexto</span>
-                          <p className={styles.projectText}>{project.context}</p>
-                        </div>
-                        <div className={styles.projectSection}>
-                          <span className={styles.projectLabel}>Contribuição</span>
-                          <p className={styles.projectText}>{project.contribution}</p>
-                        </div>
-                      </div>
+                        <div
+                          id={`details-${project.id}`}
+                          className={`${styles.projectDetails}${isOpen ? ` ${styles.open}` : ''}`}
+                        >
+                          <div className={styles.projectDetailsInner}>
+                            <div className={styles.projectDetailsContent}>
+                              <div className={styles.projectBody}>
+                                <div className={styles.projectSection}>
+                                  <span className={styles.projectLabel}>Contexto</span>
+                                  <p className={styles.projectText}>{project.context}</p>
+                                </div>
+                                <div className={styles.projectSection}>
+                                  <span className={styles.projectLabel}>Contribuição</span>
+                                  <p className={styles.projectText}>{project.contribution}</p>
+                                </div>
+                              </div>
 
-                      <div className={styles.projectStack}>
-                        {project.stack.map((tech, i) => (
-                          <span key={i} className={styles.stackTagWrapper}>
-                            <span
-                              className={styles.stackTag}
-                              tabIndex="0"
-                              aria-describedby={`tip-${project.id}-${i}`}
-                            >
-                              {tech}
-                            </span>
-                            {TECH_DESCRIPTIONS[tech] && (
-                              <span
-                                role="tooltip"
-                                id={`tip-${project.id}-${i}`}
-                                className={styles.tooltip}
-                              >
-                                {TECH_DESCRIPTIONS[tech]}
-                              </span>
-                            )}
-                          </span>
-                        ))}
+                              <div className={styles.projectStack}>
+                                {project.stack.map((tech, i) => (
+                                  <span key={i} className={styles.stackTagWrapper}>
+                                    <span
+                                      className={styles.stackTag}
+                                      tabIndex="0"
+                                      aria-describedby={`tip-${project.id}-${i}`}
+                                    >
+                                      {tech}
+                                    </span>
+                                    {TECH_DESCRIPTIONS[tech] && (
+                                      <span
+                                        role="tooltip"
+                                        id={`tip-${project.id}-${i}`}
+                                        className={styles.tooltip}
+                                      >
+                                        {TECH_DESCRIPTIONS[tech]}
+                                      </span>
+                                    )}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </article>
             ))}

@@ -136,8 +136,8 @@ export default function About() {
                   <span className={styles.degreeIcon} aria-hidden="true">🎓</span>
                   <div>
                     <p className={styles.degreeCourse}>Análise e Desenvolvimento de Sistemas</p>
-                    <p className={styles.degreeInstitution}>Universidade Anhembi Morumbi</p>
-                    <span className={styles.degreePeriod}>2020 – 2022 · Concluído</span>
+                    <p className={styles.degreeInstitution}>FMU - Centro Universitário das Faculdades Metropolitanas Unidas</p>
+                    <span className={styles.degreePeriod}>2022 – 2024 · Concluído</span>
                   </div>
                 </div>
               </div>
