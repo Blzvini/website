@@ -11,7 +11,7 @@ const experiences = [
     projects: [
       {
         id: 'p1',
-        name: ' - Close Up',
+        name: 'Close Up',
         context: 'O projeto consistia no desenvolvimento de um sistema web para gerenciamento de Ordens de Serviço (OS) da Close-Up. A plataforma possuía diferentes fluxos e permissões para cada perfil de usuário, incluindo telas de cadastro, aprovação, encaminhamento de solicitações, monitoramento, geração e extração de relatórios, além de registro de logs. Era um sistema complexo, com diversas regras de negócio relacionadas à criação e aprovação das ordens de serviço, como permissões específicas por cargo, validações de preenchimento, prazos de aprovação e regras específicas para cada tipo de OS.',
         contribution: `Atuei na área de testes e validação do sistema, sendo responsável pela criação e execução de roteiros de testes com base nos requisitos funcionais e não funcionais do projeto. Após a validação interna, os testes eram encaminhados ao cliente para homologação, acompanhando de perto todo o processo para esclarecer dúvidas, validar documentações e registrar novos requisitos identificados durante os testes.
 
@@ -98,9 +98,14 @@ export default function Experiences() {
                           aria-controls={`details-${project.id}`}
                           onClick={() => toggle(project.id)}
                         >
-                          <span className={styles.projectTag}>projeto</span>
-                          <h4 className={styles.projectName}>{project.name}</h4>
-                          <span className={styles.chevron} aria-hidden="true">▶</span>
+                          <span
+                            className={`${styles.folderIcon} ${isOpen ? styles.folderIconOpen : ''}`}
+                            aria-hidden="true"
+                          />
+                          <h4 className={styles.projectName}>
+                            <span className={styles.projectNamePrefix} aria-hidden="true">./</span>
+                            {project.name}
+                          </h4>
                         </button>
 
                         <div
