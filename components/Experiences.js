@@ -163,8 +163,27 @@ Participei da construção das pipelines responsáveis pela automação do fluxo
       {
         id: 'p9',
         name: 'Niteo/TimeTrack',
-        context: ``,
-        contribution: ``,
+        context: `O projeto tinha como objetivo recriar o sistema interno de apontamento de horas da empresa, chamado TimeTrack, utilizando o ecossistema Microsoft.
+
+A proposta era substituir a plataforma anterior por uma solução desenvolvida com Power Apps, Power Automate e banco de dados Azure, centralizando o controle de horas trabalhadas pelos colaboradores em seus respectivos projetos.
+
+O sistema permitia que os usuários registrassem suas horas de trabalho diariamente, acompanhassem pendências de lançamento e visualizassem informações consolidadas da semana através de uma interface em formato de calendário.
+
+Além disso, o aplicativo possuía integração com o Azure AD para identificação automática dos usuários e carregamento dos projetos vinculados a cada colaborador.`,
+        contribution: `Participei ativamente das reuniões de planning e definição das funcionalidades do sistema, contribuindo no levantamento dos requisitos e no planejamento das entregas.
+
+Atuei no desenvolvimento das telas no Power Apps com base nos protótipos criados no Figma, além da implementação dos fluxos automatizados no Power Automate para consolidação e integração dos dados com o banco de dados.
+
+Também desenvolvi views e procedures SQL utilizadas para gerenciamento das informações da aplicação.
+
+Uma das funcionalidades implementadas consistia em consultar automaticamente os dados do usuário no Azure AD, buscar seus projetos cadastrados no banco de dados e consolidar essas informações em uma interface de calendário. Nessa tela, os usuários conseguiam visualizar:
+
+Quantidade de horas esperadas por dia;
+Horas lançadas na semana;
+Dias com horas pendentes;
+Informações relacionadas aos projetos vinculados.
+
+O sistema também permitia operações administrativas, como cadastro, edição e exclusão de projetos, além da inclusão e remoção de colaboradores nos projetos.`,
         stack: ['Power Apps', 'Power Automate', 'CSS', 'HTML', 'SQL', 'Azure Database'],
       },
     ],
