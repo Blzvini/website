@@ -108,3 +108,187 @@
 }
 
 :global(body.theme-dark) .label { color: #d8e7ff; }
+
+/* ─── Tooltips (contacts + games) ─── */
+.contactItem {
+  position: relative;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  width: max-content;
+  max-width: 14rem;
+  padding: 0.35rem 0.6rem;
+  background: var(--color-accent-dark);
+  color: var(--color-accent-sand);
+  font-family: var(--font-family-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+  border: 1px solid rgba(255, 209, 102, 0.3);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  white-space: normal;
+}
+
+.contactItem:hover .tooltip,
+.contactItem:focus-within .tooltip,
+.gameCard:hover .tooltip,
+.gameCard:focus-within .tooltip {
+  opacity: 1;
+}
+
+:global(body.theme-dark) .tooltip {
+  background: #1e3a5f;
+  color: #c7d9ff;
+  border-color: rgba(199, 217, 255, 0.3);
+}
+
+/* ─── Seção de jogos ─── */
+.gameSection {
+  margin-top: 2.5rem;
+  padding-top: 1.75rem;
+  border-top: 1px dashed rgba(0, 0, 0, 0.18);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gameHeading {
+  font-family: var(--font-family-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-accent-dark);
+  opacity: 0.65;
+  margin: 0 0 1rem;
+}
+
+.gameList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.gameCard {
+  position: relative;
+  flex: 1 1 190px;
+  max-width: 260px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid var(--color-accent-dark);
+  box-shadow:
+    3px 3px 0 0 var(--color-accent-dark),
+    0 8px 20px rgba(0, 0, 0, 0.12);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+              background var(--transition-fast);
+}
+
+.gameCard > a,
+.gameCard > div {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.gameCard > a:hover {
+  background: #fff;
+  cursor: pointer;
+}
+
+.gameCard:has(> a):hover {
+  transform: translate(2px, 2px);
+  box-shadow:
+    1px 1px 0 0 var(--color-accent-dark),
+    0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.gameIcon {
+  display: inline-grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+  background: var(--color-accent-dark);
+  color: var(--color-accent-sand);
+}
+
+.gameBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.gameLabel {
+  font-family: var(--font-family-display);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-accent-dark);
+  opacity: 0.65;
+}
+
+.gameNick {
+  font-family: var(--font-family-mono);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.gameTagline {
+  font-size: 0.68rem;
+  color: var(--color-text-secondary);
+  font-style: italic;
+  margin-top: 0.15rem;
+}
+
+/* ─── Modo escuro: game section ─── */
+:global(body.theme-dark) .gameSection {
+  border-top-color: rgba(199, 217, 255, 0.15);
+}
+
+:global(body.theme-dark) .gameHeading {
+  color: var(--color-accent-sand);
+  opacity: 0.8;
+}
+
+:global(body.theme-dark) .gameCard {
+  background: rgba(24, 35, 56, 0.92);
+  border-color: rgba(199, 217, 255, 0.32);
+  box-shadow:
+    3px 3px 0 0 rgba(199, 217, 255, 0.18),
+    0 8px 20px rgba(0, 0, 0, 0.45);
+}
+
+:global(body.theme-dark) .gameCard:has(> a):hover {
+  box-shadow:
+    1px 1px 0 0 rgba(199, 217, 255, 0.18),
+    0 8px 20px rgba(0, 0, 0, 0.45);
+}
+
+:global(body.theme-dark) .gameCard > a:hover {
+  background: rgba(37, 52, 82, 0.95);
+  color: #e6edf8;
+}
+
+:global(body.theme-dark) .gameIcon { background: #2b456f; }
+
+:global(body.theme-dark) .gameLabel {
+  color: var(--color-accent-sand);
+  opacity: 0.7;
+}
+
+:global(body.theme-dark) .gameNick { color: #e6edf8; }
+
+:global(body.theme-dark) .gameTagline { color: rgba(199, 217, 255, 0.45); }

@@ -184,6 +184,21 @@
   overflow: hidden;
 }
 
+@keyframes openOverflow {
+  to { overflow: visible; }
+}
+
+.projectDetails.open .projectDetailsInner {
+  animation: openOverflow 0s 280ms forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projectDetails.open .projectDetailsInner {
+    animation: none;
+    overflow: visible;
+  }
+}
+
 .projectDetailsContent {
   padding-top: 0.85rem;
 }

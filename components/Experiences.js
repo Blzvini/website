@@ -68,7 +68,7 @@ Era um sistema corporativo completo, focado em automatizar processos internos e 
 Realizava testes funcionais das funcionalidades implementadas, registrava bugs e inconsistências encontradas durante as validações e acompanhava o processo de correção junto aos desenvolvedores. Após as validações internas, os testes eram encaminhados para homologação do cliente.
 
 Também participei de reuniões técnicas com a equipe de desenvolvimento para entendimento das regras de negócio, alinhamento de funcionalidades e discussão de problemas identificados durante os testes.`,
-        stack: ['Sharepoint', 'Azure DevOps', 'Microsoft Teams', 'Excel'],
+        stack: ['SharePoint', 'Azure DevOps', 'Microsoft Teams', 'Excel'],
       },
       {
         id: 'p4',
@@ -158,7 +158,7 @@ Toda a execução era orquestrada através de pipelines responsáveis pela inges
 Atuei na integração com o Azure Blob Storage para carregamento e manipulação dos dados dentro do Microsoft Fabric. Também desenvolvi notebooks para conversão de processos SQL em PySpark, auxiliando na implementação das transformações necessárias para o ETL.
 
 Participei da construção das pipelines responsáveis pela automação do fluxo completo de processamento e estive presente em diversas reuniões de alinhamento para entendimento tanto das estruturas de dados quanto das regras de negócio envolvidas nos relatórios finais.`,
-        stack: ['Python', 'SQL', 'PySpark', 'Microsoft Fabric', 'Microsoft WareHouse', 'Microsoft DataLake', 'Data Factory', 'Power BI', 'Azure DevOps', 'MSSQL', 'Máquinas virtuais Azure', 'Excalidraw'],
+        stack: ['Python', 'SQL', 'PySpark', 'Microsoft Fabric', 'WareHouse', 'DataLake', 'Data Factory', 'Power BI', 'Azure DevOps', 'MSSQL', 'Máquinas virtuais Azure', 'Excalidraw'],
       },
       {
         id: 'p9',
@@ -185,7 +185,7 @@ Informações relacionadas aos projetos vinculados.
 
 O sistema também permitia operações administrativas, como cadastro, edição e exclusão de projetos, além da inclusão e remoção de colaboradores nos projetos.`,
         stack: ['Power Apps', 'Power Automate', 'CSS', 'HTML', 'SQL', 'Azure Database'],
-      },
+      }
     ],
   },
   {
