@@ -220,6 +220,10 @@
   margin: 0;
 }
 
+.projectText + .projectText {
+  margin-top: 0.75rem;
+}
+
 .projectStack {
   display: flex;
   flex-wrap: wrap;

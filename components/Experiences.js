@@ -11,7 +11,7 @@ const experiences = [
     projects: [
       {
         id: 'p1',
-        name: 'Close Up',
+        name: 'Close-Up',
         context: 'O projeto consistia no desenvolvimento de um sistema web para gerenciamento de Ordens de Serviço (OS) da Close-Up. A plataforma possuía diferentes fluxos e permissões para cada perfil de usuário, incluindo telas de cadastro, aprovação, encaminhamento de solicitações, monitoramento, geração e extração de relatórios, além de registro de logs. Era um sistema complexo, com diversas regras de negócio relacionadas à criação e aprovação das ordens de serviço, como permissões específicas por cargo, validações de preenchimento, prazos de aprovação e regras específicas para cada tipo de OS.',
         contribution: `Atuei na área de testes e validação do sistema, sendo responsável pela criação e execução de roteiros de testes com base nos requisitos funcionais e não funcionais do projeto. Após a validação interna, os testes eram encaminhados ao cliente para homologação, acompanhando de perto todo o processo para esclarecer dúvidas, validar documentações e registrar novos requisitos identificados durante os testes.
 
@@ -22,14 +22,79 @@ Como o projeto não utilizava ferramentas como Azure DevOps para gerenciamento d
 Além disso, fui responsável pela abertura e documentação de bugs, buscando sempre fornecer o máximo de contexto possível para facilitar a análise dos desenvolvedores. Isso incluía envio de requisições via cURL, investigação de respostas no Postman, validação de dados no MSSQL e acompanhamento individual com os desenvolvedores para reprodução e correção dos problemas encontrados. 
 
 Eu criava todos os cards de bugs, tentava ao máximo cooperar com o desenvolvedor, informando no card o bug, passando o CURL das requisições que eu tinha feito até chegar em determinado erro, ou até mesmo investigando as respostas que eu tinha no Postman, fazia averiguação dos dados no MSSQL, me juntava com cada desenvolvedor separadamente para informar sobre os erros que estavam acontecendo.`,
-        stack: ['Excel', 'Postman', 'SQL', 'Gherkin (BDD)', 'Jira' ],
+        stack: ['Excel', 'Postman', 'SQL', 'Microsoft Teams', 'Gherkin (BDD)', 'Jira' ],
       },
       {
         id: 'p2',
-        name: 'Gestão de Equipamentos e Controle de Estoque',
-        context: 'Solução de RH para automatizar o processo de integração de novos funcionários: criação de acessos, envio de documentos e notificações automáticas.',
-        contribution: 'Executei testes manuais em múltiplos ambientes (dev, homologação e produção), documentei cenários críticos e apoiei o refinamento dos fluxos de automação junto ao time de desenvolvimento.',
-        stack: ['Power Automate', 'Power Apps', 'Microsoft Teams', 'SharePoint', 'Azure DevOps'],
+        name: 'Niteo/Gestao-de-Equipamentos-e-Controle-de-Estoque',
+        context: `A empresa possuía um aplicativo interno utilizado pelo RH para cadastro de novos colaboradores, gerenciamento de permissões na Azure e acompanhamento de processos internos. Dentro desse cenário, surgiu a necessidade de desenvolver um novo módulo voltado para a gestão de equipamentos e controle de estoque. \n
+
+O sistema foi projetado para centralizar todo o ciclo de vida dos equipamentos da empresa, desde o cadastro dos contratos de locação até o acompanhamento da utilização dos dispositivos pelos colaboradores. O módulo incluía gerenciamento de contratos, controle de estoque, acompanhamento de vencimentos, controle de entrega e devolução de equipamentos, além de monitoramento completo dos ativos.
+
+Foram desenvolvidas funcionalidades como:
+
+• CRUD de equipamentos e contratos;
+• Associação entre equipamentos, contratos e responsáveis;
+• Controle de equipamentos em uso e disponíveis;
+• Gestão de entregas e devoluções;
+• Monitoramento de contratos ativos, vencidos e próximos do vencimento;
+• Relatórios com indicadores financeiros e quantitativos;
+• Registro de logs para rastreamento e histórico das movimentações.
+
+Antes da implementação do sistema, grande parte desse controle era realizado manualmente através de planilhas. Eu era responsável por atualizar essas informações, acompanhar devoluções de equipamentos de colaboradores desligados, organizar envios para novos funcionários, calcular prazos e custos de frete, além de realizar o controle de devolução de notebooks para empresas terceirizadas de aluguel quando os contratos expiravam.`,
+        contribution: `Atuei diretamente no planejamento, design e desenvolvimento completo da aplicação. Tive liberdade para desenhar toda a interface do sistema, respeitando os padrões de UI/UX definidos pela empresa.
+
+Participei de reuniões de levantamento de requisitos e definição de fluxos do sistema, contribuindo tanto na parte técnica quanto na organização das regras de negócio. Fui responsável pela criação de todas as telas e operações CRUD no Power Apps, além da implementação dos fluxos automatizados no Power Automate para criação, atualização e remoção de dados.
+
+Também desenvolvi procedures e views no MSSQL para integração com os fluxos automatizados e consumo das informações dentro da aplicação.`,
+        stack: ['Power Automate', 'Power Apps', 'Microsoft Teams', 'Excel', 'SQL', 'MSSQL'],
+      },
+      {
+        id: 'p3',
+        name: 'Braskem/SharePoint',
+        context: `O projeto consistia no desenvolvimento de soluções personalizadas dentro do SharePoint para gerenciamento de fluxos internos semelhantes a ordens de serviço. O sistema possuía diferentes níveis de permissão de acordo com os cargos dos usuários e abrangia desde a criação das solicitações até os processos de aprovação.
+
+A aplicação incluía funcionalidades como:
+
+• Fluxos de aprovação;
+• Cadastro de informações e upload de arquivos;
+• Extração de relatórios;
+• Disparos automáticos de e-mails para notificações de criação, aprovação e edição;
+• Controle de permissões por perfil de usuário.
+
+Era um sistema corporativo completo, focado em automatizar processos internos e centralizar o gerenciamento das solicitações dentro do ambiente SharePoint.`,
+        contribution: `Atuei como Tester | QA no projeto, sendo responsável pela criação e organização dos cenários de testes no Azure DevOps com base nos requisitos do sistema.
+
+Realizava testes funcionais das funcionalidades implementadas, registrava bugs e inconsistências encontradas durante as validações e acompanhava o processo de correção junto aos desenvolvedores. Após as validações internas, os testes eram encaminhados para homologação do cliente.
+
+Também participei de reuniões técnicas com a equipe de desenvolvimento para entendimento das regras de negócio, alinhamento de funcionalidades e discussão de problemas identificados durante os testes.`,
+        stack: ['Sharepoint', 'Azure DevOps', 'Microsoft Teams', 'Excel'],
+      },
+      {
+        id: 'p4',
+        name: 'Braskem/Power-BI',
+        context: `O projeto consistia na modernização visual de dashboards já existentes, desenvolvidos anteriormente para a Braskem. A proposta era melhorar a experiência do usuário e atualizar o visual das interfaces com base em um novo protótipo criado no Figma, seguindo as diretrizes visuais e cores da marca.
+
+O desafio do projeto era equilibrar melhorias de UI/UX sem comprometer a usabilidade, a legibilidade das informações e as limitações técnicas do Power BI.`,
+        contribution: `Fui responsável pela implementação das melhorias visuais nos dashboards, realizando a adaptação da interface com base nos protótipos definidos no Figma.
+
+Atuei na estilização dos componentes dentro do Power BI, buscando manter a consistência visual da marca e, ao mesmo tempo, preservar a clareza das informações e a boa experiência de navegação dos usuários.
+
+Durante o processo, avaliei quais alterações eram viáveis tecnicamente e quais poderiam impactar negativamente a utilização dos dashboards, garantindo um equilíbrio entre design e funcionalidade.`,
+        stack: ['Power BI', 'HTML', 'CSS'],
+      },
+      {
+        id: 'p5',
+        name: 'Braskem/Documentacoes',
+        context: `O projeto consistia na criação de documentações técnicas e funcionais para diferentes aplicações desenvolvidas em Power Apps. O objetivo era produzir materiais que servissem tanto como guia para novos usuários quanto como fonte de consulta para usuários mais experientes.
+
+As documentações precisavam ser claras, didáticas e acessíveis, contendo exemplos visuais, imagens e GIFs demonstrando o funcionamento das funcionalidades. Além disso, todo o conteúdo deveria estar disponível em múltiplos idiomas: português, inglês, alemão e espanhol.`,
+        contribution: `Fui responsável pela criação e organização das documentações dentro do SharePoint.
+
+Participei de reuniões com as equipes envolvidas para compreender o funcionamento de cada aplicação e levantar todas as informações necessárias para construção dos materiais. Também utilizei os próprios sistemas para gerar os insumos visuais das documentações, realizando capturas de tela e gravações em GIF das funcionalidades demonstradas.
+
+Para o processo de tradução do conteúdo, utilizei ferramentas como DeepL e ChatGPT para adaptação das documentações para os demais idiomas, garantindo consistência e clareza das informações.`,
+        stack: ['SharePoint', 'LightShot', 'ScreenToGif', 'DeepL', 'Chat GPT' ],
       },
     ],
   },
@@ -56,6 +121,16 @@ Eu criava todos os cards de bugs, tentava ao máximo cooperar com o desenvolvedo
     ],
   },
 ];
+
+function renderText(text, className) {
+  return text.split('\n\n').filter(p => p.trim()).map((para, i) => (
+    <p key={i} className={className}>
+      {para.trim().split('\n').map((line, j, arr) => (
+        <span key={j}>{line}{j < arr.length - 1 && <br />}</span>
+      ))}
+    </p>
+  ));
+}
 
 export default function Experiences() {
   const [expanded, setExpanded] = useState(new Set());
@@ -117,11 +192,11 @@ export default function Experiences() {
                               <div className={styles.projectBody}>
                                 <div className={styles.projectSection}>
                                   <span className={styles.projectLabel}>Contexto</span>
-                                  <p className={styles.projectText}>{project.context}</p>
+                                  {renderText(project.context, styles.projectText)}
                                 </div>
                                 <div className={styles.projectSection}>
                                   <span className={styles.projectLabel}>Contribuição</span>
-                                  <p className={styles.projectText}>{project.contribution}</p>
+                                  {renderText(project.contribution, styles.projectText)}
                                 </div>
                               </div>
 
