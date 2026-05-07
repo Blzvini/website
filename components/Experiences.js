@@ -178,9 +178,15 @@ Participei da construção das pipelines responsáveis pela automação do fluxo
       {
         id: 'p10',
         name: 'Leitura-da-Luz',
-        context: ``,
-        contribution: ``,
-        stack: ['Python', 'SQL', 'PySpark', 'Microsoft Fabric', 'Microsoft WareHouse', 'Microsoft DataLake', 'Data Factory', 'Power BI', 'Azure DevOps', 'MSSQL', 'Máquinas virtuais Azure'],
+        context: `A empresa prestava serviços terceirizados para a Enel na área de leitura de consumo de energia elétrica na cidade de São Paulo.
+
+O trabalho era organizado através de roteiros distribuídos em um sistema baseado em SAP, onde cada equipe recebia diariamente as rotas de leitura das instalações elétricas. O processo exigia acompanhamento constante das operações em campo para garantir que as leituras fossem realizadas corretamente e dentro das regras operacionais estabelecidas pela concessionária.`,
+        contribution: `Minhas responsabilidades incluíam a distribuição diária das rotas entre os colaboradores, planejamento operacional das atividades do dia seguinte e acompanhamento em tempo real da execução das leituras realizadas em campo por uma equipe de aproximadamente 20 a 30 pessoas.
+
+Também realizava o monitoramento das operações para garantir conformidade com as regras da Enel, acompanhando situações específicas como registros de notas em horários restritos ou sem justificativa adequada, algo que dependia de autorização da base operacional.
+
+Além disso, auxiliava na coordenação da equipe para manter equilíbrio na distribuição do trabalho, suporte operacional durante as rotas e comunicação com empresas ou clientes quando necessário para viabilizar o acesso dos leituristas aos locais de leitura.`,
+        stack: ['SAP', 'Excel'],
       }
     ],
   },
@@ -193,9 +199,18 @@ Participei da construção das pipelines responsáveis pela automação do fluxo
       {
         id: 'p11',
         name: 'Producao-frenetica',
-        context: ``,
-        contribution: ``,
-        stack: ['Python', 'SQL', 'PySpark', 'Microsoft Fabric', 'Microsoft WareHouse', 'Microsoft DataLake', 'Data Factory', 'Power BI', 'Azure DevOps', 'MSSQL', 'Máquinas virtuais Azure'],
+        context: `A empresa era responsável pela fabricação de bolas de vinil em linha de produção industrial. O trabalho era dividido entre a operação dos fornos e a bancada de finalização, exigindo ritmo constante, coordenação entre a equipe e muita resistência ao calor.`,
+        contribution: `Atuei diretamente na linha de produção, auxiliando tanto na operação dos fornos quanto na parte de acabamento e preparação das bolas.
+
+Na área dos fornos, trabalhava em dupla com o forneiro, realizando a limpeza das formas, colocação dos pinos e preparação das peças de acordo com a produção do dia. Após o processo no forno, era necessário resfriar as formas em uma banheira de água, auxiliar na abertura das formas e separar as bolas produzidas para envio à bancada.
+
+Já na bancada, o trabalho consistia em encher manualmente as bolas utilizando uma pistola de ar, garantindo que ficassem corretamente infladas e sem deformações. Depois disso, era necessário vedá-las com pinos e armazená-las em grandes gaiolas para a próxima etapa do processo.
+
+Também participei do rodízio operacional da equipe, incluindo a retirada manual dos pinos para esvaziamento das bolas destinadas ao ensaque, além da limpeza e organização do ambiente de produção.
+
+Foi uma experiência que exigiu bastante trabalho em equipe, resistência física e adaptação a um ambiente extremamente quente. Provavelmente meu primeiro contato com “processamento em alta performance”.`,
+        video: 'https://www.youtube.com/embed/bv9tvOiu7DE',
+        stack: ['Esforço braçal', 'Resistência ao calor', 'Trabalho em equipe', 'Paciência', 'Coordenação motora' ],
       }
     ],
   },
@@ -208,8 +223,13 @@ Participei da construção das pipelines responsáveis pela automação do fluxo
       {
         id: 'p12',
         name: 'Supermercado',
-        context: ``,
-        contribution: ``,
+        context: `Meu primeiro emprego, aos 16 anos, e provavelmente o primeiro choque de realidade sobre como a vida adulta funciona de verdade. Foi uma experiência com muito contato social, atendimento ao público e várias responsabilidades dentro da loja.
+
+Cada dia era diferente: ajudar clientes, organizar setores, resolver problemas rápidos e aprender na prática como funciona a operação de um mercado. E existia também um medo muito específico da época: o Celso Russomanno aparecer na loja e perguntar se podia levar só um rolo de papel higiênico do pacote.`,
+        contribution: `Atuei em diferentes áreas do estabelecimento, auxiliando na reposição de mercadorias, organização das prateleiras, atendimento ao cliente e frente de caixa.
+
+Foi uma experiência importante para desenvolver comunicação, responsabilidade, organização e jogo de cintura para lidar com pessoas e situações do dia a dia.`,
+        video: 'https://www.youtube.com/embed/telLQWcgph8',
         stack: ['Pilotar carrinho de supermercado', 'Organização de prateleiras', 'Atendimento ao cliente', 'Empacotar compras', 'Reposição de mercadorias'],
       }
     ],
@@ -293,6 +313,17 @@ export default function Experiences() {
                                   {renderText(project.contribution, styles.projectText)}
                                 </div>
                               </div>
+
+                              {project.video && (
+                                <div className={styles.projectVideo}>
+                                  <iframe
+                                    src={project.video}
+                                    title="Vídeo do projeto"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                  />
+                                </div>
+                              )}
 
                               <div className={styles.projectStack}>
                                 {project.stack.map((tech, i) => (

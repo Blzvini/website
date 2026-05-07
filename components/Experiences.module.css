@@ -224,6 +224,18 @@
   margin-top: 0.75rem;
 }
 
+.projectVideo {
+  margin-bottom: 1rem;
+}
+
+.projectVideo iframe {
+  width: 180px;
+  aspect-ratio: 9 / 16;
+  border: none;
+  border-radius: 8px;
+  display: block;
+}
+
 .projectStack {
   display: flex;
   flex-wrap: wrap;
