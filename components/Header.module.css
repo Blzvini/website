@@ -10,6 +10,11 @@
   background: transparent;
 }
 
+@keyframes themePulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.07); }
+}
+
 .sunCharacter {
   position: absolute;
   top: 0.75rem;
@@ -21,6 +26,84 @@
   padding: 0;
   cursor: pointer;
   z-index: 4;
+  animation: themePulse 3s ease-in-out infinite;
+}
+
+.sunBurning {
+  cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="22" viewBox="0 0 16 22"><path d="M0,0 L0,15 L4,11 L7,18 L10,17 L7,10 L12,10 Z" fill="%23cc2200" stroke="%23ff5500" stroke-width="0.5"/></svg>') 0 0, pointer !important;
+}
+
+.moonFrozen {
+  cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="22" viewBox="0 0 16 22"><path d="M0,0 L0,15 L4,11 L7,18 L10,17 L7,10 L12,10 Z" fill="%230077b6" stroke="%2390d8f8" stroke-width="0.5"/></svg>') 0 0, pointer !important;
+}
+
+@keyframes hintPop {
+  0%   { opacity: 0; transform: scale(0.75) translateY(4px); }
+  65%  { transform: scale(1.04) translateY(-1px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.themeHint {
+  position: absolute;
+  top: 1.2rem;
+  right: calc(6% + 92px);
+  z-index: 5;
+  padding: 0.4rem 0.75rem;
+  font-family: var(--font-family-display);
+  font-size: 0.62rem;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  pointer-events: none;
+  border: 2px solid;
+  box-shadow: 3px 3px 0 0;
+  animation: hintPop 200ms ease-out forwards;
+}
+
+.themeHint::after {
+  content: '';
+  position: absolute;
+  right: -9px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 8px solid;
+}
+
+.themeHintSun {
+  background: #fff8f0;
+  color: #cc2200;
+  border-color: #cc2200;
+  box-shadow-color: #cc2200;
+  box-shadow: 3px 3px 0 0 #cc2200;
+}
+
+.themeHintSun::after {
+  border-left-color: #cc2200;
+}
+
+.themeHintMoon {
+  background: #f0f6ff;
+  color: #0077b6;
+  border-color: #0077b6;
+  box-shadow: 3px 3px 0 0 #0077b6;
+}
+
+.themeHintMoon::after {
+  border-left-color: #0077b6;
+}
+
+:global(body.theme-dark) .themeHintMoon {
+  background: #0d1f35;
+  color: #90d8f8;
+  border-color: #0077b6;
+  box-shadow: 3px 3px 0 0 #0077b6;
+}
+
+:global(body.theme-dark) .themeHintMoon::after {
+  border-left-color: #0077b6;
 }
 
 .sunFace {
@@ -559,6 +642,12 @@
   z-index: 9999;
   will-change: transform;
   transform: translate(-200px, -200px);
+  transition: opacity 280ms ease;
+}
+
+:global(body.theme-dark) .kiteCursor {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .kiteCursor .kiteBody {
@@ -588,6 +677,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .sunCharacter { animation: none; }
   .cloud1 { animation: none; transform: translateX(15vw); }
   .cloud2 { animation: none; transform: translateX(45vw); }
   .cloud3 { animation: none; transform: translateX(72vw); }

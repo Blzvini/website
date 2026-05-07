@@ -1,4 +1,5 @@
 import styles from './Skills.module.css';
+import { TECH_DESCRIPTIONS } from '../lib/techDescriptions';
 
 const skillsByType = [
   {
@@ -56,7 +57,24 @@ export default function Skills() {
                 <span className={styles.groupLabel}>Principais</span>
                 <ul className={styles.list}>
                   {category.primary.map((item, i) => (
-                    <li key={i} className={styles.itemPrimary}>{item}</li>
+                    <li key={i} className={styles.stackTagWrapper}>
+                      <span
+                        className={styles.itemPrimary}
+                        tabIndex="0"
+                        aria-describedby={`tip-skill-${index}-p-${i}`}
+                      >
+                        {item}
+                      </span>
+                      {TECH_DESCRIPTIONS[item] && (
+                        <span
+                          role="tooltip"
+                          id={`tip-skill-${index}-p-${i}`}
+                          className={styles.tooltip}
+                        >
+                          {TECH_DESCRIPTIONS[item]}
+                        </span>
+                      )}
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -66,7 +84,24 @@ export default function Skills() {
                   <span className={styles.groupLabel}>Complementares</span>
                   <ul className={styles.list}>
                     {category.secondary.map((item, i) => (
-                      <li key={i} className={styles.itemSecondary}>{item}</li>
+                      <li key={i} className={styles.stackTagWrapper}>
+                        <span
+                          className={styles.itemSecondary}
+                          tabIndex="0"
+                          aria-describedby={`tip-skill-${index}-s-${i}`}
+                        >
+                          {item}
+                        </span>
+                        {TECH_DESCRIPTIONS[item] && (
+                          <span
+                            role="tooltip"
+                            id={`tip-skill-${index}-s-${i}`}
+                            className={styles.tooltip}
+                          >
+                            {TECH_DESCRIPTIONS[item]}
+                          </span>
+                        )}
+                      </li>
                     ))}
                   </ul>
                 </div>

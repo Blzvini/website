@@ -42,10 +42,7 @@ export default function Contact() {
       <div className="container">
         <h2 className="section-title on-dark">Contato</h2>
 
-        <p className={styles.intro}>
-          Aberto a oportunidades como Engenheiro de Dados Jr. — manda mensagem que respondo
-          rápido. Vamos conversar sobre dados, pipelines ou só trocar uma ideia.
-        </p>
+        
 
         <ul className={styles.links}>
           {contacts.map((contact) => {

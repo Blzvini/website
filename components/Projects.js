@@ -1,4 +1,5 @@
 import styles from './Projects.module.css';
+import { TECH_DESCRIPTIONS } from '../lib/techDescriptions';
 
 const projects = [
   {
@@ -72,7 +73,24 @@ export default function Projects() {
 
                   <ul className={styles.stack}>
                     {project.stack.map((tech, i) => (
-                      <li key={i} className={styles.stackTag}>{tech}</li>
+                      <li key={i} className={styles.stackTagWrapper}>
+                        <span
+                          className={styles.stackTag}
+                          tabIndex="0"
+                          aria-describedby={`tip-proj-${project.id}-${i}`}
+                        >
+                          {tech}
+                        </span>
+                        {TECH_DESCRIPTIONS[tech] && (
+                          <span
+                            role="tooltip"
+                            id={`tip-proj-${project.id}-${i}`}
+                            className={styles.tooltip}
+                          >
+                            {TECH_DESCRIPTIONS[tech]}
+                          </span>
+                        )}
+                      </li>
                     ))}
                   </ul>
                 </div>

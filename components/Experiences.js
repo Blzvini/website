@@ -1,22 +1,6 @@
 import { useState } from 'react';
 import styles from './Experiences.module.css';
-
-const TECH_DESCRIPTIONS = {
-  'Power Apps': 'Plataforma low-code da Microsoft para criar apps web e mobile integrados a dados corporativos.',
-  'Power Automate': 'Automatiza fluxos de trabalho entre aplicações e serviços sem necessidade de código.',
-  'Azure DevOps': 'Suite Microsoft para CI/CD, gestão de projetos e controle de versão.',
-  'Gherkin (BDD)': 'Linguagem legível por humanos para descrever comportamentos em testes BDD.',
-  'SQL': 'Linguagem padrão para consulta e manipulação de bancos de dados relacionais.',
-  'Microsoft Teams': 'Plataforma de comunicação e colaboração corporativa da Microsoft.',
-  'SharePoint': 'Plataforma Microsoft para gestão de documentos e intranets corporativas.',
-  'C#': 'Linguagem orientada a objetos da Microsoft, base do ecossistema .NET.',
-  '.NET': 'Framework multiplataforma para desenvolvimento de apps web, mobile e desktop.',
-  'Angular': 'Framework TypeScript do Google para SPAs com arquitetura baseada em componentes.',
-  'Git': 'Sistema de controle de versão distribuído para rastrear mudanças no código.',
-  'Power BI': 'Ferramenta de BI da Microsoft para criação de dashboards e relatórios interativos.',
-  'Power Query': 'ETL visual da Microsoft para extração e transformação de dados sem código.',
-  'DAX': 'Linguagem de fórmulas do Power BI e Analysis Services para cálculos analíticos.',
-};
+import { TECH_DESCRIPTIONS } from '../lib/techDescriptions';
 
 const experiences = [
   {

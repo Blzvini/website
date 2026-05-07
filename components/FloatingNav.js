@@ -58,8 +58,7 @@ export default function FloatingNav({ theme, toggleTheme }) {
           className={styles.brand}
           aria-label="Voltar ao topo"
         >
-          <span className={styles.brandPixel} aria-hidden="true" />
-          VM
+          <span className={styles.brandArrow} aria-hidden="true">↑</span>
         </a>
 
         <ul className={styles.list}>
@@ -87,7 +86,7 @@ export default function FloatingNav({ theme, toggleTheme }) {
             title="Pixel"
           >
             <span className={styles.themeBtnIcon} aria-hidden="true">{isDark ? '☾' : '☀'}</span>
-            <span className={styles.themeBtnLabel}>Pixel</span>
+            <span className={styles.themeBtnLabel}>Tema</span>
           </button>
         </div>
       </div>

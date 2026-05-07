@@ -17,8 +17,21 @@ export default function Header({ theme, toggleTheme }) {
   const isPixelTheme = theme === 'light' || theme === 'dark';
   const [greetIdx, setGreetIdx] = useState(0);
   const [phase, setPhase] = useState('idle'); // 'idle' | 'out' | 'in'
+  const [showHint, setShowHint] = useState(null); // null | 'sun' | 'moon'
   const reducedMotion = useRef(false);
   const kiteCursorRef = useRef(null);
+  const hintTimerRef = useRef(null);
+
+  const handleThemeMouseEnter = () => {
+    hintTimerRef.current = setTimeout(() => {
+      setShowHint(isDark ? 'moon' : 'sun');
+    }, 1000);
+  };
+
+  const handleThemeMouseLeave = () => {
+    clearTimeout(hintTimerRef.current);
+    setShowHint(null);
+  };
 
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -101,8 +114,10 @@ export default function Header({ theme, toggleTheme }) {
       {/* Toggle de tema — só visível no tema Pixel */}
       {isPixelTheme && <button
         type="button"
-        className={`${styles.sunCharacter} ${isDark ? styles.isNight : ''}`}
-        onClick={toggleTheme}
+        className={`${styles.sunCharacter} ${isDark ? styles.isNight : ''} ${showHint === 'moon' ? styles.moonFrozen : ''} ${showHint === 'sun' ? styles.sunBurning : ''}`}
+        onClick={() => { clearTimeout(hintTimerRef.current); setShowHint(null); toggleTheme(); }}
+        onMouseEnter={handleThemeMouseEnter}
+        onMouseLeave={handleThemeMouseLeave}
         aria-label={isDark ? 'Ativar modo claro' : 'Ativar modo escuro'}
         aria-pressed={isDark}
         title={isDark ? 'Modo claro' : 'Modo escuro'}
@@ -144,6 +159,16 @@ export default function Header({ theme, toggleTheme }) {
           <span className={`${styles.zLetter} ${styles.z3}`}>Z</span>
         </span>
       </button>}
+
+      {showHint && (
+        <div
+          className={`${styles.themeHint} ${showHint === 'sun' ? styles.themeHintSun : styles.themeHintMoon}`}
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          {showHint === 'sun' ? 'Ei, isso queima! 🔥' : 'Para! Tô congelando! 🧊'}
+        </div>
+      )}
 
       {/* ─── Céu de fundo ─── */}
       <div className={styles.sky} aria-hidden="true">
