@@ -111,6 +111,32 @@
 
 :global(body.theme-dark) .mountainMid::before { opacity: 0.18; }
 
+/* ─── Grid-Runner ─── */
+:global(body.theme-grid) .scene { background: #04060d; }
+:global(body.theme-grid) .mountainFar { background: #003344; opacity: 0.9; }
+:global(body.theme-grid) .mountainMid { background: #001a22; opacity: 0.95; }
+:global(body.theme-grid) .mountainFar::before,
+:global(body.theme-grid) .mountainMid::before { opacity: 0; }
+:global(body.theme-grid) .scene::before { background: transparent; }
+
+/* ─── BBS-Operator ─── */
+:global(body.theme-bbs) .scene { background: linear-gradient(180deg, #1a0e02 0%, #2a1605 100%); }
+:global(body.theme-bbs) .mountainFar { background: #3d2200; opacity: 0.9; }
+:global(body.theme-bbs) .mountainMid { background: #2a1605; opacity: 0.95; }
+:global(body.theme-bbs) .mountainFar::before,
+:global(body.theme-bbs) .mountainMid::before { opacity: 0; }
+:global(body.theme-bbs) .scene::before { background: transparent; }
+
+/* ─── Quest Map ─── */
+:global(body.theme-rpg) .scene {
+  background: linear-gradient(180deg, #d4b896 0%, #c8a878 40%, #8b6340 70%, #5c3d1e 100%);
+}
+:global(body.theme-rpg) .mountainFar { background: #6b4c2e; opacity: 0.8; }
+:global(body.theme-rpg) .mountainMid { background: #4a3020; opacity: 0.9; }
+:global(body.theme-rpg) .mountainFar::before,
+:global(body.theme-rpg) .mountainMid::before { background: #e8d5a8; opacity: 0.3; }
+:global(body.theme-rpg) .scene::before { background: transparent; }
+
 @media (max-width: 768px) {
   .footer { min-height: 14rem; }
 }

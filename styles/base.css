@@ -285,6 +285,171 @@ body.theme-dark .site-stars { opacity: 1; }
 .site-stars .star-9  { top: 42%; left: 26%; animation-delay: -0.3s; }
 .site-stars .star-10 { top: 72%; left: 70%; animation-delay: -1.9s; }
 
+/* ─── Grid-Runner global effects ─── */
+body.theme-grid::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0, 240, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+body.theme-grid::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.18) 0,
+    rgba(0, 0, 0, 0.18) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+/* ─── BBS-Operator global effects ─── */
+body.theme-bbs::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.45) 100%);
+}
+
+body.theme-bbs::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    180deg,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 3px
+  );
+}
+
+/* ─── Quest Map global effects ─── */
+body.theme-rpg::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* ─── section-title per theme ─── */
+body.theme-grid .section-title {
+  color: #fff;
+  text-shadow: 2px 0 #ff2a6d, -2px 0 #00f0ff;
+}
+body.theme-grid .section-title::after {
+  background: linear-gradient(90deg, #ff2a6d, #00f0ff, #ffd166);
+  height: 2px;
+}
+
+body.theme-bbs .section-title {
+  color: #ffb000;
+  text-shadow: 0 0 10px rgba(255, 176, 0, 0.4);
+}
+body.theme-bbs .section-title::after {
+  background: linear-gradient(90deg, #ffb000, #ffcc4d, #b07700);
+}
+
+body.theme-rpg .section-title {
+  color: #2a1810;
+  text-shadow: 2px 2px 0 #c89a3a;
+}
+body.theme-rpg .section-title::after {
+  background: linear-gradient(90deg, #2a1810, #c89a3a, #446b3a);
+}
+
+/* ─── btn per theme ─── */
+body.theme-grid .btn {
+  background: #ff2a6d;
+  border-color: #ff2a6d;
+  color: #fff;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+  box-shadow: 3px 3px 0 0 rgba(255, 42, 109, 0.5), 0 0 12px rgba(255, 42, 109, 0.3);
+  font-family: 'JetBrains Mono', monospace;
+}
+body.theme-grid .btn:hover {
+  box-shadow: 1px 1px 0 0 rgba(255, 42, 109, 0.5);
+  color: #fff;
+}
+body.theme-grid .btn-secondary {
+  background: transparent;
+  border-color: #00f0ff;
+  color: #00f0ff;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+  box-shadow: 3px 3px 0 0 rgba(0, 240, 255, 0.4);
+}
+body.theme-grid .btn-secondary:hover {
+  background: rgba(0, 240, 255, 0.08);
+  color: #00f0ff;
+}
+
+body.theme-bbs .btn {
+  background: #ffb000;
+  border-color: #ffb000;
+  color: #1a0e02;
+  box-shadow: 3px 3px 0 0 rgba(255, 176, 0, 0.4), 0 0 10px rgba(255, 176, 0, 0.25);
+  font-family: 'VT323', monospace;
+  font-size: 1.1rem;
+}
+body.theme-bbs .btn:hover {
+  color: #1a0e02;
+  box-shadow: 1px 1px 0 0 rgba(255, 176, 0, 0.4);
+}
+body.theme-bbs .btn-secondary {
+  background: transparent;
+  border-color: #cc8c00;
+  color: #ffb000;
+  box-shadow: 3px 3px 0 0 rgba(255, 176, 0, 0.25);
+}
+body.theme-bbs .btn-secondary:hover {
+  background: rgba(255, 176, 0, 0.08);
+  color: #ffcc4d;
+}
+
+body.theme-rpg .btn {
+  background: #a83333;
+  border-color: #2a1810;
+  color: #f3e3b8;
+  box-shadow: 3px 3px 0 0 #2a1810;
+}
+body.theme-rpg .btn:hover {
+  color: #f3e3b8;
+  box-shadow: 1px 1px 0 0 #2a1810;
+}
+body.theme-rpg .btn-secondary {
+  background: rgba(243, 227, 184, 0.9);
+  border-color: #2a1810;
+  color: #2a1810;
+  box-shadow: 3px 3px 0 0 #2a1810;
+}
+body.theme-rpg .btn-secondary:hover {
+  background: #f3e3b8;
+  color: #2a1810;
+}
+
+/* ─── site-stars ocultas nos temas alternativos ─── */
+body.theme-grid .site-stars,
+body.theme-bbs .site-stars,
+body.theme-rpg .site-stars { opacity: 0 !important; }
+
 /* ─── Reduced motion: respeita a preferência do usuário ─── */
 @media (prefers-reduced-motion: reduce) {
   *,

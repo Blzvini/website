@@ -9,8 +9,9 @@ const SECTIONS = [
   { id: 'contato',       label: 'Contato' },
 ];
 
-export default function FloatingNav({ theme, toggleTheme }) {
+export default function FloatingNav({ theme, toggleTheme, selectTheme }) {
   const isDark = theme === 'dark';
+  const isPixelTheme = theme === 'light' || theme === 'dark';
   const [visible, setVisible] = useState(false);
   const [activeId, setActiveId] = useState('');
 
@@ -77,19 +78,36 @@ export default function FloatingNav({ theme, toggleTheme }) {
           ))}
         </ul>
 
-        <button
-          type="button"
-          onClick={toggleTheme}
-          className={styles.themeToggle}
-          aria-label={isDark ? 'Ativar modo claro' : 'Ativar modo escuro'}
-          aria-pressed={isDark}
-          title={isDark ? 'Modo claro' : 'Modo escuro'}
-        >
-          <span className={styles.themeIcon} aria-hidden="true">
-            {isDark ? '☾' : '☀'}
-          </span>
-          <span className="sr-only">{isDark ? 'Modo escuro ativo' : 'Modo claro ativo'}</span>
-        </button>
+        <div className={styles.themePicker} role="group" aria-label="Selecionar tema">
+          {[
+            { id: 'pixel', label: 'Pixel', icon: isPixelTheme && isDark ? '☾' : '☀' },
+            { id: 'grid',  label: 'Grid',  icon: '⌗' },
+            { id: 'bbs',   label: 'BBS',   icon: '▓' },
+            { id: 'rpg',   label: 'RPG',   icon: '★' },
+          ].map((t) => {
+            const isActive = (t.id === 'pixel' && isPixelTheme) || t.id === theme;
+            return (
+              <button
+                key={t.id}
+                type="button"
+                onClick={() => {
+                  if (t.id === 'pixel') {
+                    isPixelTheme ? toggleTheme() : selectTheme('light');
+                  } else {
+                    selectTheme(t.id);
+                  }
+                }}
+                className={`${styles.themeBtn} ${isActive ? styles.themeBtnActive : ''}`}
+                aria-label={`Tema ${t.label}`}
+                aria-pressed={isActive}
+                title={t.label}
+              >
+                <span className={styles.themeBtnIcon} aria-hidden="true">{t.icon}</span>
+                <span className={styles.themeBtnLabel}>{t.label}</span>
+              </button>
+            );
+          })}
+        </div>
       </div>
     </nav>
   );

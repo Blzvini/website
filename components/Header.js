@@ -14,6 +14,7 @@ const GREETINGS = [
 
 export default function Header({ theme, toggleTheme }) {
   const isDark = theme === 'dark';
+  const isPixelTheme = theme === 'light' || theme === 'dark';
   const [greetIdx, setGreetIdx] = useState(0);
   const [phase, setPhase] = useState('idle'); // 'idle' | 'out' | 'in'
   const reducedMotion = useRef(false);
@@ -97,8 +98,8 @@ export default function Header({ theme, toggleTheme }) {
 
   return (
     <header className={styles.header} id="top">
-      {/* Toggle de tema — direto no header (fora do .sky) para z-index correto no mobile */}
-      <button
+      {/* Toggle de tema — só visível no tema Pixel */}
+      {isPixelTheme && <button
         type="button"
         className={`${styles.sunCharacter} ${isDark ? styles.isNight : ''}`}
         onClick={toggleTheme}
@@ -142,7 +143,7 @@ export default function Header({ theme, toggleTheme }) {
           <span className={`${styles.zLetter} ${styles.z2}`}>z</span>
           <span className={`${styles.zLetter} ${styles.z3}`}>Z</span>
         </span>
-      </button>
+      </button>}
 
       {/* ─── Céu de fundo ─── */}
       <div className={styles.sky} aria-hidden="true">
@@ -203,7 +204,7 @@ export default function Header({ theme, toggleTheme }) {
               </span>
             ))}
           </p>
-          <h1>Vinicius Marques</h1>
+          <h1>Vinicius<br />Marques</h1>
           <p className={styles.subtitle}>Engenheiro de Dados</p>
           <p className={styles.description}>
             Construo pipelines, modelagens e automações que transformam dados brutos
@@ -238,7 +239,7 @@ export default function Header({ theme, toggleTheme }) {
       </div>
 
       <div className={styles.scrollIndicator} aria-hidden="true">
-        <span className={styles.scrollArrow} />
+        ↓ ROLE PARA EXPLORAR
       </div>
 
       {/* Pipa que segue o mouse */}

@@ -167,3 +167,46 @@
   border-color: rgba(199, 217, 255, 0.32);
   color: #d8e7ff;
 }
+
+/* ─── Grid-Runner ─── */
+:global(body.theme-grid) .skills { background: #04060d; }
+:global(body.theme-grid) .category {
+  background: rgba(10, 16, 32, 0.9);
+  border-color: #00f0ff;
+  box-shadow: 3px 3px 0 0 #00f0ff;
+}
+:global(body.theme-grid) .category:hover { box-shadow: 1px 1px 0 0 #00f0ff; }
+:global(body.theme-grid) .categoryHeader { border-bottom-color: rgba(0, 240, 255, 0.2); }
+:global(body.theme-grid) .categoryIcon { background: #ff2a6d; color: #fff; }
+:global(body.theme-grid) .categoryTitle { color: #00f0ff; font-family: 'JetBrains Mono', monospace; }
+:global(body.theme-grid) .itemPrimary { background: #ff2a6d; border-color: #ff2a6d; font-family: 'JetBrains Mono', monospace; }
+:global(body.theme-grid) .itemSecondary { border-color: rgba(0, 240, 255, 0.35); color: #a0d8e8; font-family: 'JetBrains Mono', monospace; }
+
+/* ─── BBS-Operator ─── */
+:global(body.theme-bbs) .skills { background: #1a0e02; }
+:global(body.theme-bbs) .category {
+  background: rgba(26, 14, 2, 0.95);
+  border-color: #ffb000;
+  box-shadow: 3px 3px 0 0 rgba(255, 176, 0, 0.4);
+}
+:global(body.theme-bbs) .category:hover { box-shadow: 1px 1px 0 0 rgba(255, 176, 0, 0.4); }
+:global(body.theme-bbs) .categoryHeader { border-bottom-color: rgba(255, 176, 0, 0.2); }
+:global(body.theme-bbs) .categoryIcon { background: #b07700; color: #ffcc4d; }
+:global(body.theme-bbs) .categoryTitle { color: #ffb000; font-family: 'VT323', monospace; font-size: 1rem; }
+:global(body.theme-bbs) .itemPrimary { background: #b07700; border-color: #ffb000; color: #ffcc4d; font-family: 'VT323', monospace; font-size: 1rem; }
+:global(body.theme-bbs) .itemSecondary { border-color: rgba(255, 176, 0, 0.35); color: #cc8c00; font-family: 'VT323', monospace; font-size: 1rem; }
+
+/* ─── Quest Map ─── */
+:global(body.theme-rpg) .skills { background: #ead5a0; }
+:global(body.theme-rpg) .category {
+  background: #f3e3b8;
+  border-color: #2a1810;
+  box-shadow: 4px 4px 0 0 #2a1810;
+  overflow: visible;
+}
+:global(body.theme-rpg) .category:hover { box-shadow: 1px 1px 0 0 #2a1810; }
+:global(body.theme-rpg) .categoryHeader { border-bottom-color: rgba(42, 24, 16, 0.2); }
+:global(body.theme-rpg) .categoryIcon { background: #a83333; color: #f3e3b8; }
+:global(body.theme-rpg) .categoryTitle { color: #2a1810; }
+:global(body.theme-rpg) .itemPrimary { background: #a83333; border-color: #2a1810; color: #f3e3b8; }
+:global(body.theme-rpg) .itemSecondary { border-color: rgba(42, 24, 16, 0.35); color: #4a3020; }

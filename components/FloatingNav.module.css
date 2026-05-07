@@ -96,37 +96,52 @@
   border-color: rgba(26, 71, 42, 0.18);
 }
 
-/* ─── Toggle de tema ─── */
-.themeToggle {
+/* ─── Theme Picker ─── */
+.themePicker {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  flex-shrink: 0;
+}
+
+.themeBtn {
   display: inline-flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-width: 44px;
   min-height: 44px;
-  padding: 0.4rem;
-  background: var(--color-accent-dark);
-  color: #fff;
-  border: 2px solid var(--color-accent-dark);
+  padding: 0.2rem 0.35rem;
+  background: transparent;
+  border: 2px solid transparent;
+  color: var(--color-text-secondary);
   cursor: pointer;
-  flex-shrink: 0;
-  box-shadow:
-    3px 3px 0 0 var(--color-accent-dark),
-    inset -2px -2px 0 0 rgba(0, 0, 0, 0.15),
-    inset 2px 2px 0 0 rgba(255, 255, 255, 0.2);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast),
-              background var(--transition-fast);
+  gap: 0.1rem;
+  transition: color var(--transition-fast), background var(--transition-fast),
+              border-color var(--transition-fast);
 }
 
-.themeToggle:hover {
-  transform: translate(2px, 2px);
-  box-shadow:
-    1px 1px 0 0 var(--color-accent-dark),
-    inset -2px -2px 0 0 rgba(0, 0, 0, 0.15),
-    inset 2px 2px 0 0 rgba(255, 255, 255, 0.2);
+.themeBtn:hover {
+  color: var(--color-accent-dark);
+  background: rgba(45, 155, 78, 0.08);
 }
 
-.themeIcon {
-  font-size: 1.15rem;
+.themeBtnActive {
+  color: var(--color-accent-dark);
+  background: rgba(45, 155, 78, 0.14);
+  border-color: rgba(26, 71, 42, 0.22);
+}
+
+.themeBtnIcon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.themeBtnLabel {
+  font-family: var(--font-family-display);
+  font-size: 0.42rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   line-height: 1;
 }
 
@@ -154,14 +169,83 @@
   border-color: rgba(199, 217, 255, 0.22);
 }
 
-:global(body.theme-dark) .themeToggle {
-  background: #2b456f;
-  border-color: rgba(199, 217, 255, 0.32);
-  color: #ffd166;
-  box-shadow:
-    3px 3px 0 0 rgba(199, 217, 255, 0.18),
-    inset -1px -1px 0 0 rgba(0, 0, 0, 0.2),
-    inset 1px 1px 0 0 rgba(224, 236, 255, 0.08);
+:global(body.theme-dark) .themeBtn { color: #b5c2d8; }
+:global(body.theme-dark) .themeBtn:hover,
+:global(body.theme-dark) .themeBtnActive {
+  color: #e6edf8;
+  background: rgba(95, 168, 255, 0.16);
+  border-color: rgba(199, 217, 255, 0.22);
+}
+
+/* ─── Grid-Runner nav ─── */
+:global(body.theme-grid) .nav {
+  background: rgba(4, 6, 13, 0.94);
+  border-color: #00f0ff;
+  box-shadow: 3px 3px 0 0 #00f0ff, 0 0 20px rgba(0, 240, 255, 0.15);
+}
+:global(body.theme-grid) .brand { color: #00f0ff; font-family: 'JetBrains Mono', monospace; }
+:global(body.theme-grid) .brandPixel {
+  background: #00f0ff;
+  box-shadow: -4px 0 0 #ff2a6d, 4px 0 0 #39ff8c, 0 -4px 0 #ffd166, 0 4px 0 #ff2a6d;
+}
+:global(body.theme-grid) .link { color: #a0d8e8; font-family: 'JetBrains Mono', monospace; }
+:global(body.theme-grid) .link:hover,
+:global(body.theme-grid) .link.active {
+  color: #00f0ff;
+  background: rgba(0, 240, 255, 0.1);
+  border-color: rgba(0, 240, 255, 0.3);
+}
+:global(body.theme-grid) .themeBtn { color: #a0d8e8; }
+:global(body.theme-grid) .themeBtn:hover,
+:global(body.theme-grid) .themeBtnActive {
+  color: #00f0ff;
+  background: rgba(0, 240, 255, 0.1);
+  border-color: rgba(0, 240, 255, 0.3);
+}
+
+/* ─── BBS-Operator nav ─── */
+:global(body.theme-bbs) .nav {
+  background: rgba(26, 14, 2, 0.96);
+  border-color: #ffb000;
+  box-shadow: 0 0 30px rgba(255, 176, 0, 0.15), 2px 2px 0 0 #ffb000;
+}
+:global(body.theme-bbs) .brand { color: #ffb000; font-family: 'VT323', monospace; font-size: 1.1rem; }
+:global(body.theme-bbs) .link { color: #cc8c00; font-family: 'VT323', monospace; font-size: 1rem; }
+:global(body.theme-bbs) .link:hover,
+:global(body.theme-bbs) .link.active {
+  color: #ffb000;
+  background: rgba(255, 176, 0, 0.1);
+  border-color: rgba(255, 176, 0, 0.4);
+}
+:global(body.theme-bbs) .themeBtn { color: #cc8c00; }
+:global(body.theme-bbs) .themeBtn:hover,
+:global(body.theme-bbs) .themeBtnActive {
+  color: #ffb000;
+  background: rgba(255, 176, 0, 0.1);
+  border-color: #ffb000;
+}
+:global(body.theme-bbs) .themeBtnLabel { font-family: 'VT323', monospace; font-size: 0.65rem; }
+
+/* ─── Quest Map nav ─── */
+:global(body.theme-rpg) .nav {
+  background: rgba(243, 227, 184, 0.96);
+  border: 3px solid #2a1810;
+  box-shadow: 4px 4px 0 0 #2a1810;
+}
+:global(body.theme-rpg) .brand { color: #2a1810; }
+:global(body.theme-rpg) .link { color: #4a3020; }
+:global(body.theme-rpg) .link:hover,
+:global(body.theme-rpg) .link.active {
+  color: #2a1810;
+  background: rgba(42, 24, 16, 0.08);
+  border-color: rgba(42, 24, 16, 0.3);
+}
+:global(body.theme-rpg) .themeBtn { color: #4a3020; }
+:global(body.theme-rpg) .themeBtn:hover,
+:global(body.theme-rpg) .themeBtnActive {
+  color: #2a1810;
+  background: rgba(42, 24, 16, 0.1);
+  border-color: #c89a3a;
 }
 
 /* ─── Responsivo ─── */

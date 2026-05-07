@@ -278,6 +278,95 @@
   border-color: rgba(199, 217, 255, 0.3);
 }
 
+/* ─── Grid-Runner ─── */
+:global(body.theme-grid) .experiences { background: #04060d; }
+:global(body.theme-grid) .card {
+  background: rgba(10, 16, 32, 0.9);
+  border-color: #00f0ff;
+  box-shadow: 3px 3px 0 0 #00f0ff, 0 0 10px rgba(0, 240, 255, 0.08);
+}
+:global(body.theme-grid) .card:hover { box-shadow: 1px 1px 0 0 #00f0ff; }
+:global(body.theme-grid) .projectCard {
+  background: rgba(4, 6, 13, 0.9);
+  border-color: rgba(0, 240, 255, 0.25);
+  border-left-color: #ff2a6d;
+}
+:global(body.theme-grid) .period {
+  background: rgba(0, 240, 255, 0.08);
+  border-color: rgba(0, 240, 255, 0.3);
+  color: #00f0ff;
+  font-family: 'JetBrains Mono', monospace;
+}
+:global(body.theme-grid) .stackTag {
+  background: rgba(4, 6, 13, 0.9);
+  border-color: #00f0ff;
+  color: #00f0ff;
+  font-family: 'JetBrains Mono', monospace;
+}
+:global(body.theme-grid) .marker {
+  background: #ff2a6d;
+  border-color: #00f0ff;
+  box-shadow: 0 0 0 4px rgba(0, 240, 255, 0.12);
+}
+:global(body.theme-grid) .timeline::before { background: linear-gradient(180deg, #00f0ff, rgba(0, 240, 255, 0.08)); }
+:global(body.theme-grid) .projectTag { background: #ff2a6d; }
+:global(body.theme-grid) .tooltip { background: #00f0ff; color: #04060d; border-color: transparent; }
+
+/* ─── BBS-Operator ─── */
+:global(body.theme-bbs) .experiences { background: #1a0e02; }
+:global(body.theme-bbs) .card {
+  background: rgba(26, 14, 2, 0.95);
+  border-color: #ffb000;
+  box-shadow: 3px 3px 0 0 rgba(255, 176, 0, 0.4);
+}
+:global(body.theme-bbs) .card:hover { box-shadow: 1px 1px 0 0 rgba(255, 176, 0, 0.4); }
+:global(body.theme-bbs) .projectCard {
+  background: rgba(26, 14, 2, 0.9);
+  border-color: rgba(255, 176, 0, 0.25);
+  border-left-color: #ffb000;
+}
+:global(body.theme-bbs) .period {
+  background: rgba(255, 176, 0, 0.08);
+  border-color: rgba(255, 176, 0, 0.3);
+  color: #ffb000;
+  font-family: 'VT323', monospace;
+}
+:global(body.theme-bbs) .stackTag {
+  background: rgba(26, 14, 2, 0.9);
+  border-color: #cc8c00;
+  color: #ffb000;
+  font-family: 'VT323', monospace;
+  font-size: 1rem;
+}
+:global(body.theme-bbs) .marker { background: #ffb000; border-color: #cc8c00; box-shadow: 0 0 0 4px rgba(255, 176, 0, 0.12); }
+:global(body.theme-bbs) .timeline::before { background: linear-gradient(180deg, #ffb000, rgba(255, 176, 0, 0.08)); }
+:global(body.theme-bbs) .projectTag { background: #b07700; color: #ffcc4d; }
+:global(body.theme-bbs) .tooltip { background: #2a1605; color: #ffb000; border-color: rgba(255, 176, 0, 0.3); }
+
+/* ─── Quest Map ─── */
+:global(body.theme-rpg) .experiences { background: #ead5a0; }
+:global(body.theme-rpg) .card {
+  background: #f3e3b8;
+  border-color: #2a1810;
+  box-shadow: 4px 4px 0 0 #2a1810;
+}
+:global(body.theme-rpg) .card:hover { box-shadow: 1px 1px 0 0 #2a1810; }
+:global(body.theme-rpg) .projectCard {
+  background: rgba(234, 213, 160, 0.7);
+  border-color: rgba(42, 24, 16, 0.25);
+  border-left-color: #c89a3a;
+}
+:global(body.theme-rpg) .period {
+  background: rgba(200, 154, 58, 0.12);
+  border-color: rgba(42, 24, 16, 0.25);
+  color: #2a1810;
+}
+:global(body.theme-rpg) .stackTag { background: rgba(243, 227, 184, 0.8); border-color: #2a1810; color: #2a1810; }
+:global(body.theme-rpg) .marker { background: #a83333; border-color: #2a1810; box-shadow: 0 0 0 4px rgba(42, 24, 16, 0.1); }
+:global(body.theme-rpg) .timeline::before { background: linear-gradient(180deg, rgba(42, 24, 16, 0.4), rgba(42, 24, 16, 0.08)); }
+:global(body.theme-rpg) .projectTag { background: #a83333; }
+:global(body.theme-rpg) .tooltip { background: #2a1810; color: #c89a3a; border-color: rgba(200, 154, 58, 0.3); }
+
 @media (prefers-reduced-motion: reduce) {
   .tooltip { transition: none; }
 }

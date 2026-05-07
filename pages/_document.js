@@ -11,9 +11,20 @@ const themeInitScript = `
   try {
     var stored = window.localStorage.getItem('site-theme');
     var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    var theme = stored === 'dark' || stored === 'light' ? stored : (prefersDark ? 'dark' : 'light');
+    var altThemes = ['grid', 'bbs', 'rpg'];
+    var theme;
+    if (stored === 'dark' || stored === 'light' || altThemes.indexOf(stored) !== -1) {
+      theme = stored;
+    } else {
+      theme = prefersDark ? 'dark' : 'light';
+    }
     if (theme === 'dark') {
       document.documentElement.classList.add('theme-dark-preload');
+    }
+    if (altThemes.indexOf(theme) !== -1) {
+      document.addEventListener('DOMContentLoaded', function () {
+        document.body.classList.add('theme-' + theme);
+      });
     }
     document.documentElement.dataset.themePreload = theme;
   } catch (_) {}

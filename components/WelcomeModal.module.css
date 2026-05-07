@@ -197,6 +197,49 @@
   outline-color: var(--color-focus-ring-on-dark);
 }
 
+/* ─── Grid-Runner ─── */
+:global(body.theme-grid) .modal {
+  background: rgba(4, 6, 13, 0.97);
+  border-color: #00f0ff;
+  box-shadow: 5px 5px 0 0 #00f0ff, 0 0 30px rgba(0, 240, 255, 0.15);
+}
+:global(body.theme-grid) .closeBtn { border-color: #00f0ff; color: #00f0ff; }
+:global(body.theme-grid) .closeBtn:hover { background: rgba(0, 240, 255, 0.15); color: #00f0ff; }
+:global(body.theme-grid) .ascii { color: #ff2a6d; }
+:global(body.theme-grid) .title { color: #00f0ff; font-family: 'JetBrains Mono', monospace; }
+:global(body.theme-grid) .hint { background: rgba(0, 240, 255, 0.06); border-color: rgba(0, 240, 255, 0.2); border-left-color: #00f0ff; }
+:global(body.theme-grid) .okBtn { background: #ff2a6d; border-color: #ff2a6d; color: #fff; box-shadow: 3px 3px 0 0 rgba(255, 42, 109, 0.4); }
+:global(body.theme-grid) .okBtn:hover { box-shadow: 1px 1px 0 0 rgba(255, 42, 109, 0.4); }
+
+/* ─── BBS-Operator ─── */
+:global(body.theme-bbs) .modal {
+  background: rgba(26, 14, 2, 0.98);
+  border-color: #ffb000;
+  box-shadow: 5px 5px 0 0 rgba(255, 176, 0, 0.4), 0 0 25px rgba(255, 176, 0, 0.1);
+}
+:global(body.theme-bbs) .closeBtn { border-color: #ffb000; color: #ffb000; font-family: 'VT323', monospace; }
+:global(body.theme-bbs) .closeBtn:hover { background: rgba(255, 176, 0, 0.12); }
+:global(body.theme-bbs) .ascii { color: #ffb000; }
+:global(body.theme-bbs) .title { color: #ffb000; font-family: 'VT323', monospace; font-size: 1.1rem; }
+:global(body.theme-bbs) .hint { background: rgba(255, 176, 0, 0.06); border-color: rgba(255, 176, 0, 0.2); border-left-color: #ffb000; }
+:global(body.theme-bbs) .okBtn { background: #b07700; border-color: #ffb000; color: #ffcc4d; box-shadow: 3px 3px 0 0 rgba(255, 176, 0, 0.3); font-family: 'VT323', monospace; font-size: 1.2rem; }
+:global(body.theme-bbs) .okBtn:hover { box-shadow: 1px 1px 0 0 rgba(255, 176, 0, 0.3); }
+
+/* ─── Quest Map ─── */
+:global(body.theme-rpg) .modal {
+  background: #f3e3b8;
+  border-color: #2a1810;
+  border-width: 3px;
+  box-shadow: 6px 6px 0 0 #2a1810;
+}
+:global(body.theme-rpg) .closeBtn { border-color: #2a1810; color: #2a1810; }
+:global(body.theme-rpg) .closeBtn:hover { background: rgba(42, 24, 16, 0.1); color: #2a1810; }
+:global(body.theme-rpg) .ascii { color: #446b3a; }
+:global(body.theme-rpg) .title { color: #2a1810; }
+:global(body.theme-rpg) .hint { background: rgba(200, 154, 58, 0.1); border-color: rgba(42, 24, 16, 0.2); border-left-color: #c89a3a; }
+:global(body.theme-rpg) .okBtn { background: #a83333; border-color: #2a1810; color: #f3e3b8; box-shadow: 3px 3px 0 0 #2a1810; }
+:global(body.theme-rpg) .okBtn:hover { box-shadow: 1px 1px 0 0 #2a1810; }
+
 /* ─── Acessibilidade ─── */
 @media (prefers-reduced-motion: reduce) {
   .backdrop { animation: none; }
