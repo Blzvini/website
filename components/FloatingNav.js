@@ -9,9 +9,8 @@ const SECTIONS = [
   { id: 'contato',       label: 'Contato' },
 ];
 
-export default function FloatingNav({ theme, toggleTheme, selectTheme }) {
+export default function FloatingNav({ theme, toggleTheme }) {
   const isDark = theme === 'dark';
-  const isPixelTheme = theme === 'light' || theme === 'dark';
   const [visible, setVisible] = useState(false);
   const [activeId, setActiveId] = useState('');
 
@@ -79,34 +78,17 @@ export default function FloatingNav({ theme, toggleTheme, selectTheme }) {
         </ul>
 
         <div className={styles.themePicker} role="group" aria-label="Selecionar tema">
-          {[
-            { id: 'pixel', label: 'Pixel', icon: isPixelTheme && isDark ? '☾' : '☀' },
-            { id: 'grid',  label: 'Grid',  icon: '⌗' },
-            { id: 'bbs',   label: 'BBS',   icon: '▓' },
-            { id: 'rpg',   label: 'RPG',   icon: '★' },
-          ].map((t) => {
-            const isActive = (t.id === 'pixel' && isPixelTheme) || t.id === theme;
-            return (
-              <button
-                key={t.id}
-                type="button"
-                onClick={() => {
-                  if (t.id === 'pixel') {
-                    isPixelTheme ? toggleTheme() : selectTheme('light');
-                  } else {
-                    selectTheme(t.id);
-                  }
-                }}
-                className={`${styles.themeBtn} ${isActive ? styles.themeBtnActive : ''}`}
-                aria-label={`Tema ${t.label}`}
-                aria-pressed={isActive}
-                title={t.label}
-              >
-                <span className={styles.themeBtnIcon} aria-hidden="true">{t.icon}</span>
-                <span className={styles.themeBtnLabel}>{t.label}</span>
-              </button>
-            );
-          })}
+          <button
+            type="button"
+            onClick={toggleTheme}
+            className={`${styles.themeBtn} ${styles.themeBtnActive}`}
+            aria-label="Alternar tema Pixel"
+            aria-pressed="true"
+            title="Pixel"
+          >
+            <span className={styles.themeBtnIcon} aria-hidden="true">{isDark ? '☾' : '☀'}</span>
+            <span className={styles.themeBtnLabel}>Pixel</span>
+          </button>
         </div>
       </div>
     </nav>

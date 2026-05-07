@@ -95,8 +95,8 @@ export default function WelcomeModal() {
 
         <p className={styles.hint}>
           <span className={styles.hintIcon} aria-hidden="true">🎨</span>
-          {' '}Use o <strong>seletor de temas</strong> na barra de navegação
-          para alternar entre Pixel, Grid-Runner, BBS-Operator e Quest Map.
+          {' '}Use o <strong>seletor de tema</strong> na barra de navegação
+          para alternar entre modo claro e escuro.
         </p>
 
         <button type="button" className={styles.okBtn} onClick={close}>

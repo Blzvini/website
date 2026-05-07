@@ -205,7 +205,7 @@ export default function Header({ theme, toggleTheme }) {
             ))}
           </p>
           <h1>Vinicius<br />Marques</h1>
-          <p className={styles.subtitle}>Engenheiro de Dados</p>
+          <p className={styles.subtitle}>Engenheiro de Dados - Jr</p>
           <p className={styles.description}>
             Construo pipelines, modelagens e automações que transformam dados brutos
             em decisões. Apaixonado por arquitetura de dados, cloud e ferramentas

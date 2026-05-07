@@ -8,16 +8,19 @@ export default function MyApp({ Component, pageProps }) {
   const [theme, setTheme] = useState('light');
   const [mounted, setMounted] = useState(false);
 
-  const ALT_THEMES = ['grid', 'bbs', 'rpg'];
-
   useEffect(() => {
     const initial = document.documentElement.dataset.themePreload;
-    const stored = window.localStorage.getItem('site-theme');
+    let stored = window.localStorage.getItem('site-theme');
     let resolved = 'light';
 
-    if (stored === 'dark' || stored === 'light' || ALT_THEMES.includes(stored)) {
+    if (stored && stored !== 'light' && stored !== 'dark') {
+      stored = 'light';
+      window.localStorage.setItem('site-theme', 'light');
+    }
+
+    if (stored === 'dark' || stored === 'light') {
       resolved = stored;
-    } else if (initial === 'dark' || initial === 'light' || ALT_THEMES.includes(initial)) {
+    } else if (initial === 'dark' || initial === 'light') {
       resolved = initial;
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       resolved = 'dark';
@@ -39,21 +42,13 @@ export default function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     if (!mounted) return;
-    document.body.classList.remove('theme-dark', 'theme-grid', 'theme-bbs', 'theme-rpg');
+    document.body.classList.remove('theme-dark');
     if (theme !== 'light') document.body.classList.add(`theme-${theme}`);
     document.documentElement.classList.remove('theme-dark-preload');
     window.localStorage.setItem('site-theme', theme);
   }, [theme, mounted]);
 
-  const toggleTheme = () => {
-    setTheme((prev) => {
-      if (prev === 'dark') return 'light';
-      if (prev === 'light') return 'dark';
-      return prev;
-    });
-  };
-
-  const selectTheme = (t) => setTheme(t);
+  const toggleTheme = () => setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
 
   return (
     <>
@@ -65,7 +60,7 @@ export default function MyApp({ Component, pageProps }) {
         ))}
       </div>
 
-      <Component {...pageProps} theme={theme} toggleTheme={toggleTheme} selectTheme={selectTheme} />
+      <Component {...pageProps} theme={theme} toggleTheme={toggleTheme} />
     </>
   );
 }

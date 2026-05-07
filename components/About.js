@@ -82,9 +82,9 @@ export default function About() {
 
                 <div className={styles.text}>
                   <div className={styles.qa}>
-                    <h3 className={styles.qaLabel}>Quem é você?</h3>
+                    <h3 className={styles.qaLabel}>Quem é Vinicius?</h3>
                     <p>
-                      Sou Vinicius Marques, Engenheiro de Dados formado em Análise e Desenvolvimento
+                      Sou Vinicius Marques, formado em Análise e Desenvolvimento
                       de Sistemas. Comecei minha trajetória em desenvolvimento de software, passei por
                       QA e hoje meu foco é inteiramente em dados — pipelines, modelagem, cloud e tudo
                       que envolve transformar informação bruta em algo que gera valor real.
@@ -92,7 +92,7 @@ export default function About() {
                   </div>
 
                   <div className={styles.qa}>
-                    <h3 className={styles.qaLabel}>O que você faz hoje?</h3>
+                    <h3 className={styles.qaLabel}>O que Vinicius faz hoje?</h3>
                     <p>
                       Trabalho com PySpark, SQL, Microsoft Fabric e Azure para construir soluções
                       robustas e escaláveis. Tenho experiência em ETL, automação com Power Platform e
@@ -102,7 +102,7 @@ export default function About() {
                   </div>
 
                   <div className={styles.qa}>
-                    <h3 className={styles.qaLabel}>O que você busca profissionalmente?</h3>
+                    <h3 className={styles.qaLabel}>O que Vinicius busca profissionalmente?</h3>
                     <p>
                       Uma oportunidade como Engenheiro de Dados Jr. em times que valorizem qualidade
                       técnica, autonomia e aprendizado contínuo. Ambientes com stacks modernas de dados
@@ -111,7 +111,7 @@ export default function About() {
                   </div>
 
                   <div className={styles.qa}>
-                    <h3 className={styles.qaLabel}>Como você é fora do trabalho?</h3>
+                    <h3 className={styles.qaLabel}>Como Vinicius é fora do trabalho?</h3>
                     <p>
                       Nas horas livres exploro trilhas, ouço música (de jazz a metal, sem preconceito),
                       jogo games indie com estética retrô, leio sobre tecnologia e assisto séries até

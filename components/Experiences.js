@@ -26,10 +26,18 @@ const experiences = [
     projects: [
       {
         id: 'p1',
-        name: 'Portal de Gestão de Contratos',
-        context: 'Plataforma interna de um cliente do setor financeiro para centralizar o ciclo de vida de contratos — criação, aprovação, renovação e encerramento.',
-        contribution: 'Responsável pela criação de planos de teste end-to-end, cobrindo fluxos críticos de aprovação e integração com sistemas legados. Desenvolvi cenários BDD em Gherkin que reduziram ambiguidades entre negócio e dev. Reportei e acompanhei bugs via Azure DevOps até encerramento.',
-        stack: ['Power Apps', 'Power Automate', 'Azure DevOps', 'Gherkin (BDD)', 'SQL'],
+        name: 'Close Up',
+        context: 'O projeto consistia no desenvolvimento de um sistema web para gerenciamento de Ordens de Serviço (OS) da Close-Up. A plataforma possuía diferentes fluxos e permissões para cada perfil de usuário, incluindo telas de cadastro, aprovação, encaminhamento de solicitações, monitoramento, geração e extração de relatórios, além de registro de logs. Era um sistema complexo, com diversas regras de negócio relacionadas à criação e aprovação das ordens de serviço, como permissões específicas por cargo, validações de preenchimento, prazos de aprovação e regras específicas para cada tipo de OS.',
+        contribution: `Atuei na área de testes e validação do sistema, sendo responsável pela criação e execução de roteiros de testes com base nos requisitos funcionais e não funcionais do projeto. Após a validação interna, os testes eram encaminhados ao cliente para homologação, acompanhando de perto todo o processo para esclarecer dúvidas, validar documentações e registrar novos requisitos identificados durante os testes.
+
+Participei ativamente das reuniões com o cliente, auxiliando no entendimento das funcionalidades e no levantamento de melhorias. Também realizei visitas presenciais para suporte em testes, alinhamento de fluxos e validação das telas do sistema.
+
+Como o projeto não utilizava ferramentas como Azure DevOps para gerenciamento de testes, desenvolvi uma estrutura própria em Excel para organização e controle dos cenários testados, incluindo identificação dos testes, resultados esperados, resultados obtidos e status das execuções.
+
+Além disso, fui responsável pela abertura e documentação de bugs, buscando sempre fornecer o máximo de contexto possível para facilitar a análise dos desenvolvedores. Isso incluía envio de requisições via cURL, investigação de respostas no Postman, validação de dados no MSSQL e acompanhamento individual com os desenvolvedores para reprodução e correção dos problemas encontrados. 
+
+Eu criava todos os cards de bugs, tentava ao máximo cooperar com o desenvolvedor, informando no card o bug, passando o CURL das requisições que eu tinha feito até chegar em determinado erro, ou até mesmo investigando as respostas que eu tinha no Postman, fazia averiguação dos dados no MSSQL, me juntava com cada desenvolvedor separadamente para informar sobre os erros que estavam acontecendo.`,
+        stack: ['Excel', 'Postman', 'SQL', 'Gherkin (BDD)', 'Jira' ],
       },
       {
         id: 'p2',

@@ -9,12 +9,10 @@ import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import WelcomeModal from '../components/WelcomeModal';
 
-export default function Home({ theme, toggleTheme, selectTheme }) {
+export default function Home({ theme, toggleTheme }) {
   const themeColor =
     theme === 'dark'  ? '#0c1528' :
-    theme === 'grid'  ? '#04060d' :
-    theme === 'bbs'   ? '#1a0e02' :
-    theme === 'rpg'   ? '#f3e3b8' : '#2d9b4e';
+    '#2d9b4e';
 
   return (
     <>
@@ -33,7 +31,7 @@ export default function Home({ theme, toggleTheme, selectTheme }) {
       </Head>
 
       <WelcomeModal />
-      <FloatingNav theme={theme} toggleTheme={toggleTheme} selectTheme={selectTheme} />
+      <FloatingNav theme={theme} toggleTheme={toggleTheme} />
 
       <main id="main">
         <Header theme={theme} toggleTheme={toggleTheme} />
