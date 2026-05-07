@@ -93,14 +93,6 @@
   text-align: center;
 }
 
-.body {
-  font-family: var(--font-family-body);
-  font-size: 0.92rem;
-  color: var(--color-text-secondary);
-  line-height: 1.75;
-  margin: 0 0 1rem;
-}
-
 .hint {
   display: flex;
   align-items: flex-start;
@@ -171,8 +163,6 @@
 :global(body.theme-dark) .ascii { color: var(--color-accent); }
 
 :global(body.theme-dark) .title { color: #d8e7ff; }
-
-:global(body.theme-dark) .body { color: var(--color-text-secondary); }
 
 :global(body.theme-dark) .hint {
   background: rgba(95, 168, 255, 0.08);

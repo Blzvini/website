@@ -19,7 +19,7 @@ const ASCII_ART = `
          \\   \`\\  \\
           \`-._/._/`;
 
-export default function WelcomeModal() {
+export default function WelcomeModal({ theme }) {
   const [visible, setVisible] = useState(false);
   const dialogRef = useRef(null);
   const closeBtnRef = useRef(null);
@@ -84,19 +84,17 @@ export default function WelcomeModal() {
         </div>
 
         <h2 id="welcome-title" className={styles.title}>
-          Olá, explorador!
+          Olá, Explorador!
         </h2>
 
-        <p className={styles.body}>
-          Bem-vindo ao meu portfólio. Aqui você vai encontrar minha
-          trajetória como <strong>Engenheiro de Dados</strong> — projetos,
-          habilidades, experiências e formas de me encontrar.
-        </p>
-
         <p className={styles.hint}>
-          <span className={styles.hintIcon} aria-hidden="true">🎨</span>
-          {' '}Use o <strong>seletor de tema</strong> na barra de navegação
-          para alternar entre modo claro e escuro.
+          <span className={styles.hintIcon} aria-hidden="true">
+            {theme === 'dark' ? '🌙' : '☀️'}
+          </span>
+          {theme === 'dark'
+            ? <>Clique na <strong>lua</strong> para ativar o modo claro.</>
+            : <>Clique no <strong>sol</strong> para ativar o modo escuro.</>
+          }
         </p>
 
         <button type="button" className={styles.okBtn} onClick={close}>

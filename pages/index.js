@@ -30,7 +30,7 @@ export default function Home({ theme, toggleTheme }) {
         <meta name="robots" content="index, follow" />
       </Head>
 
-      <WelcomeModal />
+      <WelcomeModal theme={theme} />
       <FloatingNav theme={theme} toggleTheme={toggleTheme} />
 
       <main id="main">
