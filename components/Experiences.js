@@ -96,6 +96,38 @@ Participei de reuniões com as equipes envolvidas para compreender o funcionamen
 Para o processo de tradução do conteúdo, utilizei ferramentas como DeepL e ChatGPT para adaptação das documentações para os demais idiomas, garantindo consistência e clareza das informações.`,
         stack: ['SharePoint', 'LightShot', 'ScreenToGif', 'DeepL', 'Chat GPT' ],
       },
+      {
+        id: 'p6',
+        name: 'Esqueci-o-Nome-do-Projeto',
+        context: `O projeto consistia no desenvolvimento de dashboards em Power BI com base em requisitos funcionais e não funcionais definidos pelo cliente. Diferente de outros projetos, não havia um design previamente elaborado em ferramentas como Figma, existindo apenas uma definição de paleta de cores e diretrizes gerais para construção das interfaces.
+
+Os dashboards possuíam diversas regras de negócio e tinham como objetivo apresentar informações de forma clara e estratégica para acompanhamento de indicadores e tomada de decisão.`,
+        contribution: `Atuei como Tester | QA do projeto, sendo responsável pela criação e gerenciamento dos cenários de testes dentro do Azure DevOps.
+
+Realizava testes funcionais nos dashboards desenvolvidos, validando regras de negócio, comportamento dos filtros, integridade das informações apresentadas e conformidade com os requisitos definidos pelo cliente. Após as validações internas, os testes eram encaminhados para homologação.
+
+Também fui responsável pela abertura e acompanhamento de bugs, documentando problemas encontrados e alinhando diretamente com os desenvolvedores para entendimento e correção das inconsistências identificadas.`,
+        stack: ['Power BI', 'Azure DevOps'],
+      },
+      {
+        id: 'p7',
+        name: 'Niteo/Bot/RDConversas',
+        context: `O projeto tinha como objetivo automatizar o atendimento de clientes que entravam em contato pelo site ou via WhatsApp em busca de informações sobre cursos e treinamentos.
+
+A proposta era criar um fluxo automatizado capaz de interpretar as informações fornecidas pelos usuários e direcionar o atendimento de acordo com o perfil e necessidade do lead. Dependendo das respostas e informações recebidas, o sistema poderia:
+
+Encaminhar o lead diretamente para um consultor;
+Solicitar aguardo para atendimento humano;
+Ou enviar automaticamente uma proposta comercial em PDF.
+
+No fluxo via WhatsApp, os usuários respondiam perguntas de escopo fechado que guiavam toda a jornada até a conclusão do atendimento.`,
+        contribution: `Inicialmente, desenvolvi a automação utilizando o Make, integrando APIs do RD Station e WhatsApp. Nesse fluxo, o sistema realizava a criação automática de leads no RD Station e fazia o envio de mensagens e propostas em PDF via WhatsApp e e-mail.
+
+Posteriormente, devido aos custos operacionais da solução, o projeto passou por uma nova implementação utilizando o Kommo integrado ao RD Station. Como essa abordagem ainda não atendia completamente às necessidades do processo, uma terceira versão foi desenvolvida utilizando as próprias plataformas do RD Station em conjunto com o RD Conversas.
+
+Nessa implementação final, o fluxo automatizado via WhatsApp conduzia o usuário por perguntas objetivas, seguindo regras previamente definidas para qualificação do atendimento. Ao final do processo, o sistema poderia criar automaticamente o lead no RD Station, direcionar imediatamente para um consultor ou enviar propostas comerciais em PDF de forma automatizada.`,
+        stack: ['Kommo', 'RD Station', 'RD Conversas', 'WhatsApp API', 'Make' ],
+      },
     ],
   },
   {
@@ -105,19 +137,81 @@ Para o processo de tradução do conteúdo, utilizei ferramentas como DeepL e Ch
     period: 'Jan 2023 – Dez 2023',
     projects: [
       {
-        id: 'p3',
-        name: 'Sistema de Chamados Internos',
-        context: 'Aplicação web para abertura e acompanhamento de chamados de suporte interno, substituindo um processo manual via e-mail.',
-        contribution: 'Apoiei o desenvolvimento de funcionalidades com C# e Angular, implementei pequenas melhorias na interface e participei de integrações com banco de dados SQL. Também fui responsável pela documentação técnica das rotas de API.',
-        stack: ['C#', '.NET', 'Angular', 'SQL', 'Git'],
+        id: 'p8',
+        name: 'Close-Up/PoC',
+        context: `O projeto consistia em uma prova de conceito (PoC) voltada para a migração e adaptação de processos que originalmente rodavam em MSSQL para o ecossistema Microsoft Fabric.
+
+O objetivo era reproduzir dentro do Fabric toda a lógica existente no ambiente SQL Server, incluindo queries, procedures e views, além de estruturar um fluxo completo de ingestão, transformação e disponibilização de dados.
+
+O processo envolvia:
+
+Consumo de dados armazenados no Azure Blob Storage;
+Organização e limpeza dos dados dentro do Data Lake;
+Conversão de regras e transformações SQL para PySpark;
+Execução de processos ETL utilizando notebooks;
+Geração de relatórios em Excel respeitando todas as regras de negócio existentes;
+Envio dos arquivos processados novamente para o Azure Blob Storage.
+
+Toda a execução era orquestrada através de pipelines responsáveis pela ingestão, transformação, geração dos relatórios e distribuição dos arquivos finais.`,
+        contribution: `Esse foi um dos meus primeiros contatos com um projeto real utilizando Python e engenharia de dados.
+
+Atuei na integração com o Azure Blob Storage para carregamento e manipulação dos dados dentro do Microsoft Fabric. Também desenvolvi notebooks para conversão de processos SQL em PySpark, auxiliando na implementação das transformações necessárias para o ETL.
+
+Participei da construção das pipelines responsáveis pela automação do fluxo completo de processamento e estive presente em diversas reuniões de alinhamento para entendimento tanto das estruturas de dados quanto das regras de negócio envolvidas nos relatórios finais.`,
+        stack: ['Python', 'SQL', 'PySpark', 'Microsoft Fabric', 'Microsoft WareHouse', 'Microsoft DataLake', 'Data Factory', 'Power BI', 'Azure DevOps', 'MSSQL', 'Máquinas virtuais Azure', 'Excalidraw'],
       },
       {
-        id: 'p4',
-        name: 'Dashboard de Indicadores Operacionais',
-        context: 'Painel de acompanhamento de KPIs para times de operação de um cliente de médio porte, com atualização diária via integração de dados.',
-        contribution: 'Contribuí na integração de fontes de dados com Power Query, validei métricas junto às áreas de negócio e auxiliei na documentação dos cálculos implementados em DAX.',
-        stack: ['Power BI', 'Power Query', 'DAX', 'SQL', 'Power Automate'],
+        id: 'p9',
+        name: 'Niteo/TimeTrack',
+        context: ``,
+        contribution: ``,
+        stack: ['Power Apps', 'Power Automate', 'CSS', 'HTML', 'SQL', 'Azure Database'],
       },
+    ],
+  },
+  {
+    id: 3,
+    company: 'Lec Brasil',
+    role: 'Auxiliar Administrativo',
+    period: 'Dez 2020 – Dez 2022',
+    projects: [
+      {
+        id: 'p10',
+        name: 'Leitura-da-Luz',
+        context: ``,
+        contribution: ``,
+        stack: ['Python', 'SQL', 'PySpark', 'Microsoft Fabric', 'Microsoft WareHouse', 'Microsoft DataLake', 'Data Factory', 'Power BI', 'Azure DevOps', 'MSSQL', 'Máquinas virtuais Azure'],
+      }
+    ],
+  },
+  {
+    id: 4,
+    company: 'Bolas Bellca',
+    role: 'Auxiliar de linha de produção',
+    period: 'Jan 2019 – Nov 2019',
+    projects: [
+      {
+        id: 'p11',
+        name: 'Producao-frenetica',
+        context: ``,
+        contribution: ``,
+        stack: ['Python', 'SQL', 'PySpark', 'Microsoft Fabric', 'Microsoft WareHouse', 'Microsoft DataLake', 'Data Factory', 'Power BI', 'Azure DevOps', 'MSSQL', 'Máquinas virtuais Azure'],
+      }
+    ],
+  },
+  {
+    id: 5,
+    company: 'Hipermercado Bergamini',
+    role: 'Jovem Aprendiz',
+    period: 'Out 2016 – Mar 2018',
+    projects: [
+      {
+        id: 'p12',
+        name: 'Supermercado',
+        context: ``,
+        contribution: ``,
+        stack: ['Pilotar carrinho de supermercado', 'Organização de prateleiras', 'Atendimento ao cliente', 'Empacotar compras', 'Reposição de mercadorias'],
+      }
     ],
   },
 ];
