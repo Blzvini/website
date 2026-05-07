@@ -87,15 +87,25 @@ export default function WelcomeModal({ theme }) {
           Olá, Explorador!
         </h2>
 
-        <p className={styles.hint}>
-          <span className={styles.hintIcon} aria-hidden="true">
-            {theme === 'dark' ? '🌙' : '☀️'}
-          </span>
-          {theme === 'dark'
-            ? <>Clique na <strong>lua</strong> para ativar o modo claro.</>
-            : <>Clique no <strong>sol</strong> para ativar o modo escuro.</>
-          }
-        </p>
+        <div className={styles.hint}>
+          <div className={styles.hintRow}>
+            <span className={styles.hintIcon} aria-hidden="true">
+              {theme === 'dark' ? '🌙' : '☀️'}
+            </span>
+            <span>
+              {theme === 'dark'
+                ? <>Clique na <strong>lua</strong> para ativar o modo claro.</>
+                : <>Clique no <strong>sol</strong> para ativar o modo escuro.</>
+              }
+            </span>
+          </div>
+          <p className={styles.hintNote}>
+            {theme === 'dark'
+              ? 'Mas tome cuidado e não deixe o mouse por muito tempo no lua.'
+              : 'Mas tome cuidado e não deixe o mouse por muito tempo na sol.'
+            }
+          </p>
+        </div>
 
         <button type="button" className={styles.okBtn} onClick={close}>
           Entendi!
