@@ -402,6 +402,46 @@
   position: relative;
 }
 
+.folderTooltip {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-accent-dark);
+  color: var(--color-accent-sand);
+  font-family: var(--font-family-display);
+  font-size: 0.58rem;
+  letter-spacing: 0.03em;
+  padding: 0.25rem 0.6rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-fast);
+  z-index: 10;
+}
+
+.folderTooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid var(--color-accent-dark);
+}
+
+.hintWrap:hover .folderTooltip { opacity: 1; }
+
+:global(body.theme-dark) .folderTooltip {
+  background: rgba(18, 28, 46, 0.97);
+  color: #c7d9ff;
+}
+
+:global(body.theme-dark) .folderTooltip::after {
+  border-top-color: rgba(18, 28, 46, 0.97);
+}
+
 .expHint {
   position: absolute;
   bottom: calc(100% + 7px);

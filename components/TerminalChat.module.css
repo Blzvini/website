@@ -230,6 +230,37 @@
   border-top: 5px solid var(--color-accent-dark);
 }
 
+.sendTooltip {
+  position: absolute;
+  right: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--color-accent-dark);
+  color: var(--color-accent-sand);
+  font-family: var(--font-family-display);
+  font-size: 0.56rem;
+  letter-spacing: 0.03em;
+  padding: 0.28rem 0.6rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-fast);
+  z-index: 20;
+}
+
+.sendTooltip::after {
+  content: '';
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 5px solid var(--color-accent-dark);
+}
+
+.sendBtnWrap:hover .sendTooltip { opacity: 1; }
+
 .sendHintOut {
   opacity: 0;
   transition: opacity 280ms ease;
@@ -348,6 +379,15 @@
 }
 
 :global(body.theme-dark) .inputCursor { color: #5fa8ff; }
+
+:global(body.theme-dark) .sendTooltip {
+  background: rgba(18, 28, 46, 0.97);
+  color: #c7d9ff;
+}
+
+:global(body.theme-dark) .sendTooltip::after {
+  border-left-color: rgba(18, 28, 46, 0.97);
+}
 
 :global(body.theme-dark) .sendHint {
   background: rgba(24, 38, 70, 0.95);

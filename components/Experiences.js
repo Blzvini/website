@@ -312,13 +312,16 @@ export default function Experiences() {
                     const isFirst   = expIdx === 0 && projIdx === 0;
                     return (
                       <div key={project.id} className={styles.projectCard}>
-                        <div className={isFirst ? styles.hintWrap : undefined}>
+                        <div className={styles.hintWrap}>
                           {isFirst && showHint && (
                             <span
                               className={`${styles.expHint}${hintDone ? ` ${styles.expHintOut}` : ''}`}
                               aria-hidden="true"
                             >!</span>
                           )}
+                          <span className={styles.folderTooltip} aria-hidden="true">
+                            Não abra essa pasta...
+                          </span>
                         <button
                           className={styles.projectToggle}
                           aria-expanded={isOpen}
