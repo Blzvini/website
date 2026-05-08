@@ -34,6 +34,8 @@ export default function TerminalChat() {
   const [phase,         setPhase]         = useState('typing-input');
   const [inputText,     setInputText]     = useState('');
   const [botTyping,     setBotTyping]     = useState('');
+  const [showHint,      setShowHint]      = useState(false);
+  const [hintDone,      setHintDone]      = useState(false);
 
   const scrollRef   = useRef(null);
   const timerRef    = useRef(null);
@@ -73,8 +75,23 @@ export default function TerminalChat() {
     }
   }, [messages, botTyping, phase]);
 
+  // Mostra hint na primeira vez que o input fica pronto
+  useEffect(() => {
+    if (phase === 'ready' && scriptIdx === 0 && !hintDone) {
+      const t = setTimeout(() => setShowHint(true), 600);
+      return () => clearTimeout(t);
+    }
+  }, [phase]); // eslint-disable-line
+
   const handleSend = () => {
     if (phase !== 'ready') return;
+
+    // Dispensa hint na primeira interação
+    if (showHint && !hintDone) {
+      setHintDone(true);
+      setTimeout(() => setShowHint(false), 340);
+    }
+
     const current = SCRIPT[scriptIdx];
 
     setMessages(prev => [...prev, { id: Date.now(), type: 'user', text: current.userText }]);
@@ -177,15 +194,23 @@ export default function TerminalChat() {
                 aria-hidden="true"
               >|</span>
             </div>
-            <button
-              type="button"
-              className={styles.sendBtn}
-              onClick={handleSend}
-              disabled={phase !== 'ready'}
-              aria-label="Enviar pergunta"
-            >
-              ➜
-            </button>
+            <div className={styles.sendBtnWrap}>
+              {showHint && (
+                <span
+                  className={`${styles.sendHint}${hintDone ? ` ${styles.sendHintOut}` : ''}`}
+                  aria-hidden="true"
+                >!</span>
+              )}
+              <button
+                type="button"
+                className={styles.sendBtn}
+                onClick={handleSend}
+                disabled={phase !== 'ready'}
+                aria-label="Enviar pergunta"
+              >
+                ➜
+              </button>
+            </div>
           </>
         )}
       </div>

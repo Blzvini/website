@@ -385,3 +385,78 @@
   .projectDetails { transition: none; }
   .chevron { transition: none; }
 }
+
+/* ─── Hint "!" primeira pasta ─── */
+@keyframes expHintAppear {
+  0%   { opacity: 0; transform: translateX(-50%) scale(0.4) translateY(6px); }
+  65%  { transform: translateX(-50%) scale(1.15) translateY(-2px); }
+  100% { opacity: 1; transform: translateX(-50%) scale(1) translateY(0); }
+}
+
+@keyframes expHintBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(-5px); }
+}
+
+.hintWrap {
+  position: relative;
+}
+
+.expHint {
+  position: absolute;
+  bottom: calc(100% + 7px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-family-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-accent-sand);
+  background: var(--color-accent-dark);
+  border: 2px solid var(--color-accent-dark);
+  box-shadow:
+    1px 1px 0 0 rgba(26, 71, 42, 0.5),
+    0 0 8px rgba(45, 155, 78, 0.45);
+  pointer-events: none;
+  z-index: 10;
+  animation:
+    expHintAppear 300ms cubic-bezier(0.34, 1.56, 0.64, 1) both,
+    expHintBounce 0.95s ease-in-out 300ms infinite;
+}
+
+.expHint::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid var(--color-accent-dark);
+}
+
+.expHintOut {
+  opacity: 0;
+  transition: opacity 280ms ease;
+  animation: none !important;
+}
+
+:global(body.theme-dark) .expHint {
+  background: #1a3a1a;
+  border-color: rgba(74, 200, 80, 0.5);
+  color: #4ac850;
+  box-shadow:
+    1px 1px 0 0 rgba(74, 200, 80, 0.2),
+    0 0 10px rgba(74, 200, 80, 0.35);
+}
+
+:global(body.theme-dark) .expHint::after {
+  border-top-color: #1a3a1a;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .expHint { animation: none; transform: translateX(-50%); }
+}

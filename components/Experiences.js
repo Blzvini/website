@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './Experiences.module.css';
 import { TECH_DESCRIPTIONS } from '../lib/techDescriptions';
 
@@ -266,9 +266,20 @@ function renderText(text, className) {
 }
 
 export default function Experiences() {
-  const [expanded, setExpanded] = useState(new Set());
+  const [expanded,  setExpanded]  = useState(new Set());
+  const [showHint,  setShowHint]  = useState(false);
+  const [hintDone,  setHintDone]  = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setShowHint(true), 1500);
+    return () => clearTimeout(t);
+  }, []);
 
   function toggle(id) {
+    if (showHint && !hintDone) {
+      setHintDone(true);
+      setTimeout(() => setShowHint(false), 340);
+    }
     setExpanded(prev => {
       const next = new Set(prev);
       next.has(id) ? next.delete(id) : next.add(id);
@@ -283,7 +294,7 @@ export default function Experiences() {
 
         <div className={styles.container}>
           <div className={styles.timeline}>
-            {experiences.map((exp) => (
+            {experiences.map((exp, expIdx) => (
               <article key={exp.id} className={styles.card}>
                 <div className={styles.marker} aria-hidden="true" />
 
@@ -296,10 +307,18 @@ export default function Experiences() {
                 </div>
 
                 <div className={styles.projects}>
-                  {exp.projects.map((project) => {
-                    const isOpen = expanded.has(project.id);
+                  {exp.projects.map((project, projIdx) => {
+                    const isOpen    = expanded.has(project.id);
+                    const isFirst   = expIdx === 0 && projIdx === 0;
                     return (
                       <div key={project.id} className={styles.projectCard}>
+                        <div className={isFirst ? styles.hintWrap : undefined}>
+                          {isFirst && showHint && (
+                            <span
+                              className={`${styles.expHint}${hintDone ? ` ${styles.expHintOut}` : ''}`}
+                              aria-hidden="true"
+                            >!</span>
+                          )}
                         <button
                           className={styles.projectToggle}
                           aria-expanded={isOpen}
@@ -315,6 +334,7 @@ export default function Experiences() {
                             {project.name}
                           </h4>
                         </button>
+                        </div>
 
                         <div
                           id={`details-${project.id}`}
