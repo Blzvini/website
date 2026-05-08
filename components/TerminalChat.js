@@ -4,7 +4,7 @@ import styles from './TerminalChat.module.css';
 const INITIAL_BOT = {
   id: 0,
   type: 'bot',
-  text: 'Olá! Pode me perguntar qualquer coisa — estou aqui pra te contar sobre o Vinicius. 👋',
+  text: 'Olá! estou aqui pra te contar sobre o Vinicius. ',
 };
 
 const SCRIPT = [
@@ -201,6 +201,9 @@ export default function TerminalChat() {
                   aria-hidden="true"
                 >!</span>
               )}
+              <span className={styles.sendTooltip} aria-hidden="true">
+                Clique para enviar e ver a resposta
+              </span>
               <button
                 type="button"
                 className={styles.sendBtn}
