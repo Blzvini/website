@@ -1,16 +1,49 @@
 import { useRef, useState } from 'react';
 import styles from './About.module.css';
 
+const ORKUT_RATINGS = [
+  { label: 'Confiável', count: 3, max: 3, type: 'face'  },
+  { label: 'Legal',     count: 3, max: 3, type: 'ice'   },
+  { label: 'Sexy',      count: 0, max: 3, type: 'heart' },
+];
+
+function OrkutIcon({ type, dim }) {
+  const cls = `${styles.orkutIcon}${dim ? ` ${styles.orkutIconDim}` : ''}`;
+  if (type === 'face') return (
+    <svg width="18" height="18" viewBox="0 0 22 22" aria-hidden="true" className={cls}>
+      <circle cx="11" cy="11" r="9" fill="#f5c518" stroke="#c8960c" strokeWidth="1.5"/>
+      <circle cx="8.2" cy="9" r="1.3" fill="#5a3e00"/>
+      <circle cx="13.8" cy="9" r="1.3" fill="#5a3e00"/>
+      <path d="M7.5 13.5 Q11 16.5 14.5 13.5" stroke="#5a3e00" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+      <ellipse cx="8" cy="7.5" rx="1.2" ry="0.7" fill="rgba(255,255,255,0.55)" transform="rotate(-15 8 7.5)"/>
+    </svg>
+  );
+  if (type === 'ice') return (
+    <svg width="18" height="18" viewBox="0 0 22 22" aria-hidden="true" className={cls}>
+      <rect x="4" y="3" width="14" height="16" rx="2" fill="#4ec4f5" stroke="#1a8fc8" strokeWidth="1.5"/>
+      <rect x="6.5" y="5" width="5" height="2.5" rx="1" fill="rgba(255,255,255,0.8)"/>
+      <line x1="4" y1="10.5" x2="18" y2="10.5" stroke="#1a8fc8" strokeWidth="0.7" opacity="0.35"/>
+    </svg>
+  );
+  if (type === 'heart') return (
+    <svg width="18" height="18" viewBox="0 0 22 22" aria-hidden="true" className={cls}>
+      <path d="M11 18 C11 18 2 12.5 2 7 A4.5 4.5 0 0 1 11 5 A4.5 4.5 0 0 1 20 7 C20 12.5 11 18 11 18Z" fill="#ff2255" stroke="#cc0033" strokeWidth="1.5"/>
+      <ellipse cx="7.5" cy="8" rx="2" ry="1.2" fill="rgba(255,255,255,0.55)" transform="rotate(-30 7.5 8)"/>
+    </svg>
+  );
+  return null;
+}
+
 const TABS = [
   { id: 'sobre',    label: 'Quem sou' },
   { id: 'formacao', label: 'Formação' },
 ];
 
 const certifications = [
-  { id: 1, name: 'Microsoft Azure Fundamentals', issuer: 'Microsoft', code: 'AZ-900', year: '2024' },
-  { id: 2, name: 'Data Engineering with Microsoft Fabric', issuer: 'Microsoft Learn', code: 'Learning Path', year: '2024' },
-  { id: 3, name: 'Python para Engenharia de Dados', issuer: 'Alura', code: 'Bootcamp', year: '2023' },
-  { id: 4, name: 'SQL para Análise de Dados', issuer: 'Data Science Academy', code: 'Curso', year: '2023' },
+  { id: 1, name: 'Curso de Programação do Filipe Deschamps', issuer: '', code: 'Curso.dev', year: '2026', link: 'https://curso.dev/', tooltip: 'Acessar curso.dev' },
+  { id: 2, name: 'Microsoft Power Platform & Sharepoint', issuer: '', code: 'Niteo', year: '2022' },
+  { id: 3, name: 'Python para Análise de Dados', issuer: '', code: 'Niteo', year: '2022' },
+  
 ];
 
 export default function About() {
@@ -78,6 +111,19 @@ export default function About() {
                     <span className={styles.avatarPixel} aria-hidden="true" />
                     <span className={styles.avatarLabel}>VM</span>
                   </div>
+                  <ul className={styles.ratingList}>
+                    {ORKUT_RATINGS.map(({ label, count, max, type }) => (
+                      <li key={label} className={styles.ratingRow}>
+                        <span className={styles.ratingLabel}>{label}</span>
+                        <div className={styles.orkutIconGroup} aria-hidden="true">
+                          {Array.from({ length: max }, (_, i) => (
+                            <OrkutIcon key={i} type={type} dim={i >= count} />
+                          ))}
+                          {count === 0 && <span className={styles.ratingNone}></span>}
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
                 <div className={styles.text}>
@@ -120,6 +166,7 @@ export default function About() {
                   </div>
                 </div>
               </div>
+
             </div>
 
             {/* ─── Painel: Formação ─── */}
@@ -145,28 +192,26 @@ export default function About() {
               <div className={styles.formationBlock}>
                 <h3 className={styles.blockLabel}>Certificados &amp; Cursos</h3>
                 <div className={styles.certs}>
-                  {certifications.map((cert) => (
-                    <div key={cert.id} className={styles.certCard}>
-                      <div className={styles.certTop}>
-                        <span className={styles.certCode}>{cert.code}</span>
-                        <span className={styles.certYear}>{cert.year}</span>
-                      </div>
-                      <p className={styles.certName}>{cert.name}</p>
-                      <p className={styles.certIssuer}>{cert.issuer}</p>
-                    </div>
-                  ))}
+                  {certifications.map((cert) => {
+                    const inner = (
+                      <>
+                        <div className={styles.certTop}>
+                          <span className={styles.certCode}>{cert.code}</span>
+                          <span className={styles.certYear}>{cert.year}</span>
+                        </div>
+                        <p className={styles.certName}>{cert.name}</p>
+                        {cert.issuer && <p className={styles.certIssuer}>{cert.issuer}</p>}
+                        {cert.tooltip && <span role="tooltip" className={styles.certTooltip}>{cert.tooltip}</span>}
+                      </>
+                    );
+                    return cert.link
+                      ? <a key={cert.id} href={cert.link} target="_blank" rel="noopener noreferrer" className={`${styles.certCard} ${styles.certCardLink}`} aria-label={`${cert.name} (abre em nova aba)`}>{inner}</a>
+                      : <div key={cert.id} className={styles.certCard}>{inner}</div>;
+                  })}
                 </div>
               </div>
 
-              <div className={styles.formationBlock}>
-                <h3 className={styles.blockLabel}>Aprendizado contínuo</h3>
-                <p className={styles.continuous}>
-                  Acompanho de perto as comunidades de dados — Microsoft Fabric, dbt, Modern Data Stack.
-                  Estudo regularmente através de documentações oficiais, projetos práticos e conteúdos
-                  técnicos de engenharia de dados. Acredito que aprender em público e construir portfólio
-                  real é mais valioso do que acumular certificados.
-                </p>
-              </div>
+              
             </div>
           </div>
         </div>

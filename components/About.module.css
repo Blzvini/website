@@ -248,6 +248,7 @@
 }
 
 .certCard {
+  position: relative;
   padding: 0.85rem 1rem;
   background: rgba(248, 244, 232, 0.7);
   border: 2px solid rgba(26, 71, 42, 0.15);
@@ -260,6 +261,34 @@
 .certCard:hover {
   transform: translate(2px, 2px);
   box-shadow: 2px 2px 0 0 var(--color-accent-dark);
+}
+
+.certCardLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.certTooltip {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-accent-dark);
+  color: var(--color-accent-sand);
+  font-family: var(--font-family-display);
+  font-size: 0.62rem;
+  letter-spacing: 0.03em;
+  padding: 0.25rem 0.55rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-fast);
+  z-index: 10;
+}
+
+.certCard:hover .certTooltip,
+.certCard:focus-within .certTooltip {
+  opacity: 1;
 }
 
 .certTop {
@@ -365,6 +394,52 @@
 :global(body.theme-dark) .qa p {
   color: var(--color-text-secondary);
 }
+
+/* ─── Ratings Orkut (sidebar, abaixo do avatar) ─── */
+.ratingList {
+  list-style: none;
+  padding: 0;
+  margin: 0.6rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+}
+
+.ratingRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ratingLabel {
+  font-family: var(--font-family-display);
+  font-size: 0.58rem;
+  color: var(--color-text-light);
+  white-space: nowrap;
+  flex-shrink: 0;
+  letter-spacing: 0.02em;
+}
+
+.orkutIconGroup {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.orkutIcon { flex-shrink: 0; display: block; }
+
+.orkutIconDim { opacity: 1; }
+
+.ratingNone {
+  font-family: var(--font-family-mono);
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: #c09bab;
+  margin-left: 0.2rem;
+  letter-spacing: 0.05em;
+}
+
+:global(body.theme-dark) .ratingNone { color: #9b7a88; }
 
 /* ─── Responsivo ─── */
 @media (max-width: 640px) {
