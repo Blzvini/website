@@ -367,6 +367,12 @@
   color: #8ea0be;
 }
 
+:global(body.theme-dark) .certTooltip {
+  background: rgba(18, 28, 46, 0.97);
+  color: #c7d9ff;
+  border: 1px solid rgba(180, 200, 238, 0.3);
+}
+
 
 /* ─── Ratings Orkut (sidebar, abaixo do avatar) ─── */
 .ratingList {
