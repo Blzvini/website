@@ -426,8 +426,9 @@
 
 /* ─── Responsivo ─── */
 @media (max-width: 640px) {
-  .chat    { min-height: 360px; }
-  .bubble  { font-size: 0.85rem; max-width: 92%; }
+  .chat        { min-height: 360px; }
+  .bubble      { font-size: 0.85rem; max-width: 92%; }
+  .sendTooltip { display: none; }
 }
 
 /* ─── Acessibilidade ─── */

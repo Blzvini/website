@@ -244,7 +244,7 @@
 }
 
 .projectVideo iframe {
-  width: 180px;
+  width: 260px;
   aspect-ratio: 9 / 16;
   border: none;
   border-radius: 8px;
@@ -499,4 +499,10 @@
 
 @media (prefers-reduced-motion: reduce) {
   .expHint { animation: none; transform: translateX(-50%); }
+}
+
+@media (max-width: 640px) {
+  .timeline::before { display: none; }
+  .timeline          { padding-left: 0; }
+  .folderTooltip     { display: none; }
 }
