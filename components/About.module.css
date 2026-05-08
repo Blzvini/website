@@ -81,7 +81,7 @@
   display: grid;
   grid-template-columns: 160px 1fr;
   gap: var(--spacing-lg);
-  align-items: start;
+  align-items: stretch;
 }
 
 /* ─── Avatar pixel ─── */
@@ -169,29 +169,6 @@
   border: 1px solid var(--color-accent-dark);
 }
 
-/* ─── Perguntas e respostas ─── */
-.text {
-  display: grid;
-  gap: 1.3rem;
-}
-
-.qa { display: grid; gap: 0.35rem; }
-
-.qaLabel {
-  font-family: var(--font-family-display);
-  font-size: 0.78rem;
-  letter-spacing: 0.06em;
-  color: var(--color-accent-dark);
-  text-transform: uppercase;
-  margin: 0;
-}
-
-.qa p {
-  font-size: 0.97rem;
-  line-height: 1.85;
-  color: var(--color-text-secondary);
-  margin: 0;
-}
 
 /* ─── Formação ─── */
 .formationBlock { margin-bottom: 1.75rem; }
@@ -362,7 +339,6 @@
   color: #d8e7ff;
 }
 
-:global(body.theme-dark) .qaLabel,
 :global(body.theme-dark) .blockLabel {
   color: #d8e7ff;
 }
@@ -391,9 +367,6 @@
   color: #8ea0be;
 }
 
-:global(body.theme-dark) .qa p {
-  color: var(--color-text-secondary);
-}
 
 /* ─── Ratings Orkut (sidebar, abaixo do avatar) ─── */
 .ratingList {

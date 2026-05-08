@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import styles from './About.module.css';
+import TerminalChat from './TerminalChat';
 
 const ORKUT_RATINGS = [
   { label: 'Confiável', count: 3, max: 3, type: 'face'  },
@@ -126,45 +127,7 @@ export default function About() {
                   </ul>
                 </div>
 
-                <div className={styles.text}>
-                  <div className={styles.qa}>
-                    <h3 className={styles.qaLabel}>Quem é Vinicius?</h3>
-                    <p>
-                      Sou Vinicius Marques, formado em Análise e Desenvolvimento
-                      de Sistemas. Comecei minha trajetória em desenvolvimento de software, passei por
-                      QA e hoje meu foco é inteiramente em dados — pipelines, modelagem, cloud e tudo
-                      que envolve transformar informação bruta em algo que gera valor real.
-                    </p>
-                  </div>
-
-                  <div className={styles.qa}>
-                    <h3 className={styles.qaLabel}>O que Vinicius faz hoje?</h3>
-                    <p>
-                      Trabalho com PySpark, SQL, Microsoft Fabric e Azure para construir soluções
-                      robustas e escaláveis. Tenho experiência em ETL, automação com Power Platform e
-                      qualidade de software — o que me dá uma visão ampla do ciclo de vida dos dados,
-                      do dado bruto até o dashboard na mão do gestor.
-                    </p>
-                  </div>
-
-                  <div className={styles.qa}>
-                    <h3 className={styles.qaLabel}>O que Vinicius busca profissionalmente?</h3>
-                    <p>
-                      Uma oportunidade como Engenheiro de Dados Jr. em times que valorizem qualidade
-                      técnica, autonomia e aprendizado contínuo. Ambientes com stacks modernas de dados
-                      e cultura de engenharia forte são onde me sinto mais em casa.
-                    </p>
-                  </div>
-
-                  <div className={styles.qa}>
-                    <h3 className={styles.qaLabel}>Como Vinicius é fora do trabalho?</h3>
-                    <p>
-                      Nas horas livres exploro trilhas, ouço música (de jazz a metal, sem preconceito),
-                      jogo games indie com estética retrô, leio sobre tecnologia e assisto séries até
-                      tarde. Acredito que interesses variados constroem soluções mais criativas.
-                    </p>
-                  </div>
-                </div>
+                <TerminalChat />
               </div>
 
             </div>

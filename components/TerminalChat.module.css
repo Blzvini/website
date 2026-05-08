@@ -1,0 +1,328 @@
+/* =====================================================================
+   TerminalChat.module.css — Chat estilo AI retrô pixelado
+   ===================================================================== */
+
+@keyframes bubbleIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes blinkCursor {
+  50% { opacity: 0; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.55; transform: scale(0.85); }
+}
+
+@keyframes dot1 { 0%, 20% { opacity: 0; } 40%, 100% { opacity: 1; } }
+@keyframes dot2 { 0%, 40% { opacity: 0; } 60%, 100% { opacity: 1; } }
+@keyframes dot3 { 0%, 60% { opacity: 0; } 80%, 100% { opacity: 1; } }
+
+/* ─── Container ─── */
+.chat {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--color-accent-dark);
+  box-shadow: 3px 3px 0 0 var(--color-accent-dark);
+  background: var(--color-bg-card);
+  overflow: hidden;
+  min-height: 400px;
+}
+
+/* ─── Header ─── */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 1rem;
+  border-bottom: 2px solid var(--color-accent-dark);
+  background: rgba(248, 244, 232, 0.6);
+  flex-shrink: 0;
+}
+
+.onlineDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  flex-shrink: 0;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+.headerName {
+  font-family: var(--font-family-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--color-accent-dark);
+}
+
+.headerRole {
+  font-family: var(--font-family-display);
+  font-size: 0.58rem;
+  letter-spacing: 0.03em;
+  color: var(--color-text-light);
+  border: 1px solid rgba(26, 71, 42, 0.2);
+  padding: 0.1rem 0.45rem;
+  margin-left: auto;
+}
+
+/* ─── Área de mensagens ─── */
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-accent-dark) transparent;
+}
+
+.messages::-webkit-scrollbar       { width: 3px; }
+.messages::-webkit-scrollbar-track { background: transparent; }
+.messages::-webkit-scrollbar-thumb { background: var(--color-accent-dark); }
+
+/* ─── Balões ─── */
+.bubble {
+  max-width: 84%;
+  padding: 0.6rem 0.9rem;
+  font-family: var(--font-family-body);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  animation: bubbleIn 200ms ease both;
+}
+
+.bubbleUser {
+  align-self: flex-end;
+  background: var(--color-accent-dark);
+  color: var(--color-accent-sand);
+  border: 2px solid var(--color-accent-dark);
+  box-shadow: 2px 2px 0 0 rgba(26, 71, 42, 0.35);
+}
+
+.bubbleBot {
+  align-self: flex-start;
+  background: rgba(248, 244, 232, 0.85);
+  color: var(--color-text-secondary);
+  border: 2px solid rgba(26, 71, 42, 0.15);
+  border-left: 3px solid var(--color-accent);
+}
+
+/* ─── Cursor de digitação ─── */
+.cursor {
+  display: inline-block;
+  animation: blinkCursor 0.9s step-end infinite;
+  margin-left: 1px;
+  color: var(--color-accent-dark);
+  line-height: 1;
+}
+
+/* ─── Pontos animados ─── */
+.typingDots {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  padding: 2px 0;
+}
+
+.typingDots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  opacity: 0;
+}
+
+.typingDots span:nth-child(1) { animation: dot1 0.9s ease infinite; }
+.typingDots span:nth-child(2) { animation: dot2 0.9s ease infinite; }
+.typingDots span:nth-child(3) { animation: dot3 0.9s ease infinite; }
+
+/* ─── Área de input ─── */
+.inputArea {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 0.85rem;
+  border-top: 2px solid var(--color-accent-dark);
+  background: var(--color-bg-card);
+  flex-shrink: 0;
+}
+
+.inputDisplay {
+  flex: 1;
+  padding: 0.48rem 0.75rem;
+  border: 2px solid rgba(26, 71, 42, 0.22);
+  background: rgba(248, 244, 232, 0.5);
+  font-family: var(--font-family-body);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  min-height: 2.3rem;
+  display: flex;
+  align-items: center;
+  cursor: default;
+  user-select: none;
+}
+
+.inputCursor {
+  display: inline-block;
+  color: var(--color-accent-dark);
+  font-weight: 700;
+  margin-left: 1px;
+  line-height: 1;
+}
+
+.inputCursorBlink {
+  animation: blinkCursor 1s step-end infinite;
+}
+
+/* ─── Botão enviar ─── */
+.sendBtn {
+  width: 2.4rem;
+  height: 2.4rem;
+  display: grid;
+  place-items: center;
+  background: var(--color-accent-dark);
+  color: var(--color-accent-sand);
+  border: 2px solid var(--color-accent-dark);
+  box-shadow: 2px 2px 0 0 rgba(26, 71, 42, 0.45);
+  font-size: 0.9rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.sendBtn:hover:not(:disabled) {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 0 rgba(26, 71, 42, 0.45);
+}
+
+.sendBtn:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.sendBtn:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+
+/* ─── Botão reiniciar ─── */
+.restartBtn {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background: none;
+  border: 2px solid rgba(26, 71, 42, 0.25);
+  font-family: var(--font-family-display);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: var(--color-text-light);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.restartBtn:hover {
+  background: rgba(26, 71, 42, 0.06);
+  color: var(--color-accent-dark);
+  border-color: var(--color-accent-dark);
+}
+
+/* ─── Modo escuro ─── */
+:global(body.theme-dark) .chat {
+  background: #080f08;
+  border-color: rgba(74, 200, 80, 0.28);
+  box-shadow: 3px 3px 0 0 rgba(74, 200, 80, 0.14);
+}
+
+:global(body.theme-dark) .header {
+  background: #0d1f0d;
+  border-bottom-color: rgba(74, 200, 80, 0.2);
+}
+
+:global(body.theme-dark) .headerName { color: #a8e6a8; }
+
+:global(body.theme-dark) .headerRole {
+  color: rgba(74, 200, 80, 0.5);
+  border-color: rgba(74, 200, 80, 0.15);
+}
+
+:global(body.theme-dark) .onlineDot { background: #4ac850; }
+
+:global(body.theme-dark) .messages {
+  scrollbar-color: rgba(74, 200, 80, 0.3) transparent;
+}
+
+:global(body.theme-dark) .messages::-webkit-scrollbar-thumb {
+  background: rgba(74, 200, 80, 0.3);
+}
+
+:global(body.theme-dark) .bubbleUser {
+  background: #1a3a1a;
+  color: #c8f0c8;
+  border-color: rgba(74, 200, 80, 0.4);
+  box-shadow: 2px 2px 0 0 rgba(74, 200, 80, 0.15);
+}
+
+:global(body.theme-dark) .bubbleBot {
+  background: rgba(13, 31, 13, 0.9);
+  color: #4ac850;
+  border-color: rgba(74, 200, 80, 0.12);
+  border-left-color: rgba(74, 200, 80, 0.5);
+}
+
+:global(body.theme-dark) .cursor { color: #4ac850; }
+
+:global(body.theme-dark) .typingDots span { background: #4ac850; }
+
+:global(body.theme-dark) .inputArea {
+  background: #080f08;
+  border-top-color: rgba(74, 200, 80, 0.2);
+}
+
+:global(body.theme-dark) .inputDisplay {
+  background: rgba(13, 31, 13, 0.7);
+  border-color: rgba(74, 200, 80, 0.18);
+  color: rgba(74, 200, 80, 0.7);
+}
+
+:global(body.theme-dark) .inputCursor { color: #4ac850; }
+
+:global(body.theme-dark) .sendBtn {
+  background: #1a3a1a;
+  border-color: rgba(74, 200, 80, 0.4);
+  color: #4ac850;
+  box-shadow: 2px 2px 0 0 rgba(74, 200, 80, 0.15);
+}
+
+:global(body.theme-dark) .sendBtn:hover:not(:disabled) {
+  box-shadow: 1px 1px 0 0 rgba(74, 200, 80, 0.15);
+}
+
+:global(body.theme-dark) .restartBtn {
+  color: rgba(74, 200, 80, 0.45);
+  border-color: rgba(74, 200, 80, 0.15);
+}
+
+:global(body.theme-dark) .restartBtn:hover {
+  background: rgba(74, 200, 80, 0.06);
+  color: #4ac850;
+  border-color: rgba(74, 200, 80, 0.35);
+}
+
+/* ─── Responsivo ─── */
+@media (max-width: 640px) {
+  .chat    { min-height: 360px; }
+  .bubble  { font-size: 0.85rem; max-width: 92%; }
+}
+
+/* ─── Acessibilidade ─── */
+@media (prefers-reduced-motion: reduce) {
+  .bubble               { animation: none; }
+  .cursor               { animation: none; }
+  .inputCursorBlink     { animation: none; }
+  .typingDots span      { animation: none; opacity: 1; }
+  .onlineDot            { animation: none; }
+}
