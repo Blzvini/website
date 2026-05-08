@@ -1,5 +1,6 @@
 import '../styles/globals.css';
 import { useEffect, useState } from 'react';
+import { Analytics } from '@vercel/analytics/next';
 
 export default function MyApp({ Component, pageProps }) {
   // Inicializa coerente com o script pré-hidratação em _document.js.
@@ -61,6 +62,7 @@ export default function MyApp({ Component, pageProps }) {
       </div>
 
       <Component {...pageProps} theme={theme} toggleTheme={toggleTheme} />
+      <Analytics />
     </>
   );
 }
