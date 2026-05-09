@@ -23,16 +23,19 @@ export default function WelcomeModal({ theme }) {
   const [visible, setVisible] = useState(false);
   const dialogRef = useRef(null);
   const closeBtnRef = useRef(null);
+  const focusPendingRef = useRef(false);
 
   useEffect(() => {
     if (!sessionStorage.getItem('welcomed')) {
+      focusPendingRef.current = true;
       setVisible(true);
     }
   }, []);
 
   useEffect(() => {
-    if (visible && closeBtnRef.current) {
+    if (focusPendingRef.current && closeBtnRef.current) {
       closeBtnRef.current.focus();
+      focusPendingRef.current = false;
     }
   }, [visible]);
 
@@ -60,7 +63,10 @@ export default function WelcomeModal({ theme }) {
     <div
       className={styles.backdrop}
       onClick={onBackdropClick}
-      aria-hidden="false"
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onBackdropClick(e); }}
+      role="button"
+      tabIndex={-1}
+      aria-label="Fechar"
     >
       <div
         ref={dialogRef}

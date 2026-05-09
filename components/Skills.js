@@ -47,7 +47,7 @@ export default function Skills() {
 
         <div className={styles.grid}>
           {skillsByType.map((category, index) => (
-            <article key={index} className={styles.category}>
+            <article key={category.type} className={styles.category}>
               <header className={styles.categoryHeader}>
                 <span className={styles.categoryIcon} aria-hidden="true">{category.icon}</span>
                 <h3 className={styles.categoryTitle}>{category.type}</h3>
@@ -57,7 +57,7 @@ export default function Skills() {
                 <span className={styles.groupLabel}>Principais</span>
                 <ul className={styles.list}>
                   {category.primary.map((item, i) => (
-                    <li key={i} className={styles.stackTagWrapper}>
+                    <li key={item} className={styles.stackTagWrapper}>
                       <span
                         className={styles.itemPrimary}
                         tabIndex="0"
@@ -84,7 +84,7 @@ export default function Skills() {
                   <span className={styles.groupLabel}>Complementares</span>
                   <ul className={styles.list}>
                     {category.secondary.map((item, i) => (
-                      <li key={i} className={styles.stackTagWrapper}>
+                      <li key={item} className={styles.stackTagWrapper}>
                         <span
                           className={styles.itemSecondary}
                           tabIndex="0"

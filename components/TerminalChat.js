@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef, useReducer } from 'react';
 import styles from './TerminalChat.module.css';
 
 const INITIAL_BOT = {
@@ -28,14 +28,45 @@ const SCRIPT = [
 
 // phase: 'typing-input' | 'ready' | 'responding' | 'done'
 
+const initialState = {
+  messages: [INITIAL_BOT],
+  scriptIdx: 0,
+  phase: 'typing-input',
+  inputText: '',
+  botTyping: '',
+  showHint: false,
+  hintDone: false,
+};
+
+function chatReducer(state, action) {
+  switch (action.type) {
+    case 'SET_INPUT': return { ...state, inputText: action.text };
+    case 'SET_PHASE': return { ...state, phase: action.phase };
+    case 'START_TYPING': return { ...state, inputText: '', phase: 'typing-input' };
+    case 'SET_BOT_TYPING': return { ...state, botTyping: action.text };
+    case 'SHOW_HINT': return { ...state, showHint: true };
+    case 'DISMISS_HINT': return { ...state, hintDone: true };
+    case 'HIDE_HINT': return { ...state, showHint: false };
+    case 'SEND_USER_MESSAGE': return {
+      ...state,
+      messages: [...state.messages, action.message],
+      inputText: '',
+      phase: 'responding',
+    };
+    case 'BOT_DONE': return {
+      ...state,
+      messages: [...state.messages, action.message],
+      botTyping: '',
+      scriptIdx: action.nextIdx,
+    };
+    case 'RESET': return { ...initialState };
+    default: return state;
+  }
+}
+
 export default function TerminalChat() {
-  const [messages,      setMessages]      = useState([INITIAL_BOT]);
-  const [scriptIdx,     setScriptIdx]     = useState(0);
-  const [phase,         setPhase]         = useState('typing-input');
-  const [inputText,     setInputText]     = useState('');
-  const [botTyping,     setBotTyping]     = useState('');
-  const [showHint,      setShowHint]      = useState(false);
-  const [hintDone,      setHintDone]      = useState(false);
+  const [state, dispatch] = useReducer(chatReducer, initialState);
+  const { messages, scriptIdx, phase, inputText, botTyping, showHint, hintDone } = state;
 
   const scrollRef   = useRef(null);
   const timerRef    = useRef(null);
@@ -45,17 +76,16 @@ export default function TerminalChat() {
 
   const typeInput = (idx) => {
     clearInterval(intervalRef.current);
-    if (idx >= SCRIPT.length) { setPhase('done'); return; }
+    if (idx >= SCRIPT.length) { dispatch({ type: 'SET_PHASE', phase: 'done' }); return; }
     const text = SCRIPT[idx].userText;
-    setInputText('');
-    setPhase('typing-input');
+    dispatch({ type: 'START_TYPING' });
     let i = 0;
     intervalRef.current = setInterval(() => {
       i++;
-      setInputText(text.slice(0, i));
+      dispatch({ type: 'SET_INPUT', text: text.slice(0, i) });
       if (i >= text.length) {
         clearInterval(intervalRef.current);
-        setPhase('ready');
+        dispatch({ type: 'SET_PHASE', phase: 'ready' });
       }
     }, 26);
   };
@@ -78,7 +108,7 @@ export default function TerminalChat() {
   // Mostra hint na primeira vez que o input fica pronto
   useEffect(() => {
     if (phase === 'ready' && scriptIdx === 0 && !hintDone) {
-      const t = setTimeout(() => setShowHint(true), 600);
+      const t = setTimeout(() => dispatch({ type: 'SHOW_HINT' }), 600);
       return () => clearTimeout(t);
     }
   }, [phase]); // eslint-disable-line
@@ -86,32 +116,26 @@ export default function TerminalChat() {
   const handleSend = () => {
     if (phase !== 'ready') return;
 
-    // Dispensa hint na primeira interação
     if (showHint && !hintDone) {
-      setHintDone(true);
-      setTimeout(() => setShowHint(false), 340);
+      dispatch({ type: 'DISMISS_HINT' });
+      setTimeout(() => dispatch({ type: 'HIDE_HINT' }), 340);
     }
 
     const current = SCRIPT[scriptIdx];
-
-    setMessages(prev => [...prev, { id: Date.now(), type: 'user', text: current.userText }]);
-    setInputText('');
-    setPhase('responding');
+    dispatch({ type: 'SEND_USER_MESSAGE', message: { id: Date.now(), type: 'user', text: current.userText } });
 
     const botText = current.botText;
     timerRef.current = setTimeout(() => {
       let i = 0;
-      setBotTyping('');
+      dispatch({ type: 'SET_BOT_TYPING', text: '' });
       clearInterval(intervalRef.current);
       intervalRef.current = setInterval(() => {
         i++;
-        setBotTyping(botText.slice(0, i));
+        dispatch({ type: 'SET_BOT_TYPING', text: botText.slice(0, i) });
         if (i >= botText.length) {
           clearInterval(intervalRef.current);
-          setMessages(prev => [...prev, { id: Date.now() + 1, type: 'bot', text: botText }]);
-          setBotTyping('');
           const next = scriptIdx + 1;
-          setScriptIdx(next);
+          dispatch({ type: 'BOT_DONE', message: { id: Date.now() + 1, type: 'bot', text: botText }, nextIdx: next });
           timerRef.current = setTimeout(() => typeInputRef.current(next), 320);
         }
       }, 18);
@@ -121,10 +145,7 @@ export default function TerminalChat() {
   const handleRestart = () => {
     clearTimeout(timerRef.current);
     clearInterval(intervalRef.current);
-    setMessages([INITIAL_BOT]);
-    setScriptIdx(0);
-    setInputText('');
-    setBotTyping('');
+    dispatch({ type: 'RESET' });
     typeInputRef.current(0);
   };
 

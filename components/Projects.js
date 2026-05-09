@@ -73,7 +73,7 @@ export default function Projects() {
 
                   <ul className={styles.stack}>
                     {project.stack.map((tech, i) => (
-                      <li key={i} className={styles.stackTagWrapper}>
+                      <li key={tech} className={styles.stackTagWrapper}>
                         <span
                           className={styles.stackTag}
                           tabIndex="0"

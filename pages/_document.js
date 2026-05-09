@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import { Html, Head, Main, NextScript } from 'next/document';
 
 /**
@@ -33,6 +34,13 @@ export default function Document() {
         <link rel="icon" href="/favicon.ico" />
         {/* Aplica o tema antes da hidratação para evitar flash */}
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        {process.env.NODE_ENV === 'development' && (
+          <Script
+            src="//unpkg.com/react-grab/dist/index.global.js"
+            crossOrigin="anonymous"
+            strategy="beforeInteractive"
+          />
+        )}
       </Head>
       <body>
         <Main />

@@ -52,14 +52,14 @@ export default function FloatingNav({ theme, toggleTheme }) {
       aria-label="Navegação principal fixa"
     >
       <div className={styles.inner}>
-        <a
-          href="#top"
-          onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+        <button
+          type="button"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className={styles.brand}
           aria-label="Voltar ao topo"
         >
           <span className={styles.brandArrow} aria-hidden="true">↑</span>
-        </a>
+        </button>
 
         <ul className={styles.list}>
           {SECTIONS.map((s) => (

@@ -255,10 +255,14 @@ Foi uma experiência importante para desenvolver comunicação, responsabilidade
   },
 ];
 
-function renderText(text, className) {
-  return text.split('\n\n').filter(p => p.trim()).map((para, i) => (
-    <p key={i} className={className}>
-      {para.trim().split('\n').map((line, j, arr) => (
+function TextBlock({ text, className }) {
+  const paras = text.split('\n\n').reduce((acc, para) => {
+    if (para.trim()) acc.push(para.trim());
+    return acc;
+  }, []);
+  return paras.map((para, i) => (
+    <p key={`para-${i}`} className={className}>
+      {para.split('\n').map((line, j, arr) => (
         <span key={j}>{line}{j < arr.length - 1 && <br />}</span>
       ))}
     </p>
@@ -320,7 +324,7 @@ export default function Experiences() {
                             >!</span>
                           )}
                           <span className={styles.folderTooltip} aria-hidden="true">
-                            Não abra essa pasta...
+                            Não abra essa pasta…
                           </span>
                         <button
                           className={styles.projectToggle}
@@ -348,11 +352,11 @@ export default function Experiences() {
                               <div className={styles.projectBody}>
                                 <div className={styles.projectSection}>
                                   <span className={styles.projectLabel}>Contexto</span>
-                                  {renderText(project.context, styles.projectText)}
+                                  <TextBlock text={project.context} className={styles.projectText} />
                                 </div>
                                 <div className={styles.projectSection}>
                                   <span className={styles.projectLabel}>Contribuição</span>
-                                  {renderText(project.contribution, styles.projectText)}
+                                  <TextBlock text={project.contribution} className={styles.projectText} />
                                 </div>
                               </div>
 
@@ -368,19 +372,19 @@ export default function Experiences() {
                               )}
 
                               <div className={styles.projectStack}>
-                                {project.stack.map((tech, i) => (
-                                  <span key={i} className={styles.stackTagWrapper}>
+                                {project.stack.map((tech) => (
+                                  <span key={tech} className={styles.stackTagWrapper}>
                                     <span
                                       className={styles.stackTag}
                                       tabIndex="0"
-                                      aria-describedby={`tip-${project.id}-${i}`}
+                                      aria-describedby={`tip-${project.id}-${tech}`}
                                     >
                                       {tech}
                                     </span>
                                     {TECH_DESCRIPTIONS[tech] && (
                                       <span
                                         role="tooltip"
-                                        id={`tip-${project.id}-${i}`}
+                                        id={`tip-${project.id}-${tech}`}
                                         className={styles.tooltip}
                                       >
                                         {TECH_DESCRIPTIONS[tech]}

@@ -1,5 +1,20 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useReducer } from 'react';
 import styles from './Header.module.css';
+
+function greetReducer(state, action) {
+  switch (action.type) {
+    case 'ADVANCE_INSTANT':
+      return { greetIdx: (state.greetIdx + 1) % GREETINGS.length, phase: 'idle' };
+    case 'PHASE_OUT':
+      return { ...state, phase: 'out' };
+    case 'ADVANCE_ANIMATE':
+      return { greetIdx: (state.greetIdx + 1) % GREETINGS.length, phase: 'in' };
+    case 'PHASE_IDLE':
+      return { ...state, phase: 'idle' };
+    default:
+      return state;
+  }
+}
 
 const GREETINGS = [
   'Olá, mundo',
@@ -15,8 +30,7 @@ const GREETINGS = [
 export default function Header({ theme, toggleTheme }) {
   const isDark = theme === 'dark';
   const isPixelTheme = theme === 'light' || theme === 'dark';
-  const [greetIdx, setGreetIdx] = useState(0);
-  const [phase, setPhase] = useState('idle'); // 'idle' | 'out' | 'in'
+  const [{ greetIdx, phase }, dispatch] = useReducer(greetReducer, { greetIdx: 0, phase: 'idle' });
   const [showHint, setShowHint] = useState(null); // null | 'sun' | 'moon'
   const reducedMotion = useRef(false);
   const kiteCursorRef = useRef(null);
@@ -46,14 +60,13 @@ export default function Header({ theme, toggleTheme }) {
   useEffect(() => {
     const interval = setInterval(() => {
       if (reducedMotion.current) {
-        setGreetIdx((prev) => (prev + 1) % GREETINGS.length);
+        dispatch({ type: 'ADVANCE_INSTANT' });
         return;
       }
-      setPhase('out');
+      dispatch({ type: 'PHASE_OUT' });
       setTimeout(() => {
-        setGreetIdx((prev) => (prev + 1) % GREETINGS.length);
-        setPhase('in');
-        setTimeout(() => setPhase('idle'), 600);
+        dispatch({ type: 'ADVANCE_ANIMATE' });
+        setTimeout(() => dispatch({ type: 'PHASE_IDLE' }), 600);
       }, 600);
     }, 3500);
     return () => clearInterval(interval);
@@ -234,31 +247,31 @@ export default function Header({ theme, toggleTheme }) {
           <p className={styles.description}>
             Construo pipelines, modelagens e automações que transformam dados brutos
             em decisões. Apaixonado por arquitetura de dados, cloud e ferramentas
-            modernas — com um toque de pixel art no caminho.
+            modernas, com um toque de pixel art no caminho.
           </p>
 
           <nav className={styles.nav} aria-label="Navegação do hero">
-            <a
-              href="#sobre"
-              onClick={(e) => { e.preventDefault(); scrollToSection('sobre'); }}
+            <button
+              type="button"
+              onClick={() => scrollToSection('sobre')}
               className="btn btn-secondary"
             >
               Sobre
-            </a>
-            <a
-              href="#projetos"
-              onClick={(e) => { e.preventDefault(); scrollToSection('projetos'); }}
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollToSection('projetos')}
               className="btn btn-secondary"
             >
               Projetos
-            </a>
-            <a
-              href="#contato"
-              onClick={(e) => { e.preventDefault(); scrollToSection('contato'); }}
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollToSection('contato')}
               className="btn"
             >
               Vamos conversar
-            </a>
+            </button>
           </nav>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import '../styles/globals.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Analytics } from '@vercel/analytics/next';
 
 export default function MyApp({ Component, pageProps }) {
@@ -7,7 +7,7 @@ export default function MyApp({ Component, pageProps }) {
   // Default: 'light'; será corrigido no useEffect de mount sem causar flash
   // (o <body> já recebeu a classe correta antes do React montar).
   const [theme, setTheme] = useState('light');
-  const [mounted, setMounted] = useState(false);
+  const mountedRef = useRef(false);
 
   useEffect(() => {
     const initial = document.documentElement.dataset.themePreload;
@@ -27,8 +27,8 @@ export default function MyApp({ Component, pageProps }) {
       resolved = 'dark';
     }
 
+    mountedRef.current = true;
     setTheme(resolved);
-    setMounted(true);
 
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
     const onChange = (e) => {
@@ -42,12 +42,12 @@ export default function MyApp({ Component, pageProps }) {
   }, []);
 
   useEffect(() => {
-    if (!mounted) return;
+    if (!mountedRef.current) return;
     document.body.classList.remove('theme-dark');
     if (theme !== 'light') document.body.classList.add(`theme-${theme}`);
     document.documentElement.classList.remove('theme-dark-preload');
     window.localStorage.setItem('site-theme', theme);
-  }, [theme, mounted]);
+  }, [theme]);
 
   const toggleTheme = () => setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
 

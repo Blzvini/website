@@ -118,7 +118,7 @@ export default function About() {
                         <span className={styles.ratingLabel}>{label}</span>
                         <div className={styles.orkutIconGroup} aria-hidden="true">
                           {Array.from({ length: max }, (_, i) => (
-                            <OrkutIcon key={i} type={type} dim={i >= count} />
+                            <OrkutIcon key={`${type}-${i}`} type={type} dim={i >= count} />
                           ))}
                           {count === 0 && <span className={styles.ratingNone}></span>}
                         </div>
