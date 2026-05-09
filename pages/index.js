@@ -9,7 +9,48 @@ import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import WelcomeModal from '../components/WelcomeModal';
 
-export default function Home({ theme, toggleTheme }) {
+const GITHUB_REPOS = ['whats-in-the-neighborhood', 'website'];
+
+function formatRepoName(name) {
+  return name.split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+}
+
+export async function getStaticProps() {
+  const headers = {
+    Accept: 'application/vnd.github+json',
+    ...(process.env.GITHUB_TOKEN && {
+      Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+    }),
+  };
+
+  try {
+    const githubProjects = await Promise.all(
+      GITHUB_REPOS.map(async (repo) => {
+        const [repoRes, langsRes] = await Promise.all([
+          fetch(`https://api.github.com/repos/Blzvini/${repo}`, { headers }),
+          fetch(`https://api.github.com/repos/Blzvini/${repo}/languages`, { headers }),
+        ]);
+        const data = await repoRes.json();
+        const langs = await langsRes.json();
+        const topLangs = Object.keys(langs).slice(0, 3);
+        const stack = [...new Set([...topLangs, ...(data.topics || [])])].slice(0, 5);
+        return {
+          id: repo,
+          title: formatRepoName(data.name),
+          description: data.description || '',
+          stack,
+          link: data.html_url,
+          stars: data.stargazers_count,
+        };
+      })
+    );
+    return { props: { githubProjects }, revalidate: 3600 };
+  } catch {
+    return { props: { githubProjects: [] }, revalidate: 60 };
+  }
+}
+
+export default function Home({ theme, toggleTheme, githubProjects }) {
   const themeColor =
     theme === 'dark'  ? '#0c1528' :
     '#2d9b4e';
@@ -38,7 +79,7 @@ export default function Home({ theme, toggleTheme }) {
         <About />
         <Experiences />
         <Skills />
-        <Projects />
+        <Projects githubProjects={githubProjects} />
         <Contact />
         <Footer />
       </main>

@@ -1,7 +1,7 @@
 import styles from './Projects.module.css';
 import { TECH_DESCRIPTIONS } from '../lib/techDescriptions';
 
-const projects = [
+const FALLBACK_PROJECTS = [
   {
     id: 1,
     title: 'Pipeline ETL em Azure Data Lake',
@@ -47,7 +47,8 @@ const projects = [
   },
 ];
 
-export default function Projects() {
+export default function Projects({ githubProjects }) {
+  const projects = githubProjects && githubProjects.length > 0 ? githubProjects : FALLBACK_PROJECTS;
   return (
     <section className={styles.projects} id="projetos">
       <div className="container">
@@ -68,7 +69,12 @@ export default function Projects() {
                 className={styles.card}
               >
                 <div className={styles.cardContent}>
-                  <h3 className={styles.title}>{project.title}</h3>
+                  <div className={styles.titleRow}>
+                    <h3 className={styles.title}>{project.title}</h3>
+                    {project.stars != null && (
+                      <span className={styles.stars} aria-label={`${project.stars} estrelas`}>★ {project.stars}</span>
+                    )}
+                  </div>
                   <p className={styles.description}>{project.description}</p>
 
                   <ul className={styles.stack}>

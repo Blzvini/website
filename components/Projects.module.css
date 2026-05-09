@@ -67,6 +67,13 @@
   gap: 0.75rem;
 }
 
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
 .title {
   font-family: var(--font-family-body);
   font-size: 1.25rem;
@@ -74,6 +81,15 @@
   margin: 0;
   color: var(--color-text-primary);
 }
+
+.stars {
+  font-size: 0.8rem;
+  color: var(--color-accent-dark);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+:global(body.theme-dark) .stars { color: #c7d9ff; }
 
 .description {
   font-size: 0.98rem;
