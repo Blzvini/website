@@ -6,7 +6,7 @@ const experiences = [
   {
     id: 1,
     company: 'Niteo',
-    role: 'Analista de Power Platform Jr.',
+    role: 'Analista de Dados Jr.',
     period: 'Dez 2023 – Jan 2026',
     projects: [
       {
@@ -17,11 +17,9 @@ const experiences = [
 
 Participei ativamente das reuniões com o cliente, auxiliando no entendimento das funcionalidades e no levantamento de melhorias. Também realizei visitas presenciais para suporte em testes, alinhamento de fluxos e validação das telas do sistema.
 
-Como o projeto não utilizava ferramentas como Azure DevOps para gerenciamento de testes, desenvolvi uma estrutura própria em Excel para organização e controle dos cenários testados, incluindo identificação dos testes, resultados esperados, resultados obtidos e status das execuções.
+Como o projeto não utilizava ferramentas como Azure DevOps para gerenciamento de testes, desenvolvi uma estrutura própria em Excel para organização e controle dos cenários testados, incluindo identificação dos testes, resultados esperados, resultados obtidos e status das execuções. 
 
-Além disso, fui responsável pela abertura e documentação de bugs, buscando sempre fornecer o máximo de contexto possível para facilitar a análise dos desenvolvedores. Isso incluía envio de requisições via cURL, investigação de respostas no Postman, validação de dados no MSSQL e acompanhamento individual com os desenvolvedores para reprodução e correção dos problemas encontrados. 
-
-Eu criava todos os cards de bugs, tentava ao máximo cooperar com o desenvolvedor, informando no card o bug, passando o CURL das requisições que eu tinha feito até chegar em determinado erro, ou até mesmo investigando as respostas que eu tinha no Postman, fazia averiguação dos dados no MSSQL, me juntava com cada desenvolvedor separadamente para informar sobre os erros que estavam acontecendo.`,
+Além disso, participei da validação de integrações e análise de inconsistências utilizando SQL, Postman e requisições via API, auxiliando na identificação e documentação de bugs relacionados às regras de negócio e aos fluxos do sistema.`,
         stack: ['Excel', 'Postman', 'SQL', 'Microsoft Teams', 'Gherkin (BDD)', 'Jira' ],
       },
       {
@@ -42,11 +40,13 @@ Foram desenvolvidas funcionalidades como:
 • Registro de logs para rastreamento e histórico das movimentações.
 
 Antes da implementação do sistema, grande parte desse controle era realizado manualmente através de planilhas. Eu era responsável por atualizar essas informações, acompanhar devoluções de equipamentos de colaboradores desligados, organizar envios para novos funcionários, calcular prazos e custos de frete, além de realizar o controle de devolução de notebooks para empresas terceirizadas de aluguel quando os contratos expiravam.`,
-        contribution: `Atuei diretamente no planejamento, design e desenvolvimento completo da aplicação. Tive liberdade para desenhar toda a interface do sistema, respeitando os padrões de UI/UX definidos pela empresa.
+        contribution: `Atuei diretamente no desenvolvimento da aplicação utilizando Power Apps, participando da criação das interfaces operacionais e da estrutura funcional do sistema.
 
-Participei de reuniões de levantamento de requisitos e definição de fluxos do sistema, contribuindo tanto na parte técnica quanto na organização das regras de negócio. Fui responsável pela criação de todas as telas e operações CRUD no Power Apps, além da implementação dos fluxos automatizados no Power Automate para criação, atualização e remoção de dados.
+Também desenvolvi automações e integrações utilizando Power Automate e MSSQL para gerenciamento, sincronização e rastreamento de informações relacionadas aos ativos corporativos.
 
-Também desenvolvi procedures e views no MSSQL para integração com os fluxos automatizados e consumo das informações dentro da aplicação.`,
+Fui responsável pela criação de procedures e views utilizadas na consolidação de dados operacionais e geração de indicadores consumidos pela aplicação.
+
+Além das integrações e automações, participei da implementação de workflows relacionados ao controle de estoque, contratos, movimentações e acompanhamento dos equipamentos.`,
         stack: ['Power Automate', 'Power Apps', 'Microsoft Teams', 'Excel', 'SQL', 'MSSQL'],
       },
       {
@@ -153,11 +153,11 @@ Geração de relatórios em Excel respeitando todas as regras de negócio existe
 Envio dos arquivos processados novamente para o Azure Blob Storage.
 
 Toda a execução era orquestrada através de pipelines responsáveis pela ingestão, transformação, geração dos relatórios e distribuição dos arquivos finais.`,
-        contribution: `Esse foi um dos meus primeiros contatos com um projeto real utilizando Python e engenharia de dados.
+        contribution: `Atuei no desenvolvimento de pipelines ETL no Microsoft Fabric utilizando Spark (PySpark), Azure Data Factory e Azure Data Lake para ingestão, transformação e disponibilização de dados.
 
-Atuei na integração com o Azure Blob Storage para carregamento e manipulação dos dados dentro do Microsoft Fabric. Também desenvolvi notebooks para conversão de processos SQL em PySpark, auxiliando na implementação das transformações necessárias para o ETL.
+Contribuí na migração de processos MSSQL para arquitetura cloud, convertendo regras e transformações SQL para notebooks PySpark.
 
-Participei da construção das pipelines responsáveis pela automação do fluxo completo de processamento e estive presente em diversas reuniões de alinhamento para entendimento tanto das estruturas de dados quanto das regras de negócio envolvidas nos relatórios finais.`,
+Também participei da organização e manipulação de dados em ambiente Data Lake, além da automação de workflows responsáveis pelo processamento e distribuição dos dados processados.`,
         stack: ['Python', 'SQL', 'PySpark', 'Microsoft Fabric', 'WareHouse', 'DataLake', 'Data Factory', 'Power BI', 'Azure DevOps', 'MSSQL', 'Máquinas virtuais Azure', 'Excalidraw'],
       },
       {
@@ -170,20 +170,13 @@ A proposta era substituir a plataforma anterior por uma solução desenvolvida c
 O sistema permitia que os usuários registrassem suas horas de trabalho diariamente, acompanhassem pendências de lançamento e visualizassem informações consolidadas da semana através de uma interface em formato de calendário.
 
 Além disso, o aplicativo possuía integração com o Azure AD para identificação automática dos usuários e carregamento dos projetos vinculados a cada colaborador.`,
-        contribution: `Participei ativamente das reuniões de planning e definição das funcionalidades do sistema, contribuindo no levantamento dos requisitos e no planejamento das entregas.
+        contribution: `Participei do desenvolvimento da aplicação utilizando Power Apps, atuando tanto na criação de interfaces operacionais quanto na implementação de integrações e automações de dados utilizando Power Automate e Azure SQL Database.
 
-Atuei no desenvolvimento das telas no Power Apps com base nos protótipos criados no Figma, além da implementação dos fluxos automatizados no Power Automate para consolidação e integração dos dados com o banco de dados.
+Também desenvolvi procedures e views utilizadas para consolidação, processamento e disponibilização das informações consumidas pelo sistema.
 
-Também desenvolvi views e procedures SQL utilizadas para gerenciamento das informações da aplicação.
+Atuei na automação de workflows relacionados ao gerenciamento de usuários, projetos e apontamentos de horas, incluindo integrações com Azure AD para sincronização automática de informações entre sistemas.
 
-Uma das funcionalidades implementadas consistia em consultar automaticamente os dados do usuário no Azure AD, buscar seus projetos cadastrados no banco de dados e consolidar essas informações em uma interface de calendário. Nessa tela, os usuários conseguiam visualizar:
-
-Quantidade de horas esperadas por dia;
-Horas lançadas na semana;
-Dias com horas pendentes;
-Informações relacionadas aos projetos vinculados.
-
-O sistema também permitia operações administrativas, como cadastro, edição e exclusão de projetos, além da inclusão e remoção de colaboradores nos projetos.`,
+Além da parte de dados e automações, também contribui na construção das telas da aplicação com base nos protótipos definidos no Figma.`,
         stack: ['Power Apps', 'Power Automate', 'CSS', 'HTML', 'SQL', 'Azure Database'],
       }
     ],
