@@ -263,9 +263,10 @@ function TextBlock({ text, className }) {
 }
 
 export default function Experiences() {
-  const [expanded,  setExpanded]  = useState(new Set());
-  const [showHint,  setShowHint]  = useState(false);
-  const [hintDone,  setHintDone]  = useState(false);
+  const [expanded,   setExpanded]   = useState(new Set());
+  const [showHint,   setShowHint]   = useState(false);
+  const [hintDone,   setHintDone]   = useState(false);
+  const [downloaded, setDownloaded] = useState(false);
 
   useEffect(() => {
     const t = setTimeout(() => setShowHint(true), 1500);
@@ -396,6 +397,20 @@ export default function Experiences() {
               </article>
             ))}
           </div>
+
+          <aside className={styles.postIt} aria-label="Download do currículo">
+            <p className={styles.postItText}>
+              {`$ cat cv.pdf\n\n// Disponível para\n// download abaixo`}
+            </p>
+            <a
+              href="/cv.pdf"
+              download="CV_Vinicius_Marques.pdf"
+              className={`${styles.postItBtn}${downloaded ? ` ${styles.postItBtnDone}` : ''}`}
+              onClick={() => setDownloaded(true)}
+            >
+              Baixar CV
+            </a>
+          </aside>
         </div>
       </div>
     </section>
