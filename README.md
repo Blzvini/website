@@ -2,7 +2,7 @@
 
 Portfólio pessoal de Vinicius Marques, Engenheiro de Dados Jr. com identidade pixel-art/retrô, tema dia/noite e conteúdo em Português Brasileiro.
 
-**Live:** [blzvini.github.io/website](https://blzvini.github.io/website) <!-- atualize se necessário -->
+**Live:** [blzvini.com.br](https://blzvini.com.br) 
 
 ---
 
