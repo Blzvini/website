@@ -579,5 +579,14 @@
 }
 
 @media (max-width: 640px) {
-  .postIt { display: none; }
+  .postIt {
+    display: block;
+    position: relative;
+    right: auto;
+    top: auto;
+    margin: var(--spacing-lg) auto 0;
+    transform: rotate(0deg);
+    width: 100%;
+    max-width: 260px;
+  }
 }

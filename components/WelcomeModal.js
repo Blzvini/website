@@ -108,7 +108,7 @@ export default function WelcomeModal({ theme }) {
           <p className={styles.hintNote}>
             {theme === 'dark'
               ? 'Mas tome cuidado e não deixe o mouse por muito tempo no lua.'
-              : 'Mas tome cuidado e não deixe o mouse por muito tempo na sol.'
+              : 'Mas tome cuidado e não deixe o mouse por muito tempo no sol.'
             }
           </p>
         </div>

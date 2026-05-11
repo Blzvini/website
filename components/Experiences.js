@@ -400,15 +400,15 @@ export default function Experiences() {
 
           <aside className={styles.postIt} aria-label="Download do currículo">
             <p className={styles.postItText}>
-              {`$ cat cv.pdf\n\n// Disponível para\n// download abaixo`}
+              {`$ cat currículo.pdf\n\n// Disponível para\n// download abaixo`}
             </p>
             <a
               href="/cv.pdf"
-              download="CV_Vinicius_Marques.pdf"
+              download="Currículo_Vinicius_Marques.pdf"
               className={`${styles.postItBtn}${downloaded ? ` ${styles.postItBtnDone}` : ''}`}
               onClick={() => setDownloaded(true)}
             >
-              Baixar CV
+              Baixar Currículo
             </a>
           </aside>
         </div>
