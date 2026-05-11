@@ -403,6 +403,7 @@
   display: flex;
   align-items: center;
   gap: 0;
+  margin-left: auto;
 }
 
 .orkutIcon { flex-shrink: 0; display: block; }
@@ -423,7 +424,7 @@
 /* ─── Responsivo ─── */
 @media (max-width: 640px) {
   .panelInner { grid-template-columns: 1fr; }
-  .avatarWrap { position: static; }
+  .avatarWrap { position: static; width: 140px; margin: 0 auto; }
   .avatar { width: 140px; margin: 0 auto; }
   .certs { grid-template-columns: 1fr; }
 }
