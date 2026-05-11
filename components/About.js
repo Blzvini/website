@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import Image from 'next/image';
 import styles from './About.module.css';
 import TerminalChat from './TerminalChat';
 
@@ -109,8 +110,13 @@ export default function About() {
                 {/* Avatar pixel art (substituível por uma <img> real) */}
                 <div className={styles.avatarWrap}>
                   <div className={styles.avatar}>
-                    <span className={styles.avatarPixel} aria-hidden="true" />
-                    <span className={styles.avatarLabel}>VM</span>
+                    <Image
+                      src="/foto.jpeg"
+                      alt="Vinicius Marques"
+                      className={styles.avatarImg}
+                      width={200}
+                      height={200}
+                    />
                   </div>
                   <ul className={styles.ratingList}>
                     {ORKUT_RATINGS.map(({ label, count, max, type }) => (

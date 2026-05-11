@@ -4,25 +4,36 @@ import styles from './TerminalChat.module.css';
 const INITIAL_BOT = {
   id: 0,
   type: 'bot',
-  text: 'Olá! estou aqui pra te contar sobre o Vinicius. ',
+  text: 'Vamos fofocar sobre o Vinicius?. ',
 };
 
 const SCRIPT = [
   {
     userText: 'Quem é Vinicius Marques?',
-    botText:  'Sou Vinicius Marques — formado em Análise e Desenvolvimento de Sistemas. Comecei em dev, passei por QA e hoje estou 100% focado em dados: pipelines, modelagem e cloud.',
+    botText:  `Para o cego, é a luz.
+                Para o faminto, é o pão.
+                Para o sedento, é a fonte de água.
+                Para o morto, é a vida.
+                Para o enfermo, é a cura.
+                Para o prisioneiro, é a liberdade.
+                Para o solitário, é o companheiro.
+                Para o viajante, é o caminho.`,
   },
   {
     userText: 'Quais tecnologias ele usa?',
-    botText:  'PySpark · SQL · Microsoft Fabric · Azure · ETL · Power Platform. Visão completa do ciclo: dado bruto → dashboard na mão do gestor.',
+    botText:  'Python · PySpark · SQL · Microsoft Fabric · Azure · ETL · Power Platform.',
   },
   {
     userText: 'Quais são os objetivos dele?',
-    botText:  'Uma vaga como Engenheiro de Dados Jr. em time que valorize qualidade técnica, autonomia e aprendizado contínuo. Stacks modernas + cultura de engenharia forte.',
+    botText:  `Nesse exato momento, para a área de tech, uma vaga como Engenheiro de Dados Jr.
+             De resto, ir morar no interior ou em alguma praia do Nordeste, longe de todo o caos e da correria de uma cidade grande.`,
   },
   {
     userText: 'E fora do trabalho?',
-    botText:  'Trilhas, jazz a metal, games indie retrô, leitura técnica e séries até tarde. Interesses variados constroem soluções mais criativas. 🎮',
+    botText:  `Aram de cartinhas, com certeza. Ou um CS2 com a rapeize no Discord!
+             Assistir a alguma série ou filme, mas fissurado em One Piece.
+             Ler algum livro, ir atrás de conhecimentos que talvez eu nunca vá usar, mas apenas pela curiosidade de aprender algo novo.
+             Hiperfoco em pipa, mas não sei se isso conta como hobby ou se é só mais um vício mesmo...`,
   },
 ];
 
