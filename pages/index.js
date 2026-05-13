@@ -9,7 +9,7 @@ import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import WelcomeModal from '../components/WelcomeModal';
 
-const GITHUB_REPOS = ['whats-in-the-neighborhood', 'website'];
+const GITHUB_REPOS = ['website'];
 
 function formatRepoName(name) {
   return name.split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
@@ -79,7 +79,7 @@ export default function Home({ theme, toggleTheme, githubProjects }) {
         <About />
         <Experiences />
         <Skills />
-        <Projects githubProjects={githubProjects} />
+        {githubProjects.length > 0 && <Projects githubProjects={githubProjects} />}
         <Contact />
         <Footer />
       </main>
