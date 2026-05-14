@@ -65,8 +65,6 @@ export default function Home({ theme, toggleTheme, githubProjects }) {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content={themeColor} />
-        <meta property="og:title" content="Vinicius Marques" />
-        <meta property="og:description" content="Portfólio visualmente refinado, com foco em dados, cloud e identidade autoral." />
         <meta property="og:type" content="website" />
         <meta name="robots" content="index, follow" />
       </Head>
