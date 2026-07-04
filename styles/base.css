@@ -156,7 +156,7 @@ textarea:focus-visible {
   text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
 }
 
-/* Em seções com fundo escuro (Projects/Contact em modo claro) */
+/* Em seções com fundo escuro (Contact em modo claro) */
 .section-title.on-dark {
   color: #fff;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);

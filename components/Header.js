@@ -257,13 +257,6 @@ export default function Header({ theme, toggleTheme }) {
             </button>
             <button
               type="button"
-              onClick={() => scrollToSection('projetos')}
-              className="btn btn-secondary"
-            >
-              Projetos
-            </button>
-            <button
-              type="button"
               onClick={() => scrollToSection('contato')}
               className="btn"
             >
