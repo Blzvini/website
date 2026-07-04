@@ -4,7 +4,7 @@
 
 .contact {
   background: linear-gradient(180deg,
-    var(--color-grass-600) 0%,
+    var(--color-grass-400) 0%,
     var(--color-accent-light) 42%,
     var(--color-grass-100) 78%,
     var(--color-sky-100) 100%
