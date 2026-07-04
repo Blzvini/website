@@ -1,23 +1,26 @@
-import Head from 'next/head';
-import Header from '../components/Header';
-import FloatingNav from '../components/FloatingNav';
-import About from '../components/About';
-import Experiences from '../components/Experiences';
-import Skills from '../components/Skills';
-import Projects from '../components/Projects';
-import Contact from '../components/Contact';
-import Footer from '../components/Footer';
-import WelcomeModal from '../components/WelcomeModal';
+import Head from "next/head";
+import Header from "../components/Header";
+import FloatingNav from "../components/FloatingNav";
+import About from "../components/About";
+import Experiences from "../components/Experiences";
+import Skills from "../components/Skills";
+import Projects from "../components/Projects";
+import Contact from "../components/Contact";
+import Footer from "../components/Footer";
+import WelcomeModal from "../components/WelcomeModal";
 
-const GITHUB_REPOS = ['website'];
+const GITHUB_REPOS = ["website"];
 
 function formatRepoName(name) {
-  return name.split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+  return name
+    .split("-")
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
 }
 
 export async function getStaticProps() {
   const headers = {
-    Accept: 'application/vnd.github+json',
+    Accept: "application/vnd.github+json",
     ...(process.env.GITHUB_TOKEN && {
       Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
     }),
@@ -28,21 +31,26 @@ export async function getStaticProps() {
       GITHUB_REPOS.map(async (repo) => {
         const [repoRes, langsRes] = await Promise.all([
           fetch(`https://api.github.com/repos/Blzvini/${repo}`, { headers }),
-          fetch(`https://api.github.com/repos/Blzvini/${repo}/languages`, { headers }),
+          fetch(`https://api.github.com/repos/Blzvini/${repo}/languages`, {
+            headers,
+          }),
         ]);
         const data = await repoRes.json();
         const langs = await langsRes.json();
         const topLangs = Object.keys(langs).slice(0, 3);
-        const stack = [...new Set([...topLangs, ...(data.topics || [])])].slice(0, 5);
+        const stack = [...new Set([...topLangs, ...(data.topics || [])])].slice(
+          0,
+          5,
+        );
         return {
           id: repo,
           title: formatRepoName(data.name),
-          description: data.description || '',
+          description: data.description || "",
           stack,
           link: data.html_url,
           stars: data.stargazers_count,
         };
-      })
+      }),
     );
     return { props: { githubProjects }, revalidate: 3600 };
   } catch {
@@ -51,9 +59,7 @@ export async function getStaticProps() {
 }
 
 export default function Home({ theme, toggleTheme, githubProjects }) {
-  const themeColor =
-    theme === 'dark'  ? '#0c1528' :
-    '#2d9b4e';
+  const themeColor = theme === "dark" ? "#0c1528" : "#2d9b4e";
 
   return (
     <>
@@ -77,7 +83,9 @@ export default function Home({ theme, toggleTheme, githubProjects }) {
         <About />
         <Experiences />
         <Skills />
-        {githubProjects.length > 0 && <Projects githubProjects={githubProjects} />}
+        {githubProjects.length > 0 && (
+          <Projects githubProjects={githubProjects} />
+        )}
         <Contact />
         <Footer />
       </main>

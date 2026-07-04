@@ -1,12 +1,6 @@
-import Script from 'next/script';
-import { Html, Head, Main, NextScript } from 'next/document';
+import Script from "next/script";
+import { Html, Head, Main, NextScript } from "next/document";
 
-/**
- * Script inline executado ANTES da hidratação do React.
- * - Lê localStorage (preferência salva) ou prefers-color-scheme do SO.
- * - Aplica `theme-dark` no <body> via classe inicial — evita o "flash" claro
- *   quando o usuário deveria ver o tema escuro.
- */
 const themeInitScript = `
 (function () {
   try {
@@ -32,9 +26,8 @@ export default function Document() {
       <Head>
         <meta charSet="utf-8" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        {/* Aplica o tema antes da hidratação para evitar flash */}
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
-        {process.env.NODE_ENV === 'development' && (
+        {process.env.NODE_ENV === "development" && (
           <Script
             src="//unpkg.com/react-grab/dist/index.global.js"
             crossOrigin="anonymous"
